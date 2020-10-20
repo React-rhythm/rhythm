@@ -1,10 +1,14 @@
 import React,{Component} from 'react'
+import Swiper from "./home/index/Swiper"
+import Home from "./home/Home"
 class App extends Component{
     render(){
         return (
             <>
-                <div>hello</div>
+            <Swiper></Swiper>
+            <Home></Home>
             </>
+            
         )
     }
 }
