@@ -7,7 +7,7 @@ import NoticeItem from "./NoticeItem"
 export default class Header extends Component{
     state = {
         tabs :[
-            { title: <Badge>已读消息</Badge> },
+            { title: <Badge>已读消息1</Badge> },
             { title: <Badge>未读消息</Badge> }
           ]
     }
