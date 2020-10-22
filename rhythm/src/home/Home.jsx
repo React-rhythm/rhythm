@@ -5,9 +5,8 @@ class Home extends Component{
     render(){
         return (
             <>
-           <Footer></Footer>
+                <Footer></Footer>
             </>
-            
         )
     }
 }
