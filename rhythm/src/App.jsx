@@ -1,10 +1,11 @@
 import React,{Component} from 'react'
 
+import Home from "./home/Home.jsx"
 class App extends Component{
     render(){
         return (
             <>
-           hello
+           <Home></Home>
             </>
             
         )
