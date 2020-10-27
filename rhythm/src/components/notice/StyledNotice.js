@@ -9,14 +9,14 @@ const HeaderWrap = styled.div`
     line-height:.44rem;
     text-align:center;
     font-size:0.16rem;
-   
+    
     .am-navbar{
-        background-color:#2494ea;
+        background-color:${props => props.location.state.headbg? props.location.state.headbg : "#2494ea"} ;
         .am-navbar-left{
-            color:#fff;
+            color:${props => props.location.state.color ? props.location.state.color : "#fff" } !important;
         }
         .am-navbar-title{
-            color:#fff;
+            color:${props => props.location.state.color ? props.location.state.color : "#fff" } !important;
         }
     }
 `
@@ -28,8 +28,8 @@ const TabBarWrap = styled.div`
         }
     }
     .am-tabs-default-bar-underline {
-        width: 10% !important;
-        left: 20% !important;
+        /* width: 10% !important;
+        left: 20% !important; */
         border-width:2px
     }
     .am-tabs-content-wrap {

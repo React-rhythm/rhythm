@@ -10,11 +10,11 @@ import Search from "@a/images/搜索@2x.png"
 import SearchActive from "@a/images/搜索_点击@2x.png"
 import Profile from "@a/images/我的@2x.png"
 import ProfileActive from "@a/images/我的_点击@2x.png"
-
+import MyProfile from "./profile/Profile"
 
 export default  class Home extends Component{
     state = {
-        selectedTab: 'redTab',
+        selectedTab: 'propfile',
         hidden: false,
         fullScreen: true,
     }
@@ -84,14 +84,14 @@ export default  class Home extends Component{
                 selectedIcon={{ uri: `${ProfileActive}` }}
                 title="我的"
                 key="my"
-                selected={this.state.selectedTab === 'yellowTab'}
+                selected={this.state.selectedTab === 'propfile'}
                 onPress={() => {
                   this.setState({
-                    selectedTab: 'yellowTab',
+                    selectedTab: 'propfile',
                   });
                 }}
               >
-                <div>ddd</div>
+                <MyProfile></MyProfile>
               </TabBar.Item>
             </TabBar>
           </div>

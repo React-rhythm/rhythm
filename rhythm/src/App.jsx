@@ -1,18 +1,27 @@
 import React,{Component} from 'react'
+import {Switch,Route,Redirect} from "react-router-dom"
 
-// import Notice from "./components/notice/Notice"
+import Home from "./home/Home"
+import Setting from"./home/profile/content/Set"
+import UpdateUserName from "./home/profile/updateUserName/Update"
+import ResetPwd from "./home/profile/resetPwd/ResetPwd"
+import ChangePhone from "./home/profile/changePhone/ChangePhone"
+import Notice from "./components/notice/Notice"
+import About from "./home/profile/About/About"
 
-// import Profile from "./home/profile/Profile"
-
-import Set from "./home/profile/content/Set"
 class App extends Component{
     render(){
         return (
-            <>
-            {/* <Notice></Notice> */}
-            {/* <Profile></Profile> */}
-            <Set></Set>
-            </>
+            <Switch>
+                <Route path="/home" component={Home}></Route>
+                <Route path="/setting" component={Setting}></Route>
+                <Route path="/updateusername" component={UpdateUserName}></Route>
+                <Route path="/resetpwd" component={ResetPwd}></Route>
+                <Route path="/changephone" component={ChangePhone}></Route>
+                <Route path="/notice" component={Notice}></Route>
+                <Route path="/about" component={About}></Route>
+                <Redirect from="/" to="/home"></Redirect>
+            </Switch>
             
         )
     }

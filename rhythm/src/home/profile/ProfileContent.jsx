@@ -5,11 +5,16 @@ import Msg from "@a/images/xiaoxi@2x.png"
 import Related from "@a/images/guanyu@2x.png"
 import CallService from "@a/images/kefu@2x.png"
 import NewsPaper from "@a/images/baoshe@2x.png"
-import Set from "@a/images/shezhi@2x.png"
+import Setting from "@a/images/shezhi@2x.png"
 import { List } from 'antd-mobile';
+
+import {withRouter} from "react-router-dom"
+
+
 const Item = List.Item;
 
-export default class ProfileContent extends Component{
+@withRouter
+class ProfileContent extends Component{
     state = {
         disabled: false,
       }
@@ -20,12 +25,12 @@ export default class ProfileContent extends Component{
             <Item
               thumb={Msg}
               arrow="horizontal"
-              onClick={() => {}}
+              onClick={() => {this.props.history.push("/notice",{title:"报社"})}}
             >消息通知</Item>
             <Item
               thumb={Related}
-              onClick={() => {}}
               arrow="horizontal"
+              onClick={() => {this.props.history.push("/about",{title:"关于律动公告",headbg:"#fff",color:"#000"})}}
             >
               关于律动公告
             </Item>
@@ -36,14 +41,14 @@ export default class ProfileContent extends Component{
             >客服</Item>
             <Item
               thumb={NewsPaper}
-              onClick={() => {}}
+              onClick={() => {this.props.history.push("/notice",{title:"报社"})}}
               arrow="horizontal"
             >
               报社
             </Item>
             <Item
-              thumb={Set}
-              onClick={() => {}}
+              thumb={Setting}
+              onClick={() => {this.props.history.push("/setting",{title:"设置"})}}
               arrow="horizontal"
             >
               设置
@@ -52,3 +57,6 @@ export default class ProfileContent extends Component{
         </ProfileContentWrap>);
       }
     }
+
+
+  export default  ProfileContent

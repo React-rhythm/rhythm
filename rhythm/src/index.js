@@ -5,7 +5,11 @@ import App from "./App"
 
 import "@a/styles/reset.css"
 
+import {BrowserRouter as Router} from "react-router-dom"
+
 RecatDom.render(
-    <App></App>,
+    <Router>
+         <App></App>
+    </Router>,
     document.querySelector("#root")
 )

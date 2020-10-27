@@ -6,8 +6,8 @@ import LoginDefault from "@a/images/touxiang4@2x.png"
 import {HeaderWrap} from "./StyledProfile"
 
 import ProfileContent from "./ProfileContent"
-import Footer from "@c/footer/Footer.jsx"
-export default class Profile extends Component{
+
+class Profile extends Component{
     render(){
         return (
             <>
@@ -21,8 +21,9 @@ export default class Profile extends Component{
                 <ProfileContent>
 
                 </ProfileContent>
-                <Footer></Footer>
             </>
         )
     }
 }
+
+export default Profile
