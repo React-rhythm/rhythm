@@ -1,7 +1,9 @@
 import styled from "styled-components"
 
 const Container = styled.div`
-    
+    height:100%;
+    display:flex;
+    flex-direction:column;
 `
 
 const HeaderWrap = styled.div`
@@ -22,6 +24,7 @@ const HeaderWrap = styled.div`
 `
 
 const TabBarWrap = styled.div`
+    /* flex:1; */
     .am-tabs-default-bar-tab {
         .am-badge{
             font-size:0.14rem
@@ -33,9 +36,12 @@ const TabBarWrap = styled.div`
         border-width:2px
     }
     .am-tabs-content-wrap {
-        margin-top:0.1rem
+        margin-top:0.1rem;
+        /* overflow:hidden; */
     }
+    
     .tabContentList{
+        overflow-y:scroll;
         background-color: #f5f5f5 !important;
     }
 `

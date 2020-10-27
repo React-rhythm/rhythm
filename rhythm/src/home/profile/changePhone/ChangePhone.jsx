@@ -8,6 +8,12 @@ import {Container} from "./StyledChangePhone"
 
 
 class Change extends Component{
+
+    handleGetCodeClick = () => {
+        return () => {
+            console.log("验证码")
+        }
+    }
     render(){
         const { getFieldProps } = this.props.form;
         return (
@@ -31,7 +37,7 @@ class Change extends Component{
                         {...getFieldProps('code')}
                         type="code"
                         placeholder="请输入验证码"
-                        extra={<div>获取验证码</div>}
+                        extra={<div onClick={this.handleGetCodeClick()}>获取验证码</div>}
                     ></InputItem>
                     </List>
                     <Button type="primary" >确认</Button>

@@ -37,6 +37,9 @@ const Container = styled.div`
    .am-list-item {
     background-color: #f5f5f5;
     }
+    .am-list-item .am-input-extra {
+        color:#94c4f2;
+    }
     .am-button-primary {
         /* background-color: #108ee9; */
         width:100%;
