@@ -4,7 +4,7 @@ import LoginIcon from '../ui/LoginIcon'
 import WillLogin from '../ui/LoginInput1'
 
 
-import http from '@u/http';
+// import http from '@u/http';
 
 
 
@@ -12,21 +12,21 @@ class Login2 extends Component {
 
     handleMessage=()=>{
         return async ()=>{
-            let result=http.post('http://49.235.115.228/userInfo/register',{
-                "idcard": "123456789",
-                "password": "qwer",
-                "phoneid": "18637566291",
-                "photoaddress": "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1783902704,643624260&fm=26&gp=0.jpg",
-                "realname": "思琦",
-                "replynewpassword": "qwer",
-                "status": "0",
-                "username": "siqi"
-            }) .then((res)=>{
-                console.log('结果',res);
-            }).catch(() => {
-                console.log('失败')
-            })
-            console.log(result);
+            // let result=http.post('http://49.235.115.228/userInfo/register',{
+            //     "idcard": "123456789",
+            //     "password": "qwer",
+            //     "phoneid": "18637566291",
+            //     "photoaddress": "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1783902704,643624260&fm=26&gp=0.jpg",
+            //     "realname": "思琦",
+            //     "replynewpassword": "qwer",
+            //     "status": "0",
+            //     "username": "siqi"
+            // }) .then((res)=>{
+            //     console.log('结果',res);
+            // }).catch(() => {
+            //     console.log('失败')
+            // })
+            // console.log(result);
             
             this.props.history.push('/home/MessageLogin')
         }

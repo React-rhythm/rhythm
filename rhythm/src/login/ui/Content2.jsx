@@ -1,7 +1,7 @@
 import React from 'react';
 import {List} from 'antd-mobile';
 import {ContentWrap2} from './StyledLogin'
-import WillRegister from '../../../components/register/WillRegister/WillRegister'
+import WillRegister from '../../components/register/WillRegister/WillRegister'
 const Content2 =()=>{
     return(
         <>
