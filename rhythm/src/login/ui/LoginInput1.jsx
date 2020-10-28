@@ -1,6 +1,6 @@
 import React from 'react';
 import {LoginInput1Wrap} from './StyledLogin'
-import WillLogin from '../../../components/login/WillLogin/WillLogin'
+import WillLogin from '../../components/login/WillLogin/WillLogin'
 function LoginInput1(props) {
    console.log(props);
     return (

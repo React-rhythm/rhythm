@@ -1,8 +1,8 @@
 import React from 'react';
 import {List} from 'antd-mobile';
 import {ContentWrap} from './StyledLogin'
-import WillRegister from '../../../components/register/WillRegister/WillRegister'
-import border from '../../../assets/styled/border'
+import WillRegister from '../../components/register/WillRegister/WillRegister'
+import border from '../../assets/styled/border'
 const ContentWrapb=border(ContentWrap)
 const Content1 =()=>{
     return(
