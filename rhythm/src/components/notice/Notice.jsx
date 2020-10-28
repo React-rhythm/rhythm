@@ -9,7 +9,7 @@ export default class Notice extends Component{
         return (
             <Container>
                 <Header></Header>
-                <TabBar></TabBar>
+                <TabBar>22</TabBar>
             </Container>
         )
     }
