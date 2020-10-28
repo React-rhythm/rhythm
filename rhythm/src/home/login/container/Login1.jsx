@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import {NavBar, Icon } from 'antd-mobile';
 import LoginIcon from '../ui/LoginIcon'
 import WillLogin from '../ui/LoginInput1'
+import {connect} from 'react-redux'
 
 
 import http from '@u/http';
 
 
-
+@connect()
 class Login1 extends Component {
-
+    
     handleMessage=()=>{
         return async ()=>{
             let result=http.post('http://49.235.115.228/userInfo/register',{
@@ -29,12 +30,16 @@ class Login1 extends Component {
             console.log(result);
             
             this.props.history.push('/home/MessageLogin')
+           
         }
     }
     handleRegister1=()=>{
         return()=>{
             this.props.history.push('/home/register1')
         }
+    }
+    componentDidMount(){
+        console.log(this.props.location);
     }
     render() {
         return (
