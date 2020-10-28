@@ -18,7 +18,6 @@ import ChangePhone from "./home/profile/changePhone/ChangePhone"
 import About from "./home/profile/About/About"
 
 
-import Home1 from "./home/Home.jsx"
 import Guide from '@g/Guide.jsx'
 import Role from '@r/Role.jsx'
 
