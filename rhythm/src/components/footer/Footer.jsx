@@ -12,7 +12,7 @@ import Profile from "@a/images/我的@2x.png"
 import ProfileActive from "@a/images/我的_点击@2x.png"
 import Upload from "@a/images/发布@2x.png"
 import UploadActive from "@a/images/发布_点击@2x.png"
-
+import MyProfile from "@/home/profile/Profile"
 
 export default  class Home extends Component{
     state = {
@@ -119,7 +119,7 @@ export default  class Home extends Component{
                   });
                 }}
               >
-                <div>ddd</div>
+                <div>6666</div>
               </TabBar.Item>
             </TabBar>
           </div>

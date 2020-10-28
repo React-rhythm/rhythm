@@ -39,8 +39,6 @@ class App extends Component{
 
                 <Route path="/guide" component={Guide}></Route>
                 <Route path="/role" component={Role}></Route>
-                <Route path="/home1" component={Home1}></Route>
-                <Redirect from="/" to="/Guide"></Redirect>
 
              
                 <Route path='/home/login1' component={Login1}></Route>
@@ -48,6 +46,7 @@ class App extends Component{
                 <Route path='/home/MessageLogin' component={MessageLogin}></Route>
                 <Route path='/home/register1' component={Register1}></Route>
                 <Route path='/home/register2' component={Register2}></Route>
+                <Redirect from="/" to="/Guide"></Redirect>
                
             </Switch>
         

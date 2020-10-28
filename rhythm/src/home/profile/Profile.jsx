@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import React,{Component} from 'react'
 
 import Banner from "@a/images/banner@2x.png"
@@ -29,4 +27,3 @@ class Profile extends Component{
 }
 
 export default Profile
->>>>>>> done
