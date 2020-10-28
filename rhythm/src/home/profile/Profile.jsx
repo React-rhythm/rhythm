@@ -15,7 +15,7 @@ const  MyProfile = (props) => {
    
     const handleClick = () => {
         return () => {
-            history.push("/home/login1");
+            history.push("/login1");
         }
     }
     return (

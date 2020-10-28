@@ -8,7 +8,7 @@ import {connect} from 'react-redux'
 // import http from '@u/http';
 
 
-@connect()
+// @connect()
 class Login1 extends Component {
     
     handleMessage=()=>{
