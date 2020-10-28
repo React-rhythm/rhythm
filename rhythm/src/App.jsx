@@ -14,11 +14,10 @@ import Setting from"./home/profile/content/Set"
 import UpdateUserName from "./home/profile/updateUserName/Update"
 import ResetPwd from "./home/profile/resetPwd/ResetPwd"
 import ChangePhone from "./home/profile/changePhone/ChangePhone"
-// import Notice from "./components/notice/Notice"
+import Notice from "./components/notice/Notice"
 import About from "./home/profile/About/About"
 
 
-import Home1 from "./home/Home.jsx"
 import Guide from '@g/Guide.jsx'
 import Role from '@r/Role.jsx'
 
@@ -32,9 +31,8 @@ class App extends Component{
                 <Route path="/updateusername" component={UpdateUserName}></Route>
                 <Route path="/resetpwd" component={ResetPwd}></Route>
                 <Route path="/changephone" component={ChangePhone}></Route>
-                {/* <Route path="/notice" component={Notice}></Route> */}
+                <Route path="/notice" component={Notice}></Route>
                 <Route path="/about" component={About}></Route>
-                {/* <Redirect from="/" to="/home"></Redirect> */}
        
 
                 <Route path="/guide" component={Guide}></Route>

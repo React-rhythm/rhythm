@@ -12,7 +12,8 @@ class Login1 extends Component {
 
     handleMessage=()=>{
         return async ()=>{
-            let result=http.post('http://49.235.115.228/userInfo/register',{
+            let result=http.post('http://49.235.115.228/userInfo/register',
+            {
                 "idcard": "123456789",
                 "password": "qwer",
                 "phoneid": "18637566291",
@@ -44,14 +45,12 @@ class Login1 extends Component {
             }}>
              <NavBar
                     style={{
-                        
                         height:'.44rem',
                         color:'#333333',
                         fontWeight: 'bold',
                         fontSize:'0.17rem',   
                         fontFamily:'PingFang',
                         background:"#f5f5f5"
-                        
                     }}
                     mode="light"
                     icon={<Icon type="left" />}

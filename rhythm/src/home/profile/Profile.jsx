@@ -7,7 +7,7 @@ import {HeaderWrap} from "./StyledProfile"
 
 import ProfileContent from "./ProfileContent"
 
-class Profile extends Component{
+class MyProfile extends Component{
     render(){
         return (
             <>
@@ -26,4 +26,4 @@ class Profile extends Component{
     }
 }
 
-export default Profile
+export default MyProfile
