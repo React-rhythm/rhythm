@@ -7,7 +7,7 @@ export default class NoticeItem extends Component{
         return (
             <NoticeItemWrap>
                 <div className="title">
-                    <span>已登报</span>
+                    <span>已登报111</span>
                     <span>2017-5-23</span>
                 </div>
                 <div className="content">
