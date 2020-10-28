@@ -14,7 +14,7 @@ import Setting from"./home/profile/content/Set"
 import UpdateUserName from "./home/profile/updateUserName/Update"
 import ResetPwd from "./home/profile/resetPwd/ResetPwd"
 import ChangePhone from "./home/profile/changePhone/ChangePhone"
-import Notice from "./components/notice/Notice"
+// import Notice from "./components/notice/Notice"
 import About from "./home/profile/About/About"
 
 
@@ -32,7 +32,7 @@ class App extends Component{
                 <Route path="/updateusername" component={UpdateUserName}></Route>
                 <Route path="/resetpwd" component={ResetPwd}></Route>
                 <Route path="/changephone" component={ChangePhone}></Route>
-                <Route path="/notice" component={Notice}></Route>
+                {/* <Route path="/notice" component={Notice}></Route> */}
                 <Route path="/about" component={About}></Route>
                 {/* <Redirect from="/" to="/home"></Redirect> */}
        

@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import React,{Component} from 'react'
 
 import {ProfileContentWrap} from "./StyledProfile"
@@ -62,4 +60,3 @@ class ProfileContent extends Component{
 
 
   export default  ProfileContent
->>>>>>> done

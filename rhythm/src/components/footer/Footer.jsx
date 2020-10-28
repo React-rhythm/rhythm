@@ -10,6 +10,8 @@ import Search from "@a/images/搜索@2x.png"
 import SearchActive from "@a/images/搜索_点击@2x.png"
 import Profile from "@a/images/我的@2x.png"
 import ProfileActive from "@a/images/我的_点击@2x.png"
+import Upload from "@a/images/发布@2x.png"
+import UploadActive from "@a/images/发布_点击@2x.png"
 
 
 export default  class Home extends Component{
@@ -52,6 +54,32 @@ export default  class Home extends Component{
                 }}
               >
                 <div>bbb</div>
+              </TabBar.Item>
+              <TabBar.Item
+                icon={
+                  <div style={{
+                    width: '22px',
+                    height: '22px',
+                    background: `url(${Upload}) center center /  21px 21px no-repeat` }}
+                  />
+                }
+                selectedIcon={
+                  <div style={{
+                    width: '22px',
+                    height: '22px',
+                    background: `url(${UploadActive}) center center /  21px 21px no-repeat` }}
+                  />
+                }
+                title="上传"
+                key="upload"
+                selected={this.state.selectedTab === 'blackTab'}
+                onPress={() => {
+                  this.setState({
+                    selectedTab: 'blackTab',
+                  });
+                }}
+              >
+                <div>upload</div>
               </TabBar.Item>
               <TabBar.Item
                 icon={
