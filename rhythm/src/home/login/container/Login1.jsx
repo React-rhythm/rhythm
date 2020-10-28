@@ -6,8 +6,6 @@ import WillLogin from '../ui/LoginInput1'
 
 import http from '@u/http';
 
-
-
 class Login1 extends Component {
 
     handleMessage=()=>{
@@ -55,11 +53,9 @@ class Login1 extends Component {
                     mode="light"
                     icon={<Icon type="left" />}
                     onLeftClick={() => {}}
-                   
                 >法官登录</NavBar>
                 <LoginIcon></LoginIcon>
                 <WillLogin onMessage={this.handleMessage} onRegister1={this.handleRegister1}></WillLogin>
-                
             </div>
         );
     }
