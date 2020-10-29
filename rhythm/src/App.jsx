@@ -21,6 +21,7 @@ import MsgDetail from "./components/msgdetail/MsgDetail"
 
 import Guide from '@g/Guide.jsx'
 import Role from '@r/Role.jsx'
+import Pay from './home/pay/container/Pay'
 
 class App extends Component{
     render(){
@@ -40,6 +41,7 @@ class App extends Component{
 
                 <Route path="/guide" component={Guide}></Route>
                 <Route path="/role" component={Role}></Route>
+                <Route path="/pay" component={Pay}></Route>
 
              
                 <Route path='/login1' component={Login1}></Route>

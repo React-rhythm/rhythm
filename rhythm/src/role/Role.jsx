@@ -41,6 +41,11 @@ class role extends Component {
         // console.log(this.state.roles);
     }
 
+    toHome = () => {
+        let { history } = this.props
+        history.push('/home',{roles : 2})
+    }
+
     componentDidUpdate(){
         // console.log(this.state.currentX)
         // console.log(this.state.currentY)
@@ -50,6 +55,17 @@ class role extends Component {
     render() {
         return (
             <Wrap>
+                <div
+                onClick={this.toHome}
+                style={{
+                    position:'absolute',
+                    top:'0.2rem',
+                    right:'0.2rem',
+                    color:'#fff',
+                    fontFamily:'PingFang',
+                    fontWeight:'500'
+                }}
+                >游客进入</div>
                 <ChangeRole role={1} onClick={this.toReg(1)} isShow={this.state.isShow}>我是法官</ChangeRole>
                 <ChangeRole role={0} onClick={this.toReg(0)} isShow={this.state.isShow}>我是当事人</ChangeRole>
                 <ChangeRole role={-1} onClick={this.toReg(-1)} isShow={this.state.isShow}>我是报社</ChangeRole>
