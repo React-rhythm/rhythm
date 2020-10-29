@@ -16,6 +16,7 @@ import ResetPwd from "./home/profile/resetPwd/ResetPwd"
 import ChangePhone from "./home/profile/changePhone/ChangePhone"
 import Notice from "./components/notice/Notice"
 import About from "./home/profile/About/About"
+import MsgDetail from "./components/msgdetail/MsgDetail"
 
 
 import Guide from '@g/Guide.jsx'
@@ -33,6 +34,8 @@ class App extends Component{
                 <Route path="/changephone" component={ChangePhone}></Route>
                 <Route path="/notice" component={Notice}></Route>
                 <Route path="/about" component={About}></Route>
+                <Route path="/msgdetail" component={MsgDetail}></Route>
+
        
 
                 <Route path="/guide" component={Guide}></Route>
