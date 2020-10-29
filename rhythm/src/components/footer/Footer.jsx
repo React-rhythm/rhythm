@@ -14,9 +14,11 @@ import Upload from "@a/images/发布@2x.png"
 import UploadActive from "@a/images/发布_点击@2x.png"
 import MyProfile from "../../home/profile/Profile"
 
+import Publish from '@p/container/Publish'
+
 export default  class Home extends Component{
     state = {
-        selectedTab: 'redTab',
+        selectedTab: 'publish',
         hidden: false,
         fullScreen: true,
     }
@@ -54,7 +56,7 @@ export default  class Home extends Component{
                 }}
               >
                 <div>bbb</div>
-              </TabBar.Item>
+              </TabBar.Item> 
               <TabBar.Item
                 icon={
                   <div style={{
@@ -71,15 +73,15 @@ export default  class Home extends Component{
                   />
                 }
                 title="上传"
-                key="upload"
-                selected={this.state.selectedTab === 'blackTab'}
+                key="publish"
+                selected={this.state.selectedTab === 'publish'}
                 onPress={() => {
                   this.setState({
-                    selectedTab: 'blackTab',
+                    selectedTab: 'publish',
                   });
                 }}
               >
-                <div>upload</div>
+                <Publish></Publish>
               </TabBar.Item>
               <TabBar.Item
                 icon={
