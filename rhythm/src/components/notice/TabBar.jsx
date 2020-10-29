@@ -4,7 +4,20 @@ import { Tabs, Badge } from 'antd-mobile';
 import {TabBarWrap} from "./StyledNotice"
 import NoticeItem from "./NoticeItem"
 
-export default class Header extends Component{
+import {connect} from "react-redux"
+import {actionCreator as ac} from "@h/"
+
+@connect(
+    state =>  ({
+      list:state.MsgDetail.list
+    }),
+    dispatch => ({
+        loadMsgData() {
+          dispatch(ac.loadMsgDataAsync())
+        }
+      })
+)
+class TabBar extends Component{
     state = {
         tabs :[
             { title: <Badge>已读消息1</Badge> },
@@ -12,6 +25,7 @@ export default class Header extends Component{
           ]
     }
     render(){
+
         return (
             <TabBarWrap>
                 <Tabs tabs={this.state.tabs}
@@ -35,4 +49,9 @@ export default class Header extends Component{
           </TabBarWrap>
         )
     }
+    componentDidMount(){
+        this.props.loadMsgData()
+      }
 }
+
+export default  TabBar
