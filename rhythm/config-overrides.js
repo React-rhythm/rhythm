@@ -28,6 +28,7 @@ module.exports = override(
     "@u":path.resolve(__dirname,"src/utils"),
     "@g":path.resolve(__dirname,"src/guide"),
     "@r":path.resolve(__dirname,"src/role"),
+    "@p":path.resolve(__dirname,"src/home/publish"),
     "@h":path.resolve(__dirname,"src/home/profile")
   }),
 
