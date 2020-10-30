@@ -1,15 +1,17 @@
 import React,{Component} from 'react'
 
+
 import { Tabs, Badge } from 'antd-mobile';
-import {TabBarWrap} from "./StyledNotice"
-import NoticeItem from "./NoticeItem"
+
+import NoticeItem from "@c/notice/NoticeItem"
 import _ from 'lodash'
 
-class TabBar extends Component{
+class TabNotice extends Component{
     state = {
         tabs :[
-            { title: <Badge>已读消息</Badge> },
-            { title: <Badge>未读消息</Badge> }
+            { title: <Badge>待付费</Badge> },
+            { title: <Badge>付费待公告</Badge> },
+            { title: <Badge>已公告</Badge> }
           ]
     }
     render(){
@@ -18,7 +20,7 @@ class TabBar extends Component{
         const listing = _.filter(this.props.list,function(notice) {return notice.status==="未公告"})
        
         return (
-            <TabBarWrap>
+            <>
                 <Tabs tabs={this.state.tabs}
                     initialPage={0}
                     // onChange={(tab, index) => { console.log('onChange', index, tab); }}
@@ -43,10 +45,11 @@ class TabBar extends Component{
                         }
                     </div>
                 </Tabs>
-          </TabBarWrap>
+          </>
         )
     }
    
 }
 
-export default  TabBar
+export default  TabNotice
+

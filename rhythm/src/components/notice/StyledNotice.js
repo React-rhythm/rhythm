@@ -21,6 +21,7 @@ const HeaderWrap = styled.div`
             color:${props => props.location.state.color ? props.location.state.color : "#fff" } !important;
         }
     }
+    
 `
 
 const TabBarWrap = styled.div`

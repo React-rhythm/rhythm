@@ -7,42 +7,54 @@ import { List, InputItem} from 'antd-mobile';
 import { createForm } from 'rc-form';
 
 import Toast from "./StyledUpdate"
+import {get} from "@u/http"
 
-import axio from "@u/http"
 class Update extends Component{
 
-    handleKeyUp = () => {
-        return async(e) => {
-           
+    //拿到当前的用户名存在state
+    state = {
+        username:"花花" 
+    }
+
+    handleChange = () => {
+        return (e) => {
             if(e.keyCode === 13){
-                console.log(e.target)
-                let username = e.target.value
-                const result = await axio.post("http://localhost:8080/userInfo/userLogin",{username,pas:"666"})
-                console.log(result)
+                this.setState({
+                    username:e.target.value
+                })
             }
         }
     }
+   
     handleClearClick = () => {
         return (e) => {
-            // console.log(e.target.parentNode.previousElementSibling.firstElementChild)
+            
         }
     }
 
     handleSaveClick = () => {
-        console.log("保存")
+        return async(e) => {
+            const username = this.state.username
+            const result = await get("http://localhost:8080/userInfo/nameUpdate",{username})
+            console.log(result)
+            this.setState({
+                username:""
+            })
+        }
     }
     
     render(){
         const { getFieldProps } = this.props.form;
         return (
             <>
-                <Header onClick={this.handleSaveClick}></Header>
+                <Header onClick={this.handleSaveClick()}></Header>
                 <List renderHeader={() => ''}>
                     <InputItem
-                        {...getFieldProps('preice')}
+                        // {...getFieldProps('preice')}
                         placeholder=""
                         extra={<Icon type="cross" onClick={this.handleClearClick()} />}
-                        onKeyUp = {this.handleKeyUp()}
+                        value={this.state.username}
+                        onChange={this.handleChange()}
                     >用户名</InputItem>
                 </List>
                 <Toast>设置后，其他人将看到你的用户名。</Toast>

@@ -11,6 +11,7 @@
     "axios": "^0.21.0",
     "babel-plugin-import": "^1.13.1",
     "customize-cra": "^1.0.0",
+    "lodash": "^4.17.20",
     "memoize-one": "^5.1.1",
     "rc-form": "^2.4.11",
     "react": "^16.14.0",
@@ -20,6 +21,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "styled-components": "^5.2.0"
   },
   "scripts": {
