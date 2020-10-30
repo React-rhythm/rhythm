@@ -38,7 +38,14 @@ const Add = styled.div `
     display:flex;
     align-items:flex-start;
     margin-bottom:0.2rem;
-    label{
+    input{
+        /* display:none */
+        position: absolute;
+        bottom:0.7rem;
+        left:4.8rem;
+        /* opacity:0.1; */
+    }
+    p{
         display:flex;
         justify-content:space-between;
         width: 0.7rem;
@@ -50,7 +57,7 @@ const Add = styled.div `
         line-height:0.16rem;
         margin-right:0.06rem
     }
-    div{
+    label{
         width: 0.98rem;
         height: 0.98rem;
         border: 1px solid #D8D8D8;
@@ -58,6 +65,18 @@ const Add = styled.div `
         background:url(${add}) no-repeat 0.28rem 0.28rem;
         background-size:0.4rem 0.4rem;
     }
+    /* label{
+        display:flex;
+        justify-content:space-between;
+        width: 0.7rem;
+        height: 0.16rem;
+        font-size: 0.15rem;
+        font-family: PingFang;
+        font-weight: normal;
+        color: #333333;
+        line-height:0.16rem;
+        margin-right:0.06rem
+    } */
 
 `
 
