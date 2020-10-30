@@ -35,10 +35,10 @@ const changePhoneNumber=(phoneNumber)=>{
   }
 }
 
-const changeVerificationCode=(verificationcode)=>{
+const changeVerificationCode=(verificationCode)=>{
   return{
     type:'changeVerificationCode',
-    verificationcode
+    verificationCode
   }
 }
 const changePassword=(password)=>{
