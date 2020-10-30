@@ -1,6 +1,6 @@
 import { LOADDATA } from './actionTypes'
 
-import { get } from '@u/http.js'
+// import { get } from '@u/http.js'
 
 const loadDataSync = list => {
   return {
@@ -56,23 +56,23 @@ const changeRepassword=(repassword)=>{
 }
 
 //ajax请求数据
-const loadDataAsync = () => {
-  return async (dispatch) => {
-    let result = await get({
-      url: '/api/list'
-    })
-    dispatch(loadDataSync(result.data.data))
-  }
-}
+// const loadDataAsync = () => {
+//   return async (dispatch) => {
+//     let result = await get({
+//       url: '/api/list'
+//     })
+//     dispatch(loadDataSync(result.data.data))
+//   }
+// }
 
 export default {
   loadDataSync,
-  loadDataAsync,
+  // loadDataAsync,
   changeName,
   changeCourt,
   changePassword,
   changePhoneNumber,
   changeUserName,
   changeVerificationCode,
-  
+  changeRepassword
 }

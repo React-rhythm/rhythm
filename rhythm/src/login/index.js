@@ -1,6 +1,6 @@
 
 import reducer from './reducer'
-import actionCreator from './actionCreator'
+import actionCreator from './actionCreater'
 
 export {
   
