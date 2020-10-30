@@ -9,6 +9,53 @@ const loadDataSync = list => {
   }
 }
 
+const changeName=(name)=>{
+  return{
+    type:'changeName',
+    name
+  }
+}
+const changeUserName=(userName)=>{
+  return{
+    type:'changeUserName',
+    userName
+  }
+}
+const changeCourt=(court)=>{
+  return{
+    type:'changeCourt',
+    court
+  }
+}
+
+const changePhoneNumber=(phoneNumber)=>{
+  return{
+    type:'changePhoneNumber',
+    phoneNumber
+  }
+}
+
+const changeVerificationCode=(verificationcode)=>{
+  return{
+    type:'changeVerificationCode',
+    verificationcode
+  }
+}
+const changePassword=(password)=>{
+  return{
+    type:'changePassword',
+    password
+  }
+}
+
+const changeRepassword=(repassword)=>{
+  return{
+    type:'changeRepassword',
+    repassword
+  }
+}
+
+//ajax请求数据
 const loadDataAsync = () => {
   return async (dispatch) => {
     let result = await get({
@@ -20,5 +67,12 @@ const loadDataAsync = () => {
 
 export default {
   loadDataSync,
-  loadDataAsync
+  loadDataAsync,
+  changeName,
+  changeCourt,
+  changePassword,
+  changePhoneNumber,
+  changeUserName,
+  changeVerificationCode,
+  
 }
