@@ -1,4 +1,6 @@
 import React,{Component} from 'react'
+import { connect } from 'react-redux'
+import {actionCreator as ac} from './home'
 
 import {
     TabBar
@@ -16,9 +18,21 @@ import MyProfile from "../../home/profile/Profile"
 import Litigant from "@/home/litigant/container/Litigant"
 import Publish from '@p/container/Publish'
 
-export default  class Home extends Component{
+import { NewsHome } from './home/'
+import { Message } from './message/'
+import { SearchComp } from './search/'
+
+@connect(state=>({
+  selectedTab:state.newspaper.tabType
+}),dispatch=>({
+  changeTab(tab){
+    dispatch(ac.changeTab(tab))
+  }
+}))
+class Home extends Component{
+
     state = {
-        selectedTab: 'litigant',
+        selectedTab: 'redTab',
         hidden: false,
         fullScreen: true,
     }
@@ -48,40 +62,10 @@ export default  class Home extends Component{
                 }
                 title="首页"
                 key="Start"
-                selected={this.state.selectedTab === 'litigant'}
-                onPress={() => {
-                  this.setState({
-                    selectedTab: 'litigant',
-                  });
-                }}
+                selected={this.props.selectedTab === 'redTab'}
+                onPress={()=>this.props.changeTab("redTab")}
               >
-                <Litigant></Litigant>
-              </TabBar.Item> 
-              <TabBar.Item
-                icon={
-                  <div style={{
-                    width: '22px',
-                    height: '22px',
-                    background: `url(${Upload}) center center /  21px 21px no-repeat` }}
-                  />
-                }
-                selectedIcon={
-                  <div style={{
-                    width: '22px',
-                    height: '22px',
-                    background: `url(${UploadActive}) center center /  21px 21px no-repeat` }}
-                  />
-                }
-                title="上传"
-                key="publish"
-                selected={this.state.selectedTab === 'publish'}
-                onPress={() => {
-                  this.setState({
-                    selectedTab: 'publish',
-                  });
-                }}
-              >
-                <Publish></Publish>
+                <NewsHome></NewsHome>
               </TabBar.Item>
               <TabBar.Item
                 icon={
@@ -100,31 +84,35 @@ export default  class Home extends Component{
                 }
                 title="搜索"
                 key="search"
-                selected={this.state.selectedTab === 'greenTab'}
-                onPress={() => {
-                  this.setState({
-                    selectedTab: 'greenTab',
-                  });
-                }}
+                selected={this.props.selectedTab === 'greenTab'}
+                onPress={()=>this.props.changeTab("greenTab")}
               >
-                <div>ccc</div>
+                <SearchComp></SearchComp>
+              </TabBar.Item>
+              <TabBar.Item
+                icon={{ uri: `${Profile}` }}
+                selectedIcon={{ uri: `${ProfileActive}` }}
+                title="消息"
+                key="message"
+                selected={this.props.selectedTab === 'blueTab'}
+                onPress={()=>this.props.changeTab("blueTab")}
+              >
+                <Message></Message>
               </TabBar.Item>
               <TabBar.Item
                 icon={{ uri: `${Profile}` }}
                 selectedIcon={{ uri: `${ProfileActive}` }}
                 title="我的"
                 key="my"
-                selected={this.state.selectedTab === 'profile'}
-                onPress={() => {
-                  this.setState({
-                    selectedTab: 'profile',
-                  });
-                }}
+                selected={this.props.selectedTab === 'yellowTab'}
+                onPress={()=> this.props.changeTab("yellowTab")}
               >
-                <MyProfile></MyProfile>
+                <div>ddd1</div>
               </TabBar.Item>
             </TabBar>
           </div>
         );
       }
     }
+
+export default  Home

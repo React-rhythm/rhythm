@@ -1,6 +1,12 @@
 import React,{Component} from 'react'
+import{
+  Route,
+  Redirect,
+  Switch
+} from 'react-router-dom'
+import {NoticeDetail} from '@/newspaper/detail/'
 
-import { Switch, Route, Redirect } from 'react-router-dom'
+
 import Login1 from './login/container/Login1'
 import MessageLogin from './login/container/MessageLogin'
 import Register1 from './login/container/Register1'
@@ -23,12 +29,13 @@ import Guide from '@g/Guide.jsx'
 import Role from '@r/Role.jsx'
 import Pay from './home/pay/container/Pay'
 
+import { Newspaper } from "./newspaper"
 class App extends Component{
     render(){
         return (
             <Switch>
 
-                <Route path="/home" component={Home}></Route>
+                {/* <Route path="/home" component={Home}></Route> */}
                 <Route path="/setting" component={Setting}></Route>
                 <Route path="/updateusername" component={UpdateUserName}></Route>
                 <Route path="/resetpwd" component={ResetPwd}></Route>
@@ -51,8 +58,16 @@ class App extends Component{
                 <Route path='/register2' component={Register2}></Route>
                 <Redirect from="/" to="/Guide"></Redirect>
                
-            </Switch>
+           
         
+              <Route path='/notice' component={NoticeDetail}>
+                {/* <NoticeDetail></NoticeDetail> */}
+              </Route>
+              <Route path='/home' component={Newspaper}>
+                {/* <Newspaper></Newspaper> */}
+              </Route>
+              <Redirect from='/' to='/home'></Redirect>
+            </Switch>
             
         )
     }
