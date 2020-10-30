@@ -8,7 +8,7 @@ const [list,setList]= useState([])
 const [value,setValue] = useState('')
   useEffect(() => {
     async function loadData(){
-      console.log(value)
+      // console.log(value)
       let result=await get({
         url:'/api/name'
       })

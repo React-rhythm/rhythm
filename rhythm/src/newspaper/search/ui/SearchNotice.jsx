@@ -15,7 +15,7 @@ export default function SearchNotice(props) {
       })
     }
   }
-  console.log(props)
+  // console.log(props)
   return (
       <SearchNoticeWrap>
         <span>已经刊登的最新公告</span>

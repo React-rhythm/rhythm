@@ -56,7 +56,7 @@ class App extends Component{
                 <Route path='/MessageLogin' component={MessageLogin}></Route>
                 <Route path='/register1' component={Register1}></Route>
                 <Route path='/register2' component={Register2}></Route>
-                <Redirect from="/" to="/Guide"></Redirect>
+                {/* <Redirect from="/" to="/Guide"></Redirect> */}
                
            
         

@@ -4,7 +4,7 @@ import SearchInput from './SearchInput'
 import SearchNotice from './SearchNotice'
 
 export default function SearchUi(props) {
-  console.log(props)
+  // console.log(props)
   return (
     <div>
      <NavBar

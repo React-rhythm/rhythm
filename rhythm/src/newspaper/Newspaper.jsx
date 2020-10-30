@@ -14,7 +14,7 @@ import Profile from "@a/images/我的@2x.png"
 import ProfileActive from "@a/images/我的_点击@2x.png"
 import Upload from "@a/images/发布@2x.png"
 import UploadActive from "@a/images/发布_点击@2x.png"
-import MyProfile from "../../home/profile/Profile"
+import MyProfile from "@/home/profile/Profile"
 import Litigant from "@/home/litigant/container/Litigant"
 import Publish from '@p/container/Publish'
 
@@ -107,7 +107,7 @@ class Home extends Component{
                 selected={this.props.selectedTab === 'yellowTab'}
                 onPress={()=> this.props.changeTab("yellowTab")}
               >
-                <div>ddd1</div>
+                <MyProfile></MyProfile>
               </TabBar.Item>
             </TabBar>
           </div>

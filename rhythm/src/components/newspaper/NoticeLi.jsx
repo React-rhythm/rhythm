@@ -3,7 +3,7 @@ import { LiWrap } from './styledNoticeList'
 
 export default function NoticeLi(props) {
   let {item}=props
-  console.log(item)
+  // console.log(item)
   return (
     <LiWrap 
     onClick={props.onGotoDetail(item.id)}
