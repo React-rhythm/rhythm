@@ -2,15 +2,28 @@ import React, { Component } from 'react';
 import {NavBar, Icon } from 'antd-mobile';
 import LoginIcon from '../ui/LoginIcon'
 import WillLogin from '../ui/LoginInput1'
-import {connect} from 'react-redux'
+
+// import {connect} from 'react-redux'
 
 
 // import http from '@u/http';
 
 
-@connect()
+// @connect()
 class Login1 extends Component {
     
+    state={
+        role:'',
+        num:1
+    }
+    
+    roles=()=>{
+        switch(this.props.location.state.roles){
+            case 1: return {roles:'法官登录',num:1}
+            case 0:return{roles:'当事人登录',num:2}  
+            case -1:return{roles:'报社登录',num:3}
+        }  
+    }
     handleMessage=()=>{
         return async ()=>{
             // let result=http.post('http://49.235.115.228/userInfo/register',
@@ -30,23 +43,26 @@ class Login1 extends Component {
             // })
             // console.log(result);
     
-            this.props.history.push('/MessageLogin')
-
+            this.props.history.push('/MessageLogin') 
         }
     }
     handleRegister1=()=>{
         return()=>{
-            this.props.history.push('/register1')
+            this.props.history.push('/register'+this.props.location.state.roles)
         }
     }
     componentDidMount(){
-        console.log(this.props.location);
+        let r=this.roles()
+        this.setState({
+            role:r.roles,
+            num:r.num
+        })
     }
     render() {
         return (
             <div style={{
                 height:'100%',
-                background:'#f5f5f5'
+                background:"#fff"
             }}>
              <NavBar
                     style={{
@@ -55,15 +71,15 @@ class Login1 extends Component {
                         fontWeight: 'bold',
                         fontSize:'0.17rem',   
                         fontFamily:'PingFang',
-                        background:"#f5f5f5"
+                       
                     }}
                     mode="light"
                     icon={<Icon type="left" />}
-                    onLeftClick={() => {}}
+                    onLeftClick={() => {this.props.history.goBack()}}
                    
-                >法官登录</NavBar>
+                >{this.state.role}</NavBar>
                 <LoginIcon></LoginIcon>
-                <WillLogin onMessage={this.handleMessage} onRegister1={this.handleRegister1}></WillLogin>
+                <WillLogin onMessage={this.handleMessage} onRegister1={this.handleRegister1} ></WillLogin>
                 
             </div>
         );

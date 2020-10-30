@@ -6,7 +6,30 @@ import { withRouter } from 'react-router-dom'
 
 @withRouter
 class Register1 extends Component {
+    state={
+        name:'',
+        mima:'',
+    }
+    componentDidMount(){
+        console.log(this.state.name);
+    }
+    handleblur=(e)=>{
+        this.setState({
+            name:e.target.value,
+        },()=>{
+            console.log(this.state.name);  
+        })
+    this.handleblur2=(e)=>{
+        this.setState({
+            mima:e.target.value
+        },()=>{     
+            console.log(this.state.mima);
+        })
+    }
+        
+    }
 
+    
     render() {
         return (
             <>
@@ -27,7 +50,7 @@ class Register1 extends Component {
                     }}
 
                 >法官注册</NavBar>
-                <Content1></Content1>
+                <Content1 {...this.props} onblur={this.handleblur} onblur2={this.handleblur2}></Content1>
             </>
         );
     }

@@ -32,7 +32,7 @@ class role extends Component {
 
     signIn = () => {
         let { history } = this.props
-        history.push('/register1',{roles : this.state.roles})
+        history.push('/register'+this.state.roles,{roles : this.state.roles})
         // console.log(this.state.roles);
     }
     logIn = () => {

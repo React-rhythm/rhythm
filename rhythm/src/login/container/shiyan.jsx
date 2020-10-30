@@ -1,9 +1,9 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Icon, List, InputItem, Button, Toast } from 'antd-mobile';
 import { createForm } from 'rc-form';
-import {ContentWrap2} from './StyledLogin'
-import WillRegister from '../../components/register/WillRegister/WillRegister'
-const Content2 =(props)=>{
+
+const CountSet = (props) => {
+
     const { getFieldProps, getFieldError } = props.form;
     const [password, setPassword] = useState('');
 
@@ -54,9 +54,7 @@ const Content2 =(props)=>{
             callback(new Error('邮箱不合法'));
         }
     }
-    return(
-        <>
-        {/* <ContentWrap2> */}
+    return (
         <form className='count-setting'>
             <List>
                 <InputItem
@@ -127,17 +125,7 @@ const Content2 =(props)=>{
                 </List.Item>
             </List>
         </form>
-                {/* <List><input type="text" placeholder="请输入姓名"/></List>
-                <List><input type="text" placeholder="请输入用户名"/></List>
-                <List><input type="text" placeholder="请输入身份证号码"/></List>
-                <List><input type="text" placeholder="手机号"/></List>
-                <List><input type="text" placeholder="请输入验证码"/><span>发送验证码</span></List>
-                <List><input type="text" placeholder="请输入密码"/></List>
-                <List><input type="text" placeholder="确认密码"/></List> */}
-        {/* </ContentWrap2> */}
-        {/* <WillRegister></WillRegister> */}
-        </>
     )
 }
 
-export default createForm()(Content2);
+export default createForm()(CountSet);
