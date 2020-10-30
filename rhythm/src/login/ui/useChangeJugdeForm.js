@@ -16,6 +16,10 @@ const useChangeJudgeForm = () => {
             dispatch(ac.changeName(name))
       }, [dispatch])
 
+      const handleUserNameChange = useCallback((userName) => {
+        dispatch(ac.changeUserName(userName))
+        }, [dispatch])
+
     const handleCourtChange = useCallback((court) => {
             dispatch(ac.changeCourt(court))
       }, [dispatch])
@@ -45,6 +49,7 @@ const useChangeJudgeForm = () => {
       password,
       repassword,
       handleNameChange,
+      handleUserNameChange,
       handleCourtChange,
       handlePhoneNumberChange,
       handleVerificationCodeChange,
