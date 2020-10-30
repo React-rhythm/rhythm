@@ -6,8 +6,9 @@ import {
 const CaseImg = (props) => {
     return (
         <Add>
-            <label>公告照片 :</label>
-            <div></div>
+            <p>公告照片 :</p>
+            <label htmlFor="imgFile"></label>
+            <input type="file" id='imgFile'/>
         </Add>
     )
 }
