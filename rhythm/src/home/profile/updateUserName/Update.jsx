@@ -1,4 +1,4 @@
-import React,{Component} from 'react'
+import React,{Component,useCallback} from 'react'
 
 import Header from "@c/notice/Header.jsx"
 
@@ -13,23 +13,23 @@ class Update extends Component{
 
     //拿到当前的用户名存在state
     state = {
-        username:"花花" 
+        username:"yaqi" 
     }
 
-    handleChange = () => {
-        return (e) => {
-            if(e.keyCode === 13){
-                this.setState({
-                    username:e.target.value
-                })
-            }
+    handleChange = (e) => {
+       
+        if(e.keyCode === 13){
+            this.setState({
+                username:e.target.value
+            })
         }
+    
     }
    
     handleClearClick = () => {
-        return (e) => {
-            
-        }
+        this.setState({
+            username:""
+        })
     }
 
     handleSaveClick = () => {
@@ -52,9 +52,9 @@ class Update extends Component{
                     <InputItem
                         // {...getFieldProps('preice')}
                         placeholder=""
-                        extra={<Icon type="cross" onClick={this.handleClearClick()} />}
+                        extra={<Icon type="cross" onClick={this.handleClearClick} />}
                         value={this.state.username}
-                        onChange={this.handleChange()}
+                        onChange={this.handleChange}
                     >用户名</InputItem>
                 </List>
                 <Toast>设置后，其他人将看到你的用户名。</Toast>
