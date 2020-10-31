@@ -30,7 +30,10 @@ class Publish extends Component {
 
   toPublish = () => {
     console.log(this.props.form)
-    // this.props.history.push('/pay')
+  }
+  
+  cancel = () => {
+    this.props.history.push('/pay')
   }
 
   componentDidUpdate(){
@@ -51,7 +54,7 @@ class Publish extends Component {
           <CaseId></CaseId>
           <CaseImg onChange={this.getImg}></CaseImg>
           <ButtonWrap>
-            <div className='cansel'>取消</div>
+            <div className='cansel' onClick={this.cancel}>取消</div>
             <div className='upload' onClick={this.toPublish}>发布</div>
           </ButtonWrap>
         </div>

@@ -1,6 +1,6 @@
 const defaultState = {
     form: {
-        casetype : null,
+        casetype : '',
         court : '',
         region : '',
         idcard : '',
