@@ -1,15 +1,30 @@
-import React from 'react'
+import React,{useState,useCallback} from 'react'
+
+import { ImagePicker} from 'antd-mobile';
 import { 
-    TypeWrap,
     Add,
 } from './publish'
+const data = [];
+
 const CaseImg = (props) => {
+    let [files,setFiles] = useState(data)
+    const onChange = useCallback((files) => {
+        console.log(files);
+        setFiles(files);
+    })
     return (
+        <>
         <Add>
             <p>公告照片 :</p>
-            <label htmlFor="imgFile"></label>
-            <input type="file" id='imgFile'/>
+            <ImagePicker
+            files={files}
+            onChange={onChange}
+            onImageClick={(index,fs) => console.log(fs)}
+            selectable={files.length < 1}
+            length={1}
+             />
         </Add>
+      </>
     )
 }
 
