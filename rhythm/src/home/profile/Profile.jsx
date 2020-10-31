@@ -10,6 +10,7 @@ import ProfileContent from "./ProfileContent"
 
 
 const  MyProfile = (props) => {
+    console.log(props)
 
     const history = useHistory();
    

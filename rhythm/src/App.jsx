@@ -56,16 +56,14 @@ class App extends Component{
                 <Route path='/MessageLogin' component={MessageLogin}></Route>
                 <Route path='/register1' component={Register1}></Route>
                 <Route path='/register2' component={Register2}></Route>
-                {/* <Redirect from="/" to="/Guide"></Redirect> */}
-               
-           
+      
         
-              <Route path='/notice' component={NoticeDetail}>
-                {/* <NoticeDetail></NoticeDetail> */}
-              </Route>
-              <Route path='/home' component={Newspaper}>
-                {/* <Newspaper></Newspaper> */}
-              </Route>
+              {/* <Route path='/notice' component={NoticeDetail}></Route> */}
+              
+              
+              <Route path='/home' component={Newspaper}></Route>
+               
+              
               <Redirect from='/' to='/home'></Redirect>
             </Switch>
             

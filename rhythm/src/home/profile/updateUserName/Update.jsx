@@ -16,14 +16,12 @@ class Update extends Component{
         username:"yaqi" 
     }
 
-    handleChange = (e) => {
-       
-        if(e.keyCode === 13){
+    handleChange = () => {
+        return (e) => {
             this.setState({
-                username:e.target.value
-            })
+                username:e
+            })  
         }
-    
     }
    
     handleClearClick = () => {
@@ -50,11 +48,11 @@ class Update extends Component{
                 <Header onClick={this.handleSaveClick()}></Header>
                 <List renderHeader={() => ''}>
                     <InputItem
-                        // {...getFieldProps('preice')}
+                        {...getFieldProps('preice')}
                         placeholder=""
                         extra={<Icon type="cross" onClick={this.handleClearClick} />}
                         value={this.state.username}
-                        onChange={this.handleChange}
+                        onChange={this.handleChange()}
                     >用户名</InputItem>
                 </List>
                 <Toast>设置后，其他人将看到你的用户名。</Toast>
