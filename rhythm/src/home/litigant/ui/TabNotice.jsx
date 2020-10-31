@@ -34,6 +34,7 @@ class TabNotice extends Component{
                                 )
                             })
                         }
+                      
                     </div>
                     <div className="tabContentList">
                     {
@@ -43,6 +44,17 @@ class TabNotice extends Component{
                                 )
                             })
                         }
+                       
+                    </div>
+                    <div className="tabContentList">
+                    {
+                            listing.length>0 && listing.map(value=>{
+                                return (
+                                    <NoticeItem notice={value} key={value._id}></NoticeItem>
+                                )
+                            })
+                        }
+                        
                     </div>
                 </Tabs>
           </>

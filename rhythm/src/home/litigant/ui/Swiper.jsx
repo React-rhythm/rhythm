@@ -4,32 +4,28 @@ import { Carousel} from 'antd-mobile';
 
 import {SwiperWrap} from "./StyledLitigant"
 
+import banner1 from "@a/images/banner1@2x.png"
+import banner2 from "@a/images/banner2@2x.png"
+import banner3 from "@a/images/banner3@2x.png"
+
 class Swiper extends Component {
   state = {
-    data: ['1', '2', '3'],
-    imgHeight: 176,
+    data: [banner1, banner2, banner3],
   }
-  componentDidMount() {
-    // simulate img loading
-    setTimeout(() => {
-      this.setState({
-        data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
-      });
-    }, 100);
-  }
+ 
   render() {
     return (
       <SwiperWrap>
         <Carousel
-          autoplay={false}
+          autoplay={true}
           infinite
         >
           {this.state.data.map(val => (
-              <img
-              key={val}
-                src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
+               <img
+                key={val}
+                src={val}
                 alt=""
-                style={{ width: '100%', verticalAlign: 'top' }}
+                style={{ width: '100%' , verticalAlign: 'top' }}
               />
           ))}
         </Carousel>

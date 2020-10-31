@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
 import { connect } from 'react-redux'
 import {actionCreator as ac} from '@/newspaper/home'
-
+import {actionCreator as acc} from "@h/"
 import {
     TabBar
 } from "antd-mobile"
@@ -20,10 +20,14 @@ import { SearchComp } from '../newspaper/search'
 import LitigantUi from "@/home/litigant/ui/LitigantUi"
 
 @connect(state=>({
-  selectedTab:state.newspaper.tabType
+  selectedTab:state.newspaper.tabType,
+  list:state.MsgDetail.list
 }),dispatch=>({
   changeTab(tab){
     dispatch(ac.changeTab(tab))
+  },
+  loadMsgData() {
+    dispatch(acc.loadMsgDataAsync())
   }
 }))
 class Lawyer extends Component{
@@ -61,7 +65,7 @@ class Lawyer extends Component{
                 selected={this.props.selectedTab === 'redTab'}
                 onPress={()=>this.props.changeTab("redTab")}
               >
-                <LitigantUi></LitigantUi>
+                <LitigantUi {...this.props}></LitigantUi>
               </TabBar.Item>
               <TabBar.Item
                 icon={
@@ -108,6 +112,9 @@ class Lawyer extends Component{
             </TabBar>
           </div>
         );
+      }
+      componentDidMount(){
+        this.props.loadMsgData()
       }
     }
 

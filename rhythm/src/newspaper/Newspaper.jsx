@@ -12,11 +12,9 @@ import Search from "@a/images/搜索@2x.png"
 import SearchActive from "@a/images/搜索_点击@2x.png"
 import Profile from "@a/images/我的@2x.png"
 import ProfileActive from "@a/images/我的_点击@2x.png"
-import Upload from "@a/images/发布@2x.png"
-import UploadActive from "@a/images/发布_点击@2x.png"
+
 import MyProfile from "@/home/profile/Profile"
-import Litigant from "@/home/litigant/container/Litigant"
-import Publish from '@p/container/Publish'
+
 
 import { NewsHome } from './home/'
 import { Message } from './message/'
@@ -65,7 +63,7 @@ class Home extends Component{
                 selected={this.props.selectedTab === 'redTab'}
                 onPress={()=>this.props.changeTab("redTab")}
               >
-                <Publish></Publish>
+                <NewsHome></NewsHome>
               </TabBar.Item>
               <TabBar.Item
                 icon={
@@ -80,7 +78,7 @@ class Home extends Component{
                     width: '22px',
                     height: '22px',
                     background: `url(${SearchActive}) center center /  21px 21px no-repeat` }}
-                  />
+                  />  
                 }
                 title="搜索"
                 key="search"
