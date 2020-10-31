@@ -23,6 +23,9 @@ import ChangePhone from "./home/profile/changePhone/ChangePhone"
 import Notice from "./components/notice/Notice"
 import About from "./home/profile/About/About"
 import MsgDetail from "./components/msgdetail/MsgDetail"
+import Lawyer from "@/lawyer/Lawyer"
+import Litigant from "@/home/litigant/container/Litigant"
+
 
 
 import Guide from '@g/Guide.jsx'
@@ -43,6 +46,8 @@ class App extends Component{
                 <Route path="/notice" component={Notice}></Route>
                 <Route path="/about" component={About}></Route>
                 <Route path="/msgdetail" component={MsgDetail}></Route>
+                <Route path="/lawyer" component={Lawyer}></Route>
+                <Route path="/litigant" component={Litigant}></Route>
 
        
 

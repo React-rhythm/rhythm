@@ -15,14 +15,9 @@ import ProfileActive from "@a/images/我的_点击@2x.png"
 import Upload from "@a/images/发布@2x.png"
 import UploadActive from "@a/images/发布_点击@2x.png"
 import MyProfile from "@/home/profile/Profile"
-
 import Publish from '@p/container/Publish'
-
-import { Message } from '@/newspaper/message/'
-import { SearchComp } from '@/newspaper/search/'
-
-
-import LitigantUi from "../ui/LitigantUi"
+import { SearchComp } from '../newspaper/search'
+import LitigantUi from "@/home/litigant/ui/LitigantUi"
 
 @connect(state=>({
   selectedTab:state.newspaper.tabType
@@ -31,7 +26,7 @@ import LitigantUi from "../ui/LitigantUi"
     dispatch(ac.changeTab(tab))
   }
 }))
-class Litigant extends Component{
+class Lawyer extends Component{
     state = {
         selectedTab: 'redTab',
         hidden: false,
@@ -73,20 +68,30 @@ class Litigant extends Component{
                   <div style={{
                     width: '22px',
                     height: '22px',
-                    background: `url(${Search}) center center /  21px 21px no-repeat` }}
+                    background: `url(${Upload}) center center /  21px 21px no-repeat` }}
                   />
                 }
                 selectedIcon={
                   <div style={{
                     width: '22px',
                     height: '22px',
-                    background: `url(${SearchActive}) center center /  21px 21px no-repeat` }}
+                    background: `url(${UploadActive}) center center /  21px 21px no-repeat` }}
                   />
                 }
-                title="搜索"
-                key="search"
+                title="上传"
+                key="upload"
                 selected={this.props.selectedTab === 'greenTab'}
                 onPress={()=>this.props.changeTab("greenTab")}
+              >
+                <Publish></Publish>
+              </TabBar.Item>
+              <TabBar.Item
+                icon={{ uri: `${Search}` }}
+                selectedIcon={{ uri: `${SearchActive}` }}
+                title="搜索"
+                key="search"
+                selected={this.props.selectedTab === 'blueTab'}
+                onPress={()=>this.props.changeTab("blueTab")}
               >
                 <SearchComp></SearchComp>
               </TabBar.Item>
@@ -106,4 +111,7 @@ class Litigant extends Component{
       }
     }
 
-export default  Litigant
+
+export default  Lawyer
+
+
