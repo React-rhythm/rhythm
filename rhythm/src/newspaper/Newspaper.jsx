@@ -65,7 +65,7 @@ class Home extends Component{
                 selected={this.props.selectedTab === 'redTab'}
                 onPress={()=>this.props.changeTab("redTab")}
               >
-                <NewsHome></NewsHome>
+                <Publish></Publish>
               </TabBar.Item>
               <TabBar.Item
                 icon={
