@@ -19,6 +19,7 @@ import MyProfile from "@/home/profile/Profile"
 import { NewsHome } from './home/'
 import { Message } from './message/'
 import { SearchComp } from './search/'
+import Notice from "@c/notice/Notice"
 
 @connect(state=>({
   selectedTab:state.newspaper.tabType
@@ -105,7 +106,7 @@ class Home extends Component{
                 selected={this.props.selectedTab === 'yellowTab'}
                 onPress={()=> this.props.changeTab("yellowTab")}
               >
-                <MyProfile></MyProfile>
+                 <MyProfile {...this.props}></MyProfile>
               </TabBar.Item>
             </TabBar>
           </div>

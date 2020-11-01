@@ -1,31 +1,30 @@
 import React,{Component} from 'react'
-
+import { connect } from 'react-redux'
+import {actionCreator as ac} from "@h/content"
 import Header from "@c/notice/Header"
 import SetContent from "./SetContent"
 import { List, Switch } from 'antd-mobile';
 import { createForm } from 'rc-form';
 
+@connect(state=>({
+  isShow:state.notice.isShow
+}),dispatch=>({
+  changeNotice(isShow){
+    dispatch(ac.changeNoticeStatus(isShow))
+  }
+}))
 class SwitchExample extends Component {
-  
-    state = {
-      checked: false,
-      checked1: true,
-    }
- 
-
   render() {
-    
+    console.log(this.props)
     return (
         <>
            <Header>设置</Header> 
            <List>
                 <List.Item
                 extra={<Switch
-                    checked={this.state.checked}
+                    checked={this.props.isShow}
                     onChange={() => {
-                    this.setState({
-                        checked: !this.state.checked,
-                    });
+                      this.props.changeNotice(!this.props.isShow)
                     }}
                 />}
                 >消息推送</List.Item>

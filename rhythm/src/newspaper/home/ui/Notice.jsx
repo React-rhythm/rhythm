@@ -20,7 +20,7 @@ const Notice = (props) => {
   const gotoDetail=(id)=>{
     return ()=>{
       push({
-        pathname:'/notice',
+        pathname:'/noticedetail',
         state:{id}
       })
     }

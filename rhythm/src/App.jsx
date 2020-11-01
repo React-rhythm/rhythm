@@ -25,6 +25,7 @@ import About from "./home/profile/About/About"
 import MsgDetail from "./components/msgdetail/MsgDetail"
 import Lawyer from "@/lawyer/Lawyer"
 import Litigant from "@/home/litigant/container/Litigant"
+import ChatRoom from "@c/chatRoom/ChatRoom"
 
 
 
@@ -48,6 +49,7 @@ class App extends Component{
                 <Route path="/msgdetail" component={MsgDetail}></Route>
                 <Route path="/lawyer" component={Lawyer}></Route>
                 <Route path="/litigant" component={Litigant}></Route>
+                <Route path="/chatroom" component={ChatRoom}></Route>
 
        
 
@@ -63,7 +65,7 @@ class App extends Component{
                 <Route path='/register2' component={Register2}></Route>
       
         
-              {/* <Route path='/notice' component={NoticeDetail}></Route> */}
+              <Route path='/noticedetail' component={NoticeDetail}></Route>
               
               
               <Route path='/home' component={Newspaper}></Route>

@@ -11,6 +11,7 @@ const HeaderWrap = styled.div`
     line-height:.44rem;
     text-align:center;
     font-size:0.16rem;
+    width:100%;
     
     .am-navbar{
         background-color:${props => props.location.state.headbg? props.location.state.headbg : "#2494ea"} ;

@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import {withRouter} from "react-router-dom"
 
 import {ProfileContentWrap} from "./StyledProfile"
 import Msg from "@a/images/xiaoxi@2x.png"
@@ -7,9 +8,6 @@ import CallService from "@a/images/kefu@2x.png"
 import NewsPaper from "@a/images/baoshe@2x.png"
 import Setting from "@a/images/shezhi@2x.png"
 import { List } from 'antd-mobile';
-
-import {withRouter} from "react-router-dom"
-
 
 const Item = List.Item;
 
@@ -37,7 +35,7 @@ class ProfileContent extends Component{
             <Item
               thumb={CallService}
               arrow="horizontal"
-              onClick={() => {}}
+              onClick={() => {this.props.history.push("/chatroom",{title:"聊天室"})}}
             >客服</Item>
             {
               role === -1 ? "" : <Item
