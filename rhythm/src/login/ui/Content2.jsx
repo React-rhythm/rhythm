@@ -5,7 +5,7 @@ import {ContentWrap2} from './StyledLogin'
 import WillRegister from '../../components/register/WillRegister/WillRegister'
 const Content2 =(props)=>{
     const { getFieldProps, getFieldError } = props.form;
-    const [password, setPassword] = useState('');
+    const [Password, setPassword] = useState('');
 
     const onSubmit = () => {
         props.form.validateFields({ force: true }, (error) => {
@@ -16,35 +16,34 @@ const Content2 =(props)=>{
             }
         });
     }
-    const validatePassword = (rule, value, callback) => {
-        if (value && value.length >= 8) {
-            setPassword(value);
+    const validateuserName = (rule, value, callback) => {
+        if (value && value.length >= 2) {
             callback();
         } else if (value.length === 0) {
-            callback(new Error('请输入密码'));
+            callback(new Error('请输入用户名'));
         } else {
-            callback(new Error('请输入至少8位密码'));
+            callback(new Error('用户名最少2位'));
         }
     }
-    const validateRePassword = (rule, value, callback) => {
-        if (value && value === password) {
+    const validateName= (rule, value, callback) => {
+        if (value && value.length >=2) {
             callback();
         } else if (value.length === 0) {
-            callback(new Error('请再次输入密码'));
+            callback(new Error('请输入姓名'));
         } else {
-            callback(new Error('两次输入密码不一致'));
+            callback(new Error('姓名不合法'));
         }
     }
-    const validateTel = (rule, value, callback) => {
-        if (value && value.length === 13) {
+    const validateID= (rule, value, callback) => {
+        if (value && value.length === 18) {
             callback();
         } else if (value.length === 0) {
-            callback(new Error('请输入电话号码'));
+            callback(new Error('请输入身份证号'));
         } else {
-            callback(new Error('电话号码不合法'));
+            callback(new Error('身份证号不合法'));
         }
     }
-    const validateEmail = (rule, value, callback) => {
+    const validatePhone = (rule, value, callback) => {
         let reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
         if (reg.test(value)) {
             callback();
@@ -54,73 +53,119 @@ const Content2 =(props)=>{
             callback(new Error('邮箱不合法'));
         }
     }
+    const validateCode= (rule, value, callback) => {
+        if (value && value.length === 6) {
+            callback();
+        } else if (value.length === 0) {
+            callback(new Error('验证码不能为空'));
+        } else {
+            callback(new Error('验证码不正确'));
+        }
+    }
+
+    const validatePassword=(rule,value,callback)=>{
+        if(value&& value.length>=8){
+            setPassword(value)
+            callback()
+        }else if(value.length===0){
+            callback(new Error('密码不能为空'));
+        } else {
+            callback(new Error('密码最少为8位'))
+        }
+    }
+    const validateRePassword=(rule,value,callback)=>{
+        if(value&& value.length===){
+            callback()
+        }else if(value.length===0){
+            callback(new Error('密码不能为空'));e
+        } else {
+            callback(new Error('密码最少为8位'))
+        }
+    }
     return(
         <>
         {/* <ContentWrap2> */}
         <form className='count-setting'>
             <List>
-                <InputItem
-                    {...getFieldProps('password', {
+            <InputItem
+                    {...getFieldProps('name', {
                         rules: [
-                            { validator: validatePassword },
+                            { validator: validateName },
                         ],
                     })}
-                    error={!!getFieldError('password')}
+                    error={!!getFieldError('name')}
                     onErrorClick={() => {
-                        Toast.info(getFieldError('password'), 1);
+                        Toast.info(getFieldError('name'), 1);
                     }}
                     clear
-                    type="password"
-                    placeholder="请输入"
+                    type="text"
+                    placeholder="请输入姓名"
                 >
-                    <span>用户密码</span>
+                   
                 </InputItem>
                 <InputItem
-                    {...getFieldProps('repassword', {
+                    {...getFieldProps('userName', {
                         rules: [
-                            { validator: validateRePassword },
+                            { validator: validateuserName },
                         ],
                     })}
-                    error={!!getFieldError('repassword')}
+                    error={!!getFieldError('userName')}
                     onErrorClick={() => {
-                        Toast.info(getFieldError('repassword'), 1);
+                        Toast.info(getFieldError('userName'), 1);
                     }}
                     clear
-                    type="password"
-                    placeholder="请输入"
+                    type="text"
+                    placeholder="请输入用户名"
                 >
-                    <span>重复密码</span>
+                   
+                </InputItem>
+             
+                <InputItem
+                    {...getFieldProps('ID', {
+                        rules: [
+                            { validator: validateID},
+                        ],
+                    })}
+                    error={!!getFieldError('ID')}
+                    onErrorClick={() => {
+                        Toast.info(getFieldError('ID'), 1);
+                    }}
+                    clear
+                    type="number"
+                    placeholder="请输入身份证号码"
+                    maxLength='18'
+                >
+                    
                 </InputItem>
                 <InputItem
-                    {...getFieldProps('tel', {
+                    {...getFieldProps('Phone', {
                         rules: [
-                            { validator: validateTel },
+                            { validator: validatePhone },
                         ],
                     })}
-                    error={!!getFieldError('tel')}
+                    error={!!getFieldError('Phone')}
                     onErrorClick={() => {
-                        Toast.info(getFieldError('tel'), 1);
+                        Toast.info(getFieldError('Phone'), 1);
                     }}
                     clear
-                    type="phone"
-                    placeholder="请输入"
+                    placeholder="手机号"
                 >
-                    <span>电话号码</span>
+                   
                 </InputItem>
                 <InputItem
-                    {...getFieldProps('email', {
+                    {...getFieldProps('Code', {
                         rules: [
-                            { validator: validateEmail },
+                            { validator: validateCode },
                         ],
                     })}
-                    error={!!getFieldError('email')}
+                    error={!!getFieldError('Code')}
                     onErrorClick={() => {
-                        Toast.info(getFieldError('email'), 1);
+                        Toast.info(getFieldError('Code'), 1);
                     }}
                     clear
-                    placeholder="请输入"
+                    placeholder="请输入验证码"
                 >
-                    <span>电子邮箱</span>
+                   
                 </InputItem>
                 <List.Item>
                     <Button type='primary' onClick={onSubmit}>确认</Button>
