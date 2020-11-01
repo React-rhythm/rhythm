@@ -1,10 +1,9 @@
 import axios from 'axios'
 
-const get = (url,params) => {
+const get = (url) => {
   return new Promise((resolve, reject) => {
-    axios(url, {            
-      params: params        
-    })     
+    axios(url     
+    )     
     .then(res => {
       resolve(res)
     })
@@ -12,6 +11,18 @@ const get = (url,params) => {
       reject(err)
     })
   })
+}
+
+const put = (url) => {
+  return new Promise((resolve, reject) => {
+    axios.put(url)
+  .then(res => {
+      resolve(res);
+  })
+  .catch(err =>{
+      reject(err)
+  })
+});
 }
 
 const post = (url, params) => {
@@ -30,5 +41,6 @@ const post = (url, params) => {
   
 export {
   get,
+  put,
   post
 }

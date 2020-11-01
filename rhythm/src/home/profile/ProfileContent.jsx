@@ -19,8 +19,8 @@ class ProfileContent extends Component{
         disabled: false,
       }
     render() {
+        const role = this.props.location.state.roles
         return (<ProfileContentWrap>
-          
           <List>
             <Item
               thumb={Msg}
@@ -39,13 +39,15 @@ class ProfileContent extends Component{
               arrow="horizontal"
               onClick={() => {}}
             >客服</Item>
-            <Item
+            {
+              role === -1 ? "" : <Item
               thumb={NewsPaper}
               onClick={() => {this.props.history.push("/notice",{title:"报社"})}}
               arrow="horizontal"
             >
               报社
             </Item>
+            }
             <Item
               thumb={Setting}
               onClick={() => {this.props.history.push("/setting",{title:"设置"})}}

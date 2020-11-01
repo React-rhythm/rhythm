@@ -13,7 +13,7 @@ class Update extends Component{
 
     //拿到当前的用户名存在state
     state = {
-        username:"yaqi" 
+        username:"" 
     }
 
     handleChange = () => {
@@ -33,7 +33,7 @@ class Update extends Component{
     handleSaveClick = () => {
         return async(e) => {
             const username = this.state.username
-            const result = await get("http://localhost:8080/userInfo/nameUpdate",{username})
+            const result = await get(`http://10.9.62.212:80/userInfo/nameUpdate/${username}`)
             console.log(result)
             this.setState({
                 username:""

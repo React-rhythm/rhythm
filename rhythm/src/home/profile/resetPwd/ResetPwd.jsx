@@ -8,10 +8,17 @@ import Show from "@a/images/zhengyan@2x.png"
 
 import {ListContainer} from"./StyledResetPwd"
 
+import {put} from "@u/http"
+
 class Reset extends Component{
 
     state = {
-        toggle:false
+        toggle:false,
+        phoneid:"",
+        uuid:"",
+        password:"",
+        newpassword:"",
+        replynewpassword:""
     }
     handleToggleClick = () => {
         return (e) => {
@@ -24,13 +31,53 @@ class Reset extends Component{
     }
     handlePutPhoneKeyUp = () => {
         return (e) => {
-            if(e.keyCode === 13){
-                console.log(e.target.value)
+            this.setState({
+                phoneid:e
+            })
+        }
+    }
+    handlePutCode = () => {
+        return (e) => {
+            this.setState({
+                uuid:e
+            })
+        }
+    }
+    handlePutCodeClick = async() => {
+        const phoneid = this.state.phoneid
+        const findPhoneRes = await put(`http://10.9.62.212:80/userInfo/findPhone/${phoneid}`)
+        if(findPhoneRes.flag){
+            const result = await put(`http://10.9.62.212:80/userInfo/pwdReset/${phoneid}`)
+            console.log(result)
+        }else{
+            alert("请输入正确的手机号")
+        }
+    }
+    handlePutPassword = () => {
+        return (e) => {
+            this.setState({
+                password:e
+            })
+        }
+    }
+    handlePutNewPassword = () => {
+        return (e) => {
+            this.setState({
+                newpassword:e
+            })
+        }
+    }
+    handlePutReplyNewPassword = () => {
+        return  (e) => {
+            console.log(e)
+            if(e !== this.state.newpassword){
+                alert("两次密码输入不一致")
             }
         }
     }
-    handlePutCodeClick = () => {
-        
+    handleResetPwd = async() => {
+        const result = await put('http://10.9.62.212:80/userInfo/pwdReset',this.state)
+        console.log(result)
     }
     render(){
         const { getFieldProps } = this.props.form;
@@ -43,34 +90,43 @@ class Reset extends Component{
                         {...getFieldProps('phone')}
                         type="phone"
                         placeholder="请输入手机号"
-                        onKeyUp={this.handlePutPhoneKeyUp()}
+                        value={this.state.phoneid}
+                        onChange={this.handlePutPhoneKeyUp()}
                     ></InputItem>
                     <InputItem
                         {...getFieldProps('code')}
                         type="code"
                         placeholder="请输入验证码"
+                        value={this.state.uuid}
+                        onChange={this.handlePutCode()}
                         extra={<div onClick={this.handlePutCodeClick}>获取验证码</div>}
                     ></InputItem>
                     <InputItem
                         {...getFieldProps('oldpwd')}
                         type="password"
                         placeholder="请输入旧密码（6-20位）"
+                        value={this.state.password}
+                        onChange={this.handlePutPassword()}
                         extra={<img src={Hide} onClick={this.handleToggleClick()} alt=""/>}
                     ></InputItem>
                    <InputItem
                         {...getFieldProps('newpwd')}
                         type="password"
                         placeholder="请输入新密码（6-20位）"
+                        value={this.state.newpassword}
+                        onChange={this.handlePutNewPassword()}
                         extra={<img src={Hide} onClick={this.handleToggleClick()} alt=""/>}
                     ></InputItem>
                     <InputItem
                         {...getFieldProps('confirmpwd')}
                         type="password"
                         placeholder="确认密码"
+                        value={this.state.replynewpassword}
+                        onChange={this.handlePutReplyNewPassword()}
                         extra={<img src={Hide}  onClick={this.handleToggleClick()} alt=""/>}
                     ></InputItem>
                 </List>
-                <Button type="primary" >确认</Button>
+                <Button type="primary" onClick={this.handleResetPwd}>确认</Button>
                 </ListContainer>
                
             </>
