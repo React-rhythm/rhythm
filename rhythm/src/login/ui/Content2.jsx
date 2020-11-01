@@ -63,25 +63,25 @@ const Content2 =(props)=>{
         }
     }
 
-    const validatePassword=(rule,value,callback)=>{
-        if(value&& value.length>=8){
-            setPassword(value)
-            callback()
-        }else if(value.length===0){
-            callback(new Error('密码不能为空'));
-        } else {
-            callback(new Error('密码最少为8位'))
-        }
-    }
-    const validateRePassword=(rule,value,callback)=>{
-        if(value&& value.length===){
-            callback()
-        }else if(value.length===0){
-            callback(new Error('密码不能为空'));e
-        } else {
-            callback(new Error('密码最少为8位'))
-        }
-    }
+    // const validatePassword=(rule,value,callback)=>{
+    //     if(value&& value.length>=8){
+    //         setPassword(value)
+    //         callback()
+    //     }else if(value.length===0){
+    //         callback(new Error('密码不能为空'));
+    //     } else {
+    //         callback(new Error('密码最少为8位'))
+    //     }
+    // }
+    // const validateRePassword=(rule,value,callback)=>{
+    //     if(value&& value.length===8){
+    //         callback()
+    //     }else if(value.length===0){
+    //         callback(new Error('密码不能为空'));e
+    //     } else {
+    //         callback(new Error('密码最少为8位'))
+    //     }
+    // }
     return(
         <>
         {/* <ContentWrap2> */}
