@@ -8,6 +8,7 @@ import store from './store'
 import App from "./App"
 
 import "@a/styles/reset.css"
+import "@a/iconfont/iconfont.css"
 ReactDom.render(
   <Provider store={store}>
     <Router>

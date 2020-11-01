@@ -69,7 +69,7 @@ class App extends Component{
               <Route path='/home' component={Newspaper}></Route>
                
               
-              <Redirect from='/' to='/home'></Redirect>
+              <Redirect from='/' to='/role'></Redirect>
             </Switch>
             
         )
