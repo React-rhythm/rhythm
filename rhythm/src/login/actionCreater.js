@@ -9,16 +9,16 @@ const loadDataSync = list => {
   }
 }
 
-const changeName=(name)=>{
+const changeName=(realname)=>{
   return{
     type:'changeName',
-    name
+    realname
   }
 }
-const changeUserName=(userName)=>{
+const changeUserName=(username)=>{
   return{
     type:'changeUserName',
-    userName
+    username
   }
 }
 const changeCourt=(court)=>{
@@ -28,10 +28,10 @@ const changeCourt=(court)=>{
   }
 }
 
-const changePhoneNumber=(phoneNumber)=>{
+const changePhoneId=(phoneid)=>{
   return{
-    type:'changePhoneNumber',
-    phoneNumber
+    type:'changePhoneId',
+    phoneid
   }
 }
 
@@ -48,10 +48,10 @@ const changePassword=(password)=>{
   }
 }
 
-const changeRepassword=(repassword)=>{
+const changereplaynewpassword=(replynewpassword)=>{
   return{
     type:'changeRepassword',
-    repassword
+    replynewpassword
   }
 }
 
@@ -71,8 +71,8 @@ export default {
   changeName,
   changeCourt,
   changePassword,
-  changePhoneNumber,
+  changePhoneId,
   changeUserName,
   changeVerificationCode,
-  changeRepassword
+  changereplaynewpassword
 }

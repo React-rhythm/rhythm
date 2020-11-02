@@ -22,6 +22,16 @@ class Reset extends Component{
             e.target.src = this.state.toggle? Show :Hide
         }
     }
+    handlePutPhoneKeyUp = () => {
+        return (e) => {
+            if(e.keyCode === 13){
+                console.log(e.target.value)
+            }
+        }
+    }
+    handlePutCodeClick = () => {
+        
+    }
     render(){
         const { getFieldProps } = this.props.form;
         return (
@@ -33,12 +43,13 @@ class Reset extends Component{
                         {...getFieldProps('phone')}
                         type="phone"
                         placeholder="请输入手机号"
+                        onKeyUp={this.handlePutPhoneKeyUp()}
                     ></InputItem>
                     <InputItem
                         {...getFieldProps('code')}
                         type="code"
                         placeholder="请输入验证码"
-                        extra={<div>获取验证码</div>}
+                        extra={<div onClick={this.handlePutCodeClick}>获取验证码</div>}
                     ></InputItem>
                     <InputItem
                         {...getFieldProps('oldpwd')}

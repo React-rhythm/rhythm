@@ -13,10 +13,12 @@ import ProfileActive from "@a/images/我的_点击@2x.png"
 import Upload from "@a/images/发布@2x.png"
 import UploadActive from "@a/images/发布_点击@2x.png"
 import MyProfile from "../../home/profile/Profile"
+import Litigant from "@/home/litigant/container/Litigant"
+import Publish from '@p/container/Publish'
 
 export default  class Home extends Component{
     state = {
-        selectedTab: 'redTab',
+        selectedTab: 'litigant',
         hidden: false,
         fullScreen: true,
     }
@@ -46,15 +48,15 @@ export default  class Home extends Component{
                 }
                 title="首页"
                 key="Start"
-                selected={this.state.selectedTab === 'redTab'}
+                selected={this.state.selectedTab === 'litigant'}
                 onPress={() => {
                   this.setState({
-                    selectedTab: 'redTab',
+                    selectedTab: 'litigant',
                   });
                 }}
               >
-                <div>bbb</div>
-              </TabBar.Item>
+                <Litigant></Litigant>
+              </TabBar.Item> 
               <TabBar.Item
                 icon={
                   <div style={{
@@ -71,15 +73,15 @@ export default  class Home extends Component{
                   />
                 }
                 title="上传"
-                key="upload"
-                selected={this.state.selectedTab === 'blackTab'}
+                key="publish"
+                selected={this.state.selectedTab === 'publish'}
                 onPress={() => {
                   this.setState({
-                    selectedTab: 'blackTab',
+                    selectedTab: 'publish',
                   });
                 }}
               >
-                <div>upload</div>
+                <Publish></Publish>
               </TabBar.Item>
               <TabBar.Item
                 icon={
@@ -112,10 +114,10 @@ export default  class Home extends Component{
                 selectedIcon={{ uri: `${ProfileActive}` }}
                 title="我的"
                 key="my"
-                selected={this.state.selectedTab === 'yellowTab'}
+                selected={this.state.selectedTab === 'profile'}
                 onPress={() => {
                   this.setState({
-                    selectedTab: 'yellowTab',
+                    selectedTab: 'profile',
                   });
                 }}
               >

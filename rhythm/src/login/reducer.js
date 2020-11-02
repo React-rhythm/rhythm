@@ -3,13 +3,15 @@ import { LOADDATA } from './actionTypes'
 const defaultState = {
   list: [],
   judgeForm:{
-    name:'',
-    userName:'',
-    court:'',
-    phoneName:'',
-    verificationCode:'',
+    idcard:'',
     password:'',
-    repassword:''
+    phineid:'',
+    photoaddress:'',
+    realname:'',
+    replynewpassword:'',
+    username:'',
+    status:'',
+    uuid:'string'
 
   }
 }
@@ -24,14 +26,14 @@ const reducer = (state = defaultState, action) => {
         return{
           judgeForm:{
             ...state.judgeForm,
-            name:action.name
+            realname:action.realname
           }
         }
         case 'changeUserName':
         return{
           judgeForm:{
             ...state.judgeForm,
-            userName:action.userName
+            username:action.username
           }
         }
         case 'changeCourt':
@@ -45,7 +47,7 @@ const reducer = (state = defaultState, action) => {
         return{
           judgeForm:{
             ...state.judgeForm,
-            phoneName:action.phoneName
+            phoneid:action.phoneid
           }
         }
         case 'changeVerificationCode':
@@ -66,7 +68,7 @@ const reducer = (state = defaultState, action) => {
         return{
           judgeForm:{
             ...state.judgeForm,
-            repassword:action.repassword
+            replynewpassword:action.replynewpassword
           }
         }
     default:

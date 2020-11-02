@@ -1,6 +1,10 @@
 {
+<<<<<<< HEAD
   "/api/hotcat": "/hotcat",
   "/api/list": "/list",
   "/api/category": "/category",
   "/api/detail": "/detail"
+=======
+  "/api/name":"/name"
+>>>>>>> master
 }

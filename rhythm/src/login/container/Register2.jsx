@@ -6,7 +6,20 @@ import {withRouter} from 'react-router-dom'
 
 @withRouter
 class Register2 extends Component {
-
+    state={
+        idcard:'',
+        password:'',
+        phoneid:'',
+        photoaddress:'',
+        realname:'',
+        repalybewpassword:'',
+        status:'',
+        username:'',
+        uuid:'string'
+    }
+    handleGetCode=()=>{
+        console.log(0);
+    }
     render() {
         return (
             <>
@@ -27,7 +40,7 @@ class Register2 extends Component {
                     }}
                    
                 >当事人注册</NavBar>
-                 <Content2></Content2>
+                 <Content2 onGetCode={this.handleGetCode}></Content2>
             </>
         );
     }

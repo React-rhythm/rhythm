@@ -24,6 +24,7 @@ const ContentWrap= styled.div`
     .am-list:nth-child(5){
         .am-list-body{
             span{
+                width:40%;
                 text-align:right;
                 color:#2493ED;
                 font-size:0.14rem;
@@ -42,37 +43,12 @@ const ContentWrap= styled.div`
 const ContentWrap2= styled.div`
     padding:0  0.35rem;
     background-color:#fff;
-    .am-list{  
-        height:0.5rem;
-        border:none;
-        .am-list-body{
+    .count-setting{
+        width:100%;
+        .am-list-item .am-input-item .am-list-item-middle{
             height:0.5rem;
-            line-height:0.5rem;
-            display:flex;
-            justify-content:space-around;
-            border:none;
-            >input{
-                width:100%;
-                height:100%;
-                border:none;
-               
-            
-            }
-        }
-    }
-    .am-list:nth-child(5){
-        .am-list-body{
-            span{
-                text-align:right;
-                color:#2493ED;
-                font-size:0.14rem;
-            }
-        }
-    }
-    .am-list:nth-child(7){
-        .am-list-body{
-            input{
-                border-bottom:none;
+            .am-input-label .am-input-label-5{
+                
             }
         }
     }

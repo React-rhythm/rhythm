@@ -32,13 +32,25 @@ class role extends Component {
 
     signIn = () => {
         let { history } = this.props
-        history.push('/register'+this.state.roles,{roles : this.state.roles})
+        // history.push('/home',{roles : this.state.roles})
         // console.log(this.state.roles);
+        if(this.state.roles == 1){
+            history.push('/lawyer',{roles : this.state.roles})
+        }else if (this.state.roles == 0){
+            history.push('/litigant',{roles : this.state.roles})
+        }else{
+            history.push('/newspaper',{roles : this.state.roles})
+        }
     }
     logIn = () => {
         let { history } = this.props
         history.push('/login1',{roles : this.state.roles})
         // console.log(this.state.roles);
+    }
+
+    toHome = () => {
+        let { history } = this.props
+        history.push('/home',{roles : 2})
     }
 
     componentDidUpdate(){
@@ -50,6 +62,17 @@ class role extends Component {
     render() {
         return (
             <Wrap>
+                <div
+                onClick={this.toHome}
+                style={{
+                    position:'absolute',
+                    top:'0.2rem',
+                    right:'0.2rem',
+                    color:'#fff',
+                    fontFamily:'PingFang',
+                    fontWeight:'500'
+                }}
+                >游客进入</div>
                 <ChangeRole role={1} onClick={this.toReg(1)} isShow={this.state.isShow}>我是法官</ChangeRole>
                 <ChangeRole role={0} onClick={this.toReg(0)} isShow={this.state.isShow}>我是当事人</ChangeRole>
                 <ChangeRole role={-1} onClick={this.toReg(-1)} isShow={this.state.isShow}>我是报社</ChangeRole>

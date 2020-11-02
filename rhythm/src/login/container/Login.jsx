@@ -24,7 +24,12 @@ class Login1 extends Component {
     }
     handleRegister1=()=>{
         return()=>{
-            this.props.history.push('/register'+this.props.location.state.roles)
+            this.props.history.push('/register'+this.props.location.state.roles,{status:this.props.location.state.roles})
+        }
+    }
+    handleForget=()=>{
+        return()=>{
+            this.props.history.push('/MessageLogin')
         }
     }
     componentDidMount(){
@@ -53,7 +58,7 @@ class Login1 extends Component {
                     onLeftClick={() => {this.props.history.goBack()}} 
                 >{this.state.role}</NavBar>
                 <LoginIcon></LoginIcon>
-                <WillLogin onMessage={this.handleMessage} onRegister1={this.handleRegister1} ></WillLogin>
+                <WillLogin onMessage={this.handleMessage} onRegister1={this.handleRegister1} onForget={this.handleForget}></WillLogin>
                 
             </div>
         );

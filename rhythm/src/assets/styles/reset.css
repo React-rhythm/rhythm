@@ -18,7 +18,7 @@ body {
 html {
   background-color: #eee;
   color: #212121;
-  font-size: 100px;
+  font-size: 29vw;
   -webkit-user-select: none;
   user-select: none; }
 
@@ -28,6 +28,9 @@ body {
   line-height: 1.5;
   font-family: PingFangSC-Regular, Hiragino Sans GB, Helvetica Neue, Helvetica, STHeiTi, sans-serif; 
   -webkit-font-smoothing: antialiased;
+}
+body .am-toast-notice-content .am-toast-text {
+  color:#5cb85c;
 }
 
 ul,

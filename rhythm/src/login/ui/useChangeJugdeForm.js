@@ -3,58 +3,58 @@ import { useSelector, useDispatch} from 'react-redux'
 import { actionCreator as ac } from '../index'
 
 const useChangeJudgeForm = () => {
-    const name = useSelector(state => state.login.judgeForm.name)
+    const realname = useSelector(state => state.login.judgeForm.realname)
     const court = useSelector(state => state.login.judgeForm.court)
-    const userName = useSelector(state => state.login.judgeForm.userName)
-    const phoneNumber = useSelector(state => state.login.judgeForm.phoneNumber)
+    const username = useSelector(state => state.login.judgeForm.username)
+    const phoneid = useSelector(state => state.login.judgeForm.phoneid)
     const verificationCode = useSelector(state => state.login.judgeForm.verificationCode)
     const password = useSelector(state => state.login.judgeForm.password)
-    const repassword = useSelector(state => state.login.judgeForm.repassword)
+    const replaynewpassword = useSelector(state => state.login.judgeForm.replaynewpassword)
     const dispatch = useDispatch()
 
-    const handleNameChange = useCallback((name) => {
-            dispatch(ac.changeName(name))
+    const handleNameChange = useCallback((realname) => {
+            dispatch(ac.changeName(realname))
       }, [dispatch])
 
-      const handleUserNameChange = useCallback((userName) => {
-        dispatch(ac.changeUserName(userName))
+      const handleUserNameChange = useCallback((username) => {
+        dispatch(ac.changeUserName(username))
         }, [dispatch])
 
     const handleCourtChange = useCallback((court) => {
             dispatch(ac.changeCourt(court))
       }, [dispatch])
 
-    const handlePhoneNumberChange = useCallback((phoneNumber) => {
-            dispatch(ac.changePhoneNumber(phoneNumber))
+    const handlephoneidChange = useCallback((phoneid) => {
+            dispatch(ac.changePhoneId(phoneid))
       }, [dispatch])
 
     const handleVerificationCodeChange = useCallback((verificationCode) => {
             dispatch(ac.changeVerificationCode(verificationCode))
       }, [dispatch])
 
-    const handlePasswordChange = useCallback((Password) => {
-            dispatch(ac.changePassword(Password))
+    const handlePasswordChange = useCallback((password) => {
+            dispatch(ac.changePassword(password))
       }, [dispatch])
 
-    const handleRepasswordChange = useCallback((Repassword) => {
-            dispatch(ac.changeRepassword(Repassword))
+    const handlereplaynewpasswordChange = useCallback((replaynewpassword) => {
+            dispatch(ac.changereplaynewpassword(replaynewpassword))
       }, [dispatch])
 
     return {
-      name,
-      userName,
+      realname,
+      username,
       court,
-      phoneNumber,
+      phoneid,
       verificationCode,
       password,
-      repassword,
+      replaynewpassword,
       handleNameChange,
       handleUserNameChange,
       handleCourtChange,
-      handlePhoneNumberChange,
+      handlephoneidChange,
       handleVerificationCodeChange,
       handlePasswordChange,
-      handleRepasswordChange
+      handlereplaynewpasswordChange
       
     }
 }
