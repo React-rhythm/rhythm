@@ -18,34 +18,13 @@ import { connect } from 'react-redux'
       }
 )
 class Register1 extends Component {
-    // state={
-    //     name:'',
-    //     mima:'',
-    // }
-    // componentDidMount(){
-    //     console.log(this.state.name);
-    // }
-    // handleblur=(e)=>{
-    //     this.setState({
-    //         name:e.target.value,
-    //     },()=>{
-    //         console.log(this.state.name);  
-    //     })
-    // this.handleblur2=(e)=>{
-    //     this.setState({
-    //         mima:e.target.value
-    //     },()=>{     
-    //         console.log(this.state.mima);
-    //     })
-    // }
-        
-    // }
+   
     handlegetCode=()=>{
         console.log('给我验证码');
     }
     handleUploading=()=>{
         console.log(this.props.judgeForm);
-       console.log(this.props);
+      
     }
     
     componentDidMount(){

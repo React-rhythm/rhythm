@@ -3,7 +3,7 @@ import {WillLRWrap} from './StyleWillLogin'
 const WillLogin =(props)=> {
    
         return (
-            <WillLRWrap >
+            <WillLRWrap onClick={props.onLogin()}>
                 登录
             </WillLRWrap>
         );

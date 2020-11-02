@@ -256,7 +256,7 @@ const Content2 = (props) => {
                         
                     </InputItem>
                     <List.Item>
-                        <Button type='primary' onClick={onSubmit}>确认</Button>
+                        <Button type='primary' onClick={onSubmit}>注册</Button>
                     </List.Item>
                 </List>
             </form>

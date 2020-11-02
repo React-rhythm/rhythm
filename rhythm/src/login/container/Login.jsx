@@ -7,7 +7,9 @@ import WillLogin from '../ui/LoginInput1'
 class Login1 extends Component {
     state={
         role:'',
-        num:1
+        num:1,
+        idcard:false,
+        mima:false
     }
     roles=()=>{
         switch(this.props.location.state.roles){
@@ -30,6 +32,39 @@ class Login1 extends Component {
     handleForget=()=>{
         return()=>{
             this.props.history.push('/MessageLogin')
+        }
+    }
+    handleLogin=()=>{
+        return()=>{
+            if(this.state.mima&&this.state.idcard){
+                this.props.history.push('./Home')
+            }else{
+                alert('账号或者密码错误')
+            }
+           
+        }
+    }
+    handleIdcard=(e)=>{
+        if(!(/^1[34578]\d{9}$/.test(e.target.value))){ 
+             
+           this.setState({
+               idcard:false
+           })
+    }else{
+       this.setState({
+        idcard:true
+       })
+    }
+    }
+    handlemima=(e)=>{
+        if(e.target.value.length>=8&&e.target.value.length<=16){
+            this.setState({
+                mima:true
+            })
+        }else{
+            this.setState({
+                mima:false
+            })
         }
     }
     componentDidMount(){
@@ -58,7 +93,7 @@ class Login1 extends Component {
                     onLeftClick={() => {this.props.history.goBack()}} 
                 >{this.state.role}</NavBar>
                 <LoginIcon></LoginIcon>
-                <WillLogin onMessage={this.handleMessage} onRegister1={this.handleRegister1} onForget={this.handleForget}></WillLogin>
+                <WillLogin onMessage={this.handleMessage} onRegister1={this.handleRegister1} onForget={this.handleForget} onLogin={this.handleLogin} onIdcard={this.handleIdcard} onMima={this.handlemima}></WillLogin>
                 
             </div>
         );

@@ -35,11 +35,11 @@ class role extends Component {
         // history.push('/home',{roles : this.state.roles})
         // console.log(this.state.roles);
         if(this.state.roles == 1){
-            history.push('/lawyer',{roles : this.state.roles})
+            history.push('/register1',{roles : this.state.roles})
         }else if (this.state.roles == 0){
-            history.push('/litigant',{roles : this.state.roles})
+            history.push('/register0',{roles : this.state.roles})
         }else{
-            history.push('/newspaper',{roles : this.state.roles})
+            history.push('/register-1',{roles : this.state.roles})
         }
     }
     logIn = () => {
