@@ -10,6 +10,7 @@ import Phoneid from '../ui/Phoneid'
 import Party from '../ui/Party'
 import CaseId from '../ui/CaseId'
 import CaseImg from '../ui/CaseImg'
+import {post,get} from '../../../utils/http'
 
 import {ButtonWrap} from '../ui/publish'
 
@@ -29,6 +30,7 @@ class Publish extends Component {
   }
 
   toPublish = () => {
+    // http.post('')
     console.log(this.props.form)
   }
   

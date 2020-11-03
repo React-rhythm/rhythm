@@ -34,6 +34,19 @@ const changeFormParty = formParty => {
       formParty
     }
 }
+const changeFormPicture = formPicture => {
+  console.log(1);
+    return {
+      type: 'changeFormPicture',
+      formPicture
+    }
+}
+const changeFormCaseid = formCaseid => {
+    return {
+      type: 'changeFormCaseid',
+      formCaseid
+    }
+}
 
   export default {
     changeFormType,
@@ -41,5 +54,7 @@ const changeFormParty = formParty => {
     changeFormRegion,
     changeFormIdcard,
     changeFormPhoneid,
-    changeFormParty
+    changeFormParty,
+    changeFormPicture,
+    changeFormCaseid
 }
