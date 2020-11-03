@@ -6,7 +6,7 @@ import Header from "@c/notice/Header.jsx"
 import Phone from "@a/images/iphone@2x.png"
 import {Container} from "./StyledChangePhone"
 
-import {put} from "@u/http"
+import {get,post} from "@u/http"
 
 class Change extends Component{
 
@@ -30,16 +30,16 @@ class Change extends Component{
     }
     handleGetCodeClick = async() => {
         const phoneid = this.state.phoneid
-        const findPhoneRes = await put(`http://10.9.62.212:80/userInfo/findPhone/${phoneid}`)
+        const findPhoneRes = await get(`http://123.57.109.224:8081/userInfo/register/phone/${phoneid}`)
         if(findPhoneRes.flag){
-            const result = await put(`http://10.9.62.212:80/userInfo/pwdReset/${phoneid}`)
+            const result = await get(`http://123.57.109.224:8081/userInfo/phoneUpdate/${phoneid}`)
             console.log(result)
         }else{
             alert("请输入正确的手机号")
         }
     }
-    handleResetPwd = async() => {
-        const result = await put('http://10.9.62.212:80/userInfo/pwdReset',this.state)
+    handleResetPhone = async() => {
+        const result = await post('http://123.57.109.224:8081/userInfo/phoneUpdate',this.state)
         console.log(result)
     }
 
@@ -73,7 +73,7 @@ class Change extends Component{
                         extra={<div onClick={this.handleGetCodeClick}>获取验证码</div>}
                     ></InputItem>
                     </List>
-                    <Button type="primary" onClick={this.handleResetPwd}>确认</Button>
+                    <Button type="primary" onClick={this.handleResetPhone}>确认</Button>
                     <div className="remind" >一个月内只允许更换一次手机号</div>
                 </Container>
             </>
