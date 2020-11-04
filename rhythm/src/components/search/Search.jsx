@@ -31,7 +31,7 @@ class Search extends Component {
     }
   }
   handleFocus = () => {
-    this.props.match.path === "/lawyer" ? this.props.changeTab("blueTab") : this.props.changeTab("greenTab")
+    this.props.changeTab("greenTab")
   }
   render() {
     return (

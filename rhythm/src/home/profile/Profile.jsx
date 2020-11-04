@@ -14,8 +14,11 @@ const  MyProfile = (props) => {
    
     const role = props.location.state.roles
     
+    const token = window.localStorage.getItem("token")
 
     const history = useHistory();
+    
+    const username = history.location.state.username
    
     const handleClick = () => {
         return () => {
@@ -28,7 +31,7 @@ const  MyProfile = (props) => {
                 <img src={Banner} alt=""/>
                 <div className="navtar">
                     <img className="icon" src={role === 1 ? LawyerDefault:LoginDefault} alt=""></img>
-                    <p className="status" onClick={handleClick()}>登录/注册</p>
+                    <p className="status" onClick={handleClick()}>{token ? username :" 登录/注册"}</p>
                 </div>
             </HeaderWrap>
             <ProfileContent {...props}>

@@ -6,7 +6,7 @@ import Header from "@c/notice/Header.jsx"
 import Phone from "@a/images/iphone@2x.png"
 import {Container} from "./StyledChangePhone"
 
-import {get,post} from "@u/http"
+import http from "@u/http"
 
 class Change extends Component{
 
@@ -30,16 +30,16 @@ class Change extends Component{
     }
     handleGetCodeClick = async() => {
         const phoneid = this.state.phoneid
-        const findPhoneRes = await get(`http://123.57.109.224:8081/userInfo/register/phone/${phoneid}`)
+        const findPhoneRes = await http.get(`http://123.57.109.224:8081/userInfo/register/phone/${phoneid}`)
         if(findPhoneRes.flag){
-            const result = await get(`http://123.57.109.224:8081/userInfo/phoneUpdate/${phoneid}`)
+            const result = await http.get(`http://123.57.109.224:8081/userInfo/phoneUpdate/${phoneid}`)
             console.log(result)
         }else{
             alert("请输入正确的手机号")
         }
     }
     handleResetPhone = async() => {
-        const result = await post('http://10.9.70.205:8081/userInfo/register/phone',this.state)
+        const result = await http.post('http://10.9.70.205:8081/userInfo/register/phone',this.state)
         console.log(result)
     }
 

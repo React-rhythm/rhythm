@@ -13,6 +13,9 @@ class ProfileContent extends Component{
     state = {
         disabled: false,
       }
+      handleQuitLogin = () => {
+        window.localStorage.removeItem("token")
+      }
     render() {
         return (<ProfileContentWrap>
           
@@ -35,7 +38,7 @@ class ProfileContent extends Component{
               onClick={() =>
                 alert('提示', '确认退出登录?', [
                   { text: '取消', onPress: () => console.log('cancel') },
-                  { text: '确定', onPress: () => console.log('ok') },
+                  { text: '确定', onPress: this.handleQuitLogin },
                 ])
               }
               arrow="horizontal"

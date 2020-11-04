@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { NavBar, Icon, List, InputItem, Toast } from 'antd-mobile';
-
 import LoginIcon from '../ui/LoginIcon'
-// import Message from '../ui/Message'
 import {WillLRWrap} from '../../components/login/WillLogin/StyleWillLogin'
 import { MessageLoginWrap } from '../ui/StyledLogin'
 @withRouter
@@ -19,7 +17,7 @@ class MessageLogin extends Component {
     }
   }
   onChange = (value) => {
-    if (value.replace(/\s/g, '').length < 11) {
+    if (value.replace(/\s/g, '').length < 4) {
       this.setState({
         hasError: true,
       });
@@ -61,11 +59,6 @@ class MessageLogin extends Component {
 
         >短信验证登录</NavBar>
         <LoginIcon></LoginIcon>
-        {/* <MessageLoginWrap>
-                    <div className='inp'> <input type="text"/></div>
-                    <div className='inp'> <input type="text"/></div>
-                    <WillLogin></WillLogin>
-                 </MessageLoginWrap> */}
         <MessageLoginWrap>
           <form action="">
             <List >
@@ -78,7 +71,7 @@ class MessageLogin extends Component {
               // value={this.state.value}
               >手机号码</InputItem>
               <InputItem
-                type="password"
+                type="text"
                 placeholder="请输入验证码"
                 error={this.state.hasError}
                 onErrorClick={this.onErrorClick}

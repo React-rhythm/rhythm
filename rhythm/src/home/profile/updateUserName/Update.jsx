@@ -7,7 +7,7 @@ import { List, InputItem} from 'antd-mobile';
 import { createForm } from 'rc-form';
 
 import Toast from "./StyledUpdate"
-import {get} from "@u/http"
+import http from "@u/http"
 
 @withRouter
 class Update extends Component{
@@ -35,7 +35,7 @@ class Update extends Component{
         return async(e) => {
            
             const username = this.state.username
-            const result = await get(`http://123.57.109.224:8081/userInfo/nameUpdate/${username}`)
+            const result = await http.get(`http://123.57.109.224:8081/userInfo/nameUpdate/${username}`)
             console.log(result)
             this.setState({
                 username:""
