@@ -5657,11 +5657,7 @@ http-proxy-middleware@0.19.1:
 
 http-proxy-middleware@^1.0.6:
   version "1.0.6"
-<<<<<<< HEAD
-  resolved "https://registry.npm.taobao.org/http-proxy-middleware/download/http-proxy-middleware-1.0.6.tgz?cache=0&sync_timestamp=1602446222264&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fhttp-proxy-middleware%2Fdownload%2Fhttp-proxy-middleware-1.0.6.tgz#0618557722f450375d3796d701a8ac5407b3b94e"
-=======
   resolved "https://registry.npm.taobao.org/http-proxy-middleware/download/http-proxy-middleware-1.0.6.tgz?cache=0&sync_timestamp=1602445480546&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fhttp-proxy-middleware%2Fdownload%2Fhttp-proxy-middleware-1.0.6.tgz#0618557722f450375d3796d701a8ac5407b3b94e"
->>>>>>> master
   integrity sha1-BhhVdyL0UDddN5bXAaisVAezuU4=
   dependencies:
     "@types/http-proxy" "^1.17.4"
@@ -10429,7 +10425,7 @@ socket.io-client@2.1.1:
 
 socket.io-client@^2.3.1:
   version "2.3.1"
-  resolved "https://registry.npm.taobao.org/socket.io-client/download/socket.io-client-2.3.1.tgz?cache=0&sync_timestamp=1604094190586&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsocket.io-client%2Fdownload%2Fsocket.io-client-2.3.1.tgz#91a4038ef4d03c19967bb3c646fec6e0eaa78cff"
+  resolved "https://registry.npm.taobao.org/socket.io-client/download/socket.io-client-2.3.1.tgz#91a4038ef4d03c19967bb3c646fec6e0eaa78cff"
   integrity sha1-kaQDjvTQPBmWe7PGRv7G4OqnjP8=
   dependencies:
     backo2 "1.0.2"
