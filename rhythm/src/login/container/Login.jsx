@@ -54,7 +54,10 @@ class Login1 extends Component {
                 let token=res.token
                 localStorage.setItem('token',token)
                 if(this.state.status===1){
-                    this.props.history.push('/laywer',{roles: 1})
+                    this.props.history.push('/laywer',{
+                        roles: 1,
+                        userLogin:this.state.username
+                    })
                 }else if(this.state.status===0){
                     this.props.history.push('/litigant',{roles: 0})
                 }else{

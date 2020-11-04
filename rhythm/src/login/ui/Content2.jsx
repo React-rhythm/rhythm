@@ -15,7 +15,7 @@ const Content2 = (props) => {
                     ...register,
                     status:"1",
                 }
-                const res = http.ajaxpost('http://123.57.109.224:8081/userInfo/register',JSON.stringify(userLogin))
+                const res = http.post('http://123.57.109.224:8081/userInfo/register',JSON.stringify(userLogin))
             } else {
                 console.log('Validation failed');
             }
