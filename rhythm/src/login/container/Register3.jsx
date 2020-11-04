@@ -5,21 +5,8 @@ import {withRouter} from 'react-router-dom'
 // import Content from '../container/Login1'
 
 @withRouter
-class Register2 extends Component {
-    state={
-        idcard:'',
-        password:'',
-        phoneid:'',
-        photoaddress:'',
-        realname:'',
-        repalybewpassword:'',
-        status:'',
-        username:'',
-        uuid:'string'
-    }
-    handleGetCode=()=>{
-        console.log(0);
-    }
+class Register3 extends Component {
+
     render() {
         return (
             <>
@@ -39,11 +26,11 @@ class Register2 extends Component {
                         this.props.history.goBack()
                     }}
                    
-                >当事人注册</NavBar>
-                 <Content2 onGetCode={this.handleGetCode}></Content2>
+                >报社注册</NavBar>
+                 <Content2></Content2>
             </>
         );
     }
 }
 
-export default Register2;
+export default Register3;

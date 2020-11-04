@@ -2,11 +2,34 @@ import React, { Component } from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import Content1 from '../ui/Content1'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 // import Content from '../container/Login1'
 
 @withRouter
+@connect(
+    (state) => {
+        return {
+          judgeForm: {
+            ...state.login.judgeForm,
+            status:1
+          }
+          
+        }
+      }
+)
 class Register1 extends Component {
-
+   
+    handlegetCode=()=>{
+        console.log('给我验证码');
+    }
+    handleUploading=()=>{
+        console.log(this.props.judgeForm);
+      
+    }
+    
+    componentDidMount(){
+       
+    }
     render() {
         return (
             <>
@@ -27,7 +50,7 @@ class Register1 extends Component {
                     }}
 
                 >法官注册</NavBar>
-                <Content1></Content1>
+                <Content1 onUploading={this.handleUploading}getCode={this.handlegetCode}></Content1>
             </>
         );
     }

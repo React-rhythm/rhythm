@@ -1,9 +1,9 @@
 import React from 'react';
 import {WillLRWrap} from './StyleWillRegister'
-const WillRegister =()=> {
-   
+const WillRegister =(props)=> {
+        console.log(props);
         return (
-            <WillLRWrap>
+            <WillLRWrap onClick={props.onUploading1}>
                 注册
             </WillLRWrap>
         );

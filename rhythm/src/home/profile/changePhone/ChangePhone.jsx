@@ -39,7 +39,7 @@ class Change extends Component{
         }
     }
     handleResetPhone = async() => {
-        const result = await post('http://123.57.109.224:8081/userInfo/phoneUpdate',this.state)
+        const result = await post('http://10.9.70.205:8081/userInfo/register/phone',this.state)
         console.log(result)
     }
 

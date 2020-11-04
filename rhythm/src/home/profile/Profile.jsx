@@ -11,13 +11,15 @@ import ProfileContent from "./ProfileContent"
 
 
 const  MyProfile = (props) => {
+   
     const role = props.location.state.roles
+    
 
     const history = useHistory();
    
     const handleClick = () => {
         return () => {
-            history.push("/login1");
+            history.push("/login1",{roles:role});
         }
     }
     return (
