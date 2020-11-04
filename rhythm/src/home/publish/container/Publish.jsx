@@ -35,6 +35,7 @@ class Publish extends Component {
   }
   
   cancel = () => {
+    // console.log(1);
     this.props.history.push('/pay')
   }
 

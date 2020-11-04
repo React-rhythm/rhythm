@@ -57,6 +57,7 @@ class App extends Component{
 
                 <Route path="/guide" component={Guide}></Route>
                 <Route path="/role" component={Role}></Route>
+                <Route path="/pay" component={Pay}></Route>
                 <Route path='/login1' component={Login}></Route> 
                 <Route path='/MessageLogin' component={MessageLogin}></Route>
                 <Route path='/register1' component={Register1}></Route>

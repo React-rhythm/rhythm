@@ -16,7 +16,7 @@ class TabBar extends Component{
         const list = _.filter(this.props.list,function(notice) {return notice.status==="已公告"})
         
         const listing = _.filter(this.props.list,function(notice) {return notice.status==="未公告"})
-       
+
         return (
             <TabBarWrap>
                 <Tabs tabs={this.state.tabs}

@@ -28,7 +28,7 @@ const InnerContainer = border(
       color: #666;
     }
     .am-list-item {
-      background-color: #e6e6e6;
+      background-color: rgba(90,90, 54, 0.5);
     }
     .am-list-item.am-input-item {
         height: .3rem;
@@ -38,6 +38,9 @@ const InnerContainer = border(
     }
     .am-list-item .am-input-control input {
         padding: 0;
+        color:#fff;
+    }
+    .am-list-item .am-input-control input::-webkit-input-placeholder{
         color:#fff;
     }
   `

@@ -45,11 +45,8 @@ class Reset extends Component{
     }
     handlePutCodeClick = async() => {
         const phoneid = this.state.phoneid
-        const findPhoneRes = await get(`http://123.57.109.224:8081/userInfo/findPhone/${phoneid}`)
-        if(findPhoneRes.flag){
-            const result = await get(`http://123.57.109.224:8081/userInfo/pwdReset/${phoneid}`)
-            console.log(result)
-        }else{
+        const findPhoneRes = await get(`http://123.57.109.224:8081/userInfo/register/phone/${phoneid}`)
+        if(!findPhoneRes.flag){
             alert("请输入正确的手机号")
         }
     }

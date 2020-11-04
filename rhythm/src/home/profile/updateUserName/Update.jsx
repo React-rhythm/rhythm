@@ -1,5 +1,5 @@
-import React,{Component,useCallback} from 'react'
-
+import React,{Component} from 'react'
+import {withRouter} from "react-router-dom"
 import Header from "@c/notice/Header.jsx"
 
 import { Icon} from 'antd-mobile';
@@ -9,6 +9,7 @@ import { createForm } from 'rc-form';
 import Toast from "./StyledUpdate"
 import {get} from "@u/http"
 
+@withRouter
 class Update extends Component{
 
     //拿到当前的用户名存在state
@@ -32,12 +33,16 @@ class Update extends Component{
 
     handleSaveClick = () => {
         return async(e) => {
+           
             const username = this.state.username
             const result = await get(`http://123.57.109.224:8081/userInfo/nameUpdate/${username}`)
             console.log(result)
             this.setState({
                 username:""
             })
+            // if(result.flag){
+            //     this.props.history.push('/login1',{roles : 1})
+            // }
         }
     }
     
