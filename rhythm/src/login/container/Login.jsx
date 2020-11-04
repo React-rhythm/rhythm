@@ -4,8 +4,16 @@ import LoginIcon from '../ui/LoginIcon'
 import WillLogin from '../ui/LoginInput1'
 import http from '../../utils/http'
 
-// import {connect} from 'react-redux'
-// @connect()
+import {connect} from 'react-redux'
+import {actionCreator as ac} from "@h/content"
+
+@connect(state=>({
+    roles:state.notice.roles
+  }),dispatch=>({
+    changeRole(roles){
+      dispatch(ac.changeRoles(roles))
+    }
+  }))
 class Login1 extends Component {
     state = {
         role: '',
@@ -53,6 +61,9 @@ class Login1 extends Component {
                 console.log(res);
                 let token=res.token
                 localStorage.setItem('token',token)
+                if(token){
+                    this.props.changeRole(this.state.status)
+                }
                 if(this.state.status===1){
                     this.props.history.push('/laywer',{roles: 1,username:this.state.username})
                 }else if(this.state.status===0){

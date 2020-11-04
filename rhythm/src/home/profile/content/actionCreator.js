@@ -1,4 +1,4 @@
-import {CHANGEPUSHNOTICE} from "./actionTypes"
+import {CHANGEPUSHNOTICE,CHANGEROLES} from "./actionTypes"
 
 const changeNoticeStatus = isShow => {
     return {
@@ -7,6 +7,14 @@ const changeNoticeStatus = isShow => {
     }
 }
 
+const changeRoles = roles => {
+    return {
+        type:CHANGEROLES,
+        roles
+    }
+}
+
 export default {
-    changeNoticeStatus
+    changeNoticeStatus,
+    changeRoles
 }

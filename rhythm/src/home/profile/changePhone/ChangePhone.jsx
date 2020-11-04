@@ -9,7 +9,7 @@ import {Container} from "./StyledChangePhone"
 import http from "@u/http"
 
 class Change extends Component{
-
+    
     state={
         phoneid:"",
         uuid:"",
@@ -31,15 +31,14 @@ class Change extends Component{
     handleGetCodeClick = async() => {
         const phoneid = this.state.phoneid
         const findPhoneRes = await http.get(`http://123.57.109.224:8081/userInfo/register/phone/${phoneid}`)
-        if(findPhoneRes.flag){
-            const result = await http.get(`http://123.57.109.224:8081/userInfo/phoneUpdate/${phoneid}`)
-            console.log(result)
-        }else{
-            alert("请输入正确的手机号")
-        }
+        console.log(findPhoneRes)
+        // if(!findPhoneRes.flag){
+        //     alert("请输入正确的手机号")
+        // }
     }
     handleResetPhone = async() => {
-        const result = await http.post('http://10.9.70.205:8081/userInfo/register/phone',this.state)
+        const token =window.localStorage.getItem("token")
+        const result = await http.post('http://123.57.109.224:8081/userInfo/phoneUpdate',{...this.state,token})
         console.log(result)
     }
 

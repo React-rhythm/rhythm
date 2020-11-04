@@ -46,9 +46,7 @@ class Reset extends Component{
     handlePutCodeClick = async() => {
         const phoneid = this.state.phoneid
         const findPhoneRes = await http.get(`http://123.57.109.224:8081/userInfo/register/phone/${phoneid}`)
-        if(!findPhoneRes.flag){
-            alert("请输入正确的手机号")
-        }
+        console.log(findPhoneRes)
     }
     handlePutPassword = () => {
         return (e) => {
@@ -73,7 +71,8 @@ class Reset extends Component{
         }
     }
     handleResetPwd = async() => {
-        const result = await http.post('http://123.57.109.224:8081/userInfo/pwdReset',this.state)
+        const token =window.localStorage.getItem("token")
+        const result = await http.post('http://123.57.109.224:8081/userInfo/pwdReset',{...this.state,token})
         console.log(result)
     }
     render(){

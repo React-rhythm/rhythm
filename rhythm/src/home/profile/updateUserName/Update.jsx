@@ -33,16 +33,17 @@ class Update extends Component{
 
     handleSaveClick = () => {
         return async(e) => {
-           
             const username = this.state.username
             const result = await http.get(`http://123.57.109.224:8081/userInfo/nameUpdate/${username}`)
-            console.log(result)
+           
             this.setState({
                 username:""
             })
-            // if(result.flag){
-            //     this.props.history.push('/login1',{roles : 1})
-            // }
+            if(result.flag){
+                window.localStorage.removeItem("token")
+                
+                this.props.history.push('/login',{roles : 1})
+            }
         }
     }
     

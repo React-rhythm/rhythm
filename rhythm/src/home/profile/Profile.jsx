@@ -22,7 +22,7 @@ const  MyProfile = (props) => {
    
     const handleClick = () => {
         return () => {
-            history.push("/login1",{roles:role});
+            history.push("/login",{roles:role});
         }
     }
     return (
