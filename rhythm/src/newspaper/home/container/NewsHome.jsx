@@ -26,6 +26,7 @@ class NewsHome extends Component {
   }
   async componentDidMount(){
     let result=await get({url:'/api/name'})
+    console.log(result)
     this.setState({
       list:result.data
     })
