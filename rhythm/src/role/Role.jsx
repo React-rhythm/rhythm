@@ -33,7 +33,7 @@ class role extends Component {
     signIn = () => {
         let { history } = this.props
         // history.push('/home',{roles : this.state.roles})
-        console.log(this.state.roles);
+        // console.log(this.state.roles);
         if(this.state.roles == 1){
             history.push('/lawyer',{roles : this.state.roles})
         }else if (this.state.roles == 0){
@@ -56,7 +56,7 @@ class role extends Component {
     componentDidUpdate(){
         // console.log(this.state.currentX)
         // console.log(this.state.currentY)
-        console.log(this.state.roles);
+        // console.log(this.state.roles);
     }
 
     render() {

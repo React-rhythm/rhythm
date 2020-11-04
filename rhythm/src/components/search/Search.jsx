@@ -1,22 +1,37 @@
 import React, { Component } from 'react'
-
+import {withRouter} from "react-router-dom"
+import {connect} from "react-redux"
 import {InputItem} from "antd-mobile"
+
+import {actionCreator as ac} from '@/newspaper/home'
 import {
   Container,
   InnerContainer
 } from './StyledSearch'
 
-export default class Search extends Component {
+@connect(state=>({
+  selectedTab:state.newspaper.tabType
+}),dispatch=>({
+  changeTab(tab){
+    dispatch(ac.changeTab(tab))
+  }
+}))
+@withRouter
+class Search extends Component {
 
   state = {
     caseNumber:""
   }
   handleChange = () => {
     return (e) => {
+      
       this.setState({
         caseNumber:e
       })
     }
+  }
+  handleFocus = () => {
+    this.props.match.path === "/lawyer" ? this.props.changeTab("blueTab") : this.props.changeTab("greenTab")
   }
   render() {
     return (
@@ -27,9 +42,11 @@ export default class Search extends Component {
             placeholder="请输入查询案号"
             value={this.state.caseNumber}
             onChange={this.handleChange()}
+            onFocus={this.handleFocus}
           ></InputItem>
         </InnerContainer>
       </Container>
     )
   }
 }
+export default  Search

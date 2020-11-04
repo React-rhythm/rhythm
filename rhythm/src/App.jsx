@@ -4,9 +4,8 @@ import{
   Redirect,
   Switch
 } from 'react-router-dom'
+
 import {NoticeDetail} from '@/newspaper/detail/'
-
-
 
 import Login from './login/container/Login'
 import MessageLogin from './login/container/MessageLogin'
@@ -15,7 +14,6 @@ import Register2 from './login/container/Register2'
 import Register3 from './login/container/Register3'
 
 
-import Home from "./home/Home"
 import Setting from"./home/profile/content/Set"
 import UpdateUserName from "./home/profile/updateUserName/Update"
 import ResetPwd from "./home/profile/resetPwd/ResetPwd"
@@ -34,9 +32,10 @@ import Role from '@r/Role.jsx'
 import Pay from './home/pay/container/Pay'
 
 
-
 import Aaa from './login/container/shiyan'
 import { Newspaper } from "./newspaper"
+
+
 class App extends Component{
     render(){
         return (
@@ -65,7 +64,6 @@ class App extends Component{
       
         
                 <Route path='/noticedetail' component={NoticeDetail}></Route>
-              
               
                 <Route path='/home' component={Newspaper}></Route>
                 <Route path='/register0' component={Register2}></Route>
