@@ -7,7 +7,7 @@ import { List, InputItem} from 'antd-mobile';
 import { createForm } from 'rc-form';
 
 import Toast from "./StyledUpdate"
-import {get} from "@u/http"
+import http from "@u/http"
 
 class Update extends Component{
 
@@ -33,7 +33,7 @@ class Update extends Component{
     handleSaveClick = () => {
         return async(e) => {
             const username = this.state.username
-            const result = await get("http://localhost:8080/userInfo/nameUpdate",{username})
+            const result = await http.get("http://localhost:8080/userInfo/nameUpdate",{username})
             console.log(result)
             this.setState({
                 username:""

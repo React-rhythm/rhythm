@@ -32,19 +32,19 @@ class role extends Component {
 
     signIn = () => {
         let { history } = this.props
-        // history.push('/home',{roles : this.state.roles})
+        history.push('/register',{roles : this.state.roles})
         // console.log(this.state.roles);
-        if(this.state.roles == 1){
-            history.push('/register1',{roles : this.state.roles})
-        }else if (this.state.roles == 0){
-            history.push('/register0',{roles : this.state.roles})
-        }else{
-            history.push('/register-1',{roles : this.state.roles})
-        }
+        // if(this.state.roles == 1){
+        //     history.push('/register',{roles : this.state.roles})
+        // }else if (this.state.roles == 0){
+        //     history.push('/register0',{roles : this.state.roles})
+        // }else{
+        //     history.push('/register-1',{roles : this.state.roles})
+        // }
     }
     logIn = () => {
         let { history } = this.props
-        history.push('/login1',{roles : this.state.roles})
+        history.push('/login',{roles : this.state.roles})
         // console.log(this.state.roles);
     }
 

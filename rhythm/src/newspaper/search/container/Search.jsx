@@ -1,6 +1,6 @@
 import React,{ useEffect,useState } from 'react'
 import SearchUi from '../ui/SearchUi'
-import {get} from '@u/http'
+import http from '@u/http'
 
 
 export default function Search() {
@@ -9,7 +9,7 @@ const [value,setValue] = useState('')
   useEffect(() => {
     async function loadData(){
       // console.log(value)
-      let result=await get({
+      let result=await http.get({
         url:'/api/name'
       })
       setList(result.data)

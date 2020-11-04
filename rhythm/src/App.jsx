@@ -10,9 +10,9 @@ import {NoticeDetail} from '@/newspaper/detail/'
 
 import Login from './login/container/Login'
 import MessageLogin from './login/container/MessageLogin'
-import Register1 from './login/container/Register1'
-import Register2 from './login/container/Register2'
-import Register3 from './login/container/Register3'
+// import Register1 from './login/container/Register1'
+import Register from './login/container/Register'
+
 
 
 import Home from "./home/Home"
@@ -34,7 +34,6 @@ import Pay from './home/pay/container/Pay'
 
 
 
-import Aaa from './login/container/shiyan'
 import { Newspaper } from "./newspaper"
 class App extends Component{
     render(){
@@ -49,14 +48,15 @@ class App extends Component{
                 <Route path="/about" component={About}></Route>
                 <Route path="/guide" component={Guide}></Route>
                 <Route path="/role" component={Role}></Route>
-                <Route path='/login1' component={Login}></Route> 
+                <Route path='/login' component={Login}></Route> 
                 <Route path='/MessageLogin' component={MessageLogin}></Route>
-                <Route path='/register1' component={Register1}></Route>
-                <Route path='/register0' component={Register2}></Route>
-                <Route path='/register-1' component={Register3}></Route>
+                <Route path='/laywer' component={Lawyer}></Route>
+                <Route path='/litigant' component={Litigant}></Route>
+                <Route path='/register' component={Register}></Route>
+                
                 
 
-                <Route path='/aaa' component={Aaa}></Route>
+                
                 <Redirect from="/" to="/Guide"></Redirect>
                
               

@@ -1,67 +1,35 @@
-import React, { useState ,useCallback, useEffect} from 'react';
+import React, { useState } from 'react';
 import {  List, InputItem, Button, Toast } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import {ContentWrap2} from './StyledLogin'
-import useChangeJudgeForm from './useChangeJugdeForm'
+import http from '../../utils/http'
 const Content2 = (props) => {
-    const {handleNameChange}=useChangeJudgeForm()
-   const {handleUserNameChange}=useChangeJudgeForm()
-   const {handleCourtChange}=useChangeJudgeForm()
-   const {handlephoneidChange}=useChangeJudgeForm()
-   const {handleVerificationCodeChange}=useChangeJudgeForm()
-   const {handlePasswordChange}=useChangeJudgeForm()
-   const {handlereplaynewpasswordChange}=useChangeJudgeForm()
-
-
-   const {realname}=useChangeJudgeForm()
-   const {username}=useChangeJudgeForm()
-   const {court}=useChangeJudgeForm()
-   const {phoneid}=useChangeJudgeForm()
-   const {verificationCode}=useChangeJudgeForm()
-   const {password}=useChangeJudgeForm()
-   const {replaynewpassword}=useChangeJudgeForm()
    
-
-
-   const changName = useCallback((e)=>{
-       console.log(e);
-      handleNameChange(e)
-   })
-   const changUserName = useCallback((e)=>{
-    handleUserNameChange(e.target.value)
-})
-    const changePhoneId=useCallback((e)=>{
-        handlephoneidChange(e.target.value)
-    })
-    const changeverificationCode=useCallback((e)=>{
-        handleVerificationCodeChange(e.target.value)
-    })
-    const changeCourt=useCallback((e)=>{
-        handleCourtChange(e.target.value)
-    })
-    const changePassword=useCallback((e)=>{
-        handlePasswordChange(e.target.value)
-    })
-    const changeRepassword=useCallback((e)=>{
-        handlereplaynewpasswordChange(e.target.value)
-    })
-
-
     const { getFieldProps, getFieldError } = props.form;
     const [Password, setPassword] = useState('');
-    // const [judgeForm,setjudgeForm] = useState('');
-
-
     const onSubmit = () => {
-        
         props.form.validateFields({ force: true }, (error) => {
             if (!error) {
-                console.log(props.form.getFieldsValue());
-                alert('注册成功')
+                let register=props.form.getFieldsValue()
+                let userLogin={
+                    ...register,
+                    status:"1",
+                }
+                const res = http.ajaxpost('http://123.57.109.224:8081/userInfo/register',JSON.stringify(userLogin))
             } else {
                 console.log('Validation failed');
             }
         });
+    }
+    const validateAddress = (rule, value, callback) => {
+        if (value && value.length >= 2) {
+            callback();
+          
+        } else if (value.length === 0) {
+            callback(new Error('请输入用户名'));
+        } else {
+            callback(new Error('用户名最少2位'));
+        }
     }
     const validateuserName = (rule, value, callback) => {
         if (value && value.length >= 2) {
@@ -103,8 +71,8 @@ const Content2 = (props) => {
             callback(new Error('手机号不合法'));
         }
     }
-    const validateCode = (rule, value, callback) => {
-        if (value && value.length === 6) {
+    const validateuuid= (rule, value, callback) => {
+        if (value && value.length === 4) {
             callback();
         } else if (value.length === 0) {
             callback(new Error('验证码不能为空'));
@@ -140,6 +108,24 @@ const Content2 = (props) => {
             <form className='count-setting'>
                 
                 <List>
+                <InputItem
+                        {...getFieldProps('photoaddress', {
+                            rules: [
+                                { validator: validateAddress },
+                            ],
+                        })}
+                        error={!!getFieldError('photoaddress')}
+                        onErrorClick={() => {
+                            Toast.info(getFieldError('photoaddress'), 1);
+                        }}
+                        clear
+                        type="text"
+                        placeholder="请输入图片地址"
+                       
+                       
+                    >
+
+                    </InputItem>
                     <InputItem
                         {...getFieldProps('realname', {
                             rules: [
@@ -154,7 +140,7 @@ const Content2 = (props) => {
                         type="text"
                         placeholder="请输入姓名"
                        
-                        onBlur={changName}
+                       
                     >
 
                     </InputItem>
@@ -209,14 +195,14 @@ const Content2 = (props) => {
 
                     </InputItem>
                     <InputItem
-                        {...getFieldProps('verificationCode', {
+                        {...getFieldProps('uuid', {
                             rules: [
-                                { validator: validateCode },
+                                { validator: validateuuid },
                             ],
                         })}
-                        error={!!getFieldError('verificationCode')}
+                        error={!!getFieldError('uuid')}
                         onErrorClick={() => {
-                            Toast.info(getFieldError('verificationCode'), 1);
+                            Toast.info(getFieldError('uuid'), 1);
                         }}
                         clear
                         placeholder="请输入验证码"
@@ -240,7 +226,7 @@ const Content2 = (props) => {
                        
                     </InputItem>
                     <InputItem
-                        {...getFieldProps('replybewpassword', {
+                        {...getFieldProps('replynewpassword', {
                             rules: [
                                 { validator: validateRePassword },
                             ],

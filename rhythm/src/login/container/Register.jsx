@@ -2,23 +2,26 @@ import React, { Component } from 'react';
 import {NavBar, Icon } from 'antd-mobile';
 import Content2 from '../ui/Content2'
 import {withRouter} from 'react-router-dom'
-// import Content from '../container/Login1'
 
 @withRouter
 class Register2 extends Component {
     state={
-        idcard:'',
-        password:'',
-        phoneid:'',
-        photoaddress:'',
-        realname:'',
-        repalybewpassword:'',
-        status:'',
-        username:'',
-        uuid:'string'
+        role:'', 
+        status:this.props.location.state.roles,
     }
-    handleGetCode=()=>{
-        console.log(0);
+    roles=()=>{
+        switch(this.props.location.state.roles){
+            case 1: return'法官注册'
+            case 0:return'当事人注册'
+            case -1:return'报社注册'
+        }  
+    }
+
+    componentDidMount(){
+        let r=this.roles()
+        this.setState({
+            role:r,
+        })
     }
     render() {
         return (
@@ -39,8 +42,8 @@ class Register2 extends Component {
                         this.props.history.goBack()
                     }}
                    
-                >当事人注册</NavBar>
-                 <Content2 onGetCode={this.handleGetCode}></Content2>
+                >{this.state.role}</NavBar>
+                 <Content2 ></Content2>
             </>
         );
     }

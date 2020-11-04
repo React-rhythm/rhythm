@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import HomeUi from '../ui/HomeUi'
 import {connect} from 'react-redux'
 import {actionCreator as ac} from '@/newspaper/home'
-import {get} from '@/utils/http'
+import http from '@/utils/http'
 
 @connect(
   (state)=>{
@@ -25,7 +25,7 @@ class NewsHome extends Component {
     return this.props.changeNotice(type)
   }
   async componentDidMount(){
-    let result=await get({url:'/api/name'})
+    let result=await http.get({url:'/api/name'})
     this.setState({
       list:result.data
     })
