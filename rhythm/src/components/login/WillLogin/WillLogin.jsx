@@ -1,9 +1,9 @@
 import React from 'react';
 import {WillLRWrap} from './StyleWillLogin'
-const WillLogin =()=> {
+const WillLogin =(props)=> {
    
         return (
-            <WillLRWrap>
+            <WillLRWrap onClick={props.onLogin()}>
                 登录
             </WillLRWrap>
         );

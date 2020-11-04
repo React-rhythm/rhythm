@@ -4,6 +4,7 @@ const Container = styled.div`
     height:100%;
     display:flex;
     flex-direction:column;
+    overflow:hidden;
 `
 
 const HeaderWrap = styled.div`
@@ -26,7 +27,8 @@ const HeaderWrap = styled.div`
 `
 
 const TabBarWrap = styled.div`
-    /* flex:1; */
+    flex:1;
+    overflow-y: scroll;
     .am-tabs-default-bar-tab {
         .am-badge{
             font-size:0.14rem

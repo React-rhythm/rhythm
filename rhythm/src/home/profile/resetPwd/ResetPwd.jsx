@@ -8,7 +8,7 @@ import Show from "@a/images/zhengyan@2x.png"
 
 import {ListContainer} from"./StyledResetPwd"
 
-import {get,post} from "@u/http"
+import http from "@u/http"
 
 class Reset extends Component{
 
@@ -45,13 +45,8 @@ class Reset extends Component{
     }
     handlePutCodeClick = async() => {
         const phoneid = this.state.phoneid
-        const findPhoneRes = await get(`http://123.57.109.224:8081/userInfo/findPhone/${phoneid}`)
-        if(findPhoneRes.flag){
-            const result = await get(`http://123.57.109.224:8081/userInfo/pwdReset/${phoneid}`)
-            console.log(result)
-        }else{
-            alert("请输入正确的手机号")
-        }
+        const findPhoneRes = await http.get(`http://123.57.109.224:8081/userInfo/register/phone/${phoneid}`)
+        console.log(findPhoneRes)
     }
     handlePutPassword = () => {
         return (e) => {
@@ -76,7 +71,8 @@ class Reset extends Component{
         }
     }
     handleResetPwd = async() => {
-        const result = await post('http://123.57.109.224:8081/userInfo/pwdReset',this.state)
+        const token =window.localStorage.getItem("token")
+        const result = await http.post('http://123.57.109.224:8081/userInfo/pwdReset',{...this.state,token})
         console.log(result)
     }
     render(){

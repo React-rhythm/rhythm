@@ -1,7 +1,8 @@
-import {CHANGEPUSHNOTICE} from "./actionTypes"
+import {CHANGEPUSHNOTICE,CHANGEROLES} from "./actionTypes"
 
 const defaultState = {
-    isShow:true
+    isShow:true,
+    roles:"",
 }
 
 const reducer = (state = defaultState,action) => {
@@ -9,6 +10,10 @@ const reducer = (state = defaultState,action) => {
         case CHANGEPUSHNOTICE :
             return {
                 isShow:action.isShow
+            }
+        case CHANGEROLES :
+            return {
+                roles:action.roles
             }
         default:
             return state

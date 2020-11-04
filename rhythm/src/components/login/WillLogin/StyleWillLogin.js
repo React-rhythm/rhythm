@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const WillLRWrap=styled.div`
-    width: 2.69rem;
+    width: 100%;
     height: 0.4rem;
-    background: #94c4f2;
+    background: #2493ed;
     border-radius: 8px;
     font-size: 0.17rem;
     font-family: PingFang;

@@ -24,6 +24,7 @@ const ContentWrap= styled.div`
     .am-list:nth-child(5){
         .am-list-body{
             span{
+                width:40%;
                 text-align:right;
                 color:#2493ED;
                 font-size:0.14rem;
@@ -42,37 +43,12 @@ const ContentWrap= styled.div`
 const ContentWrap2= styled.div`
     padding:0  0.35rem;
     background-color:#fff;
-    .am-list{  
-        height:0.5rem;
-        border:none;
-        .am-list-body{
+    .count-setting{
+        width:100%;
+        .am-list-item .am-input-item .am-list-item-middle{
             height:0.5rem;
-            line-height:0.5rem;
-            display:flex;
-            justify-content:space-around;
-            border:none;
-            >input{
-                width:100%;
-                height:100%;
-                border:none;
-               
-            
-            }
-        }
-    }
-    .am-list:nth-child(5){
-        .am-list-body{
-            span{
-                text-align:right;
-                color:#2493ED;
-                font-size:0.14rem;
-            }
-        }
-    }
-    .am-list:nth-child(7){
-        .am-list-body{
-            input{
-                border-bottom:none;
+            .am-input-label .am-input-label-5{
+                
             }
         }
     }
@@ -104,6 +80,7 @@ const LoginInput1Wrap=styled.div`
     padding:0 0.5rem;
     justify-content: center;
     align-items: center;
+    background:#fff;
     .inp{
         width:100%;
         border-bottom:1px solid #d8d8d8;
@@ -114,7 +91,7 @@ const LoginInput1Wrap=styled.div`
             margin:0.30rem 0 0 0;
             border:none;
             height:0.27rem;
-            background:#f5f5f5;
+           
             
         }
         span{
@@ -147,6 +124,7 @@ const LoginInput2Wrap=styled.div`
     padding:0 0.5rem;
     justify-content: center;
     align-items: center;
+    
     .inp{
         width:100%;
         border-bottom:1px solid #d8d8d8;
@@ -182,10 +160,37 @@ const LoginInput2Wrap=styled.div`
         }
     }
 `
+
+const MessageLoginWrap=styled.div`
+    background:#fff;
+    flex:1;
+    padding:0 0.5rem;
+    justify-content: center;
+    align-items: center;
+    
+    
+    .inp{
+        
+        width:100%;
+        margin-bottom:0.1rem;
+        border:1px solid #d8d8d8;
+        >input{
+           
+  
+            color:999999;
+            font-size:0.14rem;
+            width:75%;
+            margin:0.1rem 0 ;
+            border:none;
+            height:0.27rem;
+        } 
+    }
+`
 export {
     ContentWrap,
     ContentWrap2,
     LoginIconWrap,
     LoginInput1Wrap,
     LoginInput2Wrap,
+    MessageLoginWrap
 }

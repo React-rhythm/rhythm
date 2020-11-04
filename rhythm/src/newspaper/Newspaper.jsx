@@ -96,7 +96,7 @@ class Home extends Component{
                 selected={this.props.selectedTab === 'blueTab'}
                 onPress={()=>this.props.changeTab("blueTab")}
               >
-                <Message></Message>
+                <Notice></Notice>
               </TabBar.Item>
               <TabBar.Item
                 icon={{ uri: `${Profile}` }}
