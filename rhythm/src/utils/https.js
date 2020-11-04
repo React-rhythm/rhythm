@@ -5,7 +5,7 @@ axios.defaults.timeout = 5000
 axios.interceptors.request.use(
   config => {
     config.headers = {
-      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+      'Content-Type': 'application/json;charset=utf-8',
       'token': localStorage.getItem('token') // 获取token缓存
     }
     return config
