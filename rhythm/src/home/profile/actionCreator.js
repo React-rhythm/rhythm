@@ -10,10 +10,10 @@ const loadMsgDataSync = (list) => {
 
 const loadMsgDataAsync = () => {
     return async (dispatch) => {
-      let result = await http.gett({
-        url: "http://localhost:8080/msgList"
-      })
-      dispatch(loadMsgDataSync(result.data.info))
+      // let result = await http.gett({
+      //   url: "http://localhost:8080/msgList"
+      // })
+      // dispatch(loadMsgDataSync(result.data.info))
     }
   }
 

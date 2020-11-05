@@ -20,10 +20,10 @@ const CaseImg = (props) => {
         let imgForm = new FormData()
         imgForm.append('imgFile',files[0].file)
         
-        http.post('http://10.9.70.205:8081/uploadImgToOSS',imgForm)
+        // http.post('http://10.9.70.205:8081/uploadImgToOSS',imgForm)
+        // .then(res => { handlePictureChange(res) })
+        http.post('http://10.9.70.205:8080/uploadImgToOSS',imgForm)
         .then(res => { handlePictureChange(res) })
-        // http.post('http://123.57.109.224:8081/uploadImgToOSS',imgForm)
-        // .then(res => { console.log(res) })
     })
 
     const getUrl = useCallback((index,file) => {

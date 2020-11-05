@@ -63,7 +63,7 @@ class MessageLogin extends Component {
           <form action="">
             <List >
               <InputItem
-                type="phone"
+                type="text"
                 placeholder="请输入手机号"
                 error={this.state.hasError}
                 onErrorClick={this.onErrorClick}

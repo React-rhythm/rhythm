@@ -10,7 +10,7 @@ import Phoneid from '../ui/Phoneid'
 import Party from '../ui/Party'
 import CaseId from '../ui/CaseId'
 import CaseImg from '../ui/CaseImg'
-import {post,get} from '../../../utils/http'
+import http from '../../../utils/https'
 
 import {ButtonWrap} from '../ui/publish'
 
@@ -31,7 +31,7 @@ class Publish extends Component {
 
   toPublish = () => {
     // http.post('')
-    console.log(this.props.form)
+    http.post('http://10.9.70.205:8080/lawyer/noticeUpload',JSON.stringify(this.props.form))
   }
   
   cancel = () => {
