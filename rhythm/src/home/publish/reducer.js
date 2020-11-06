@@ -5,7 +5,9 @@ const defaultState = {
         region : '',
         idcard : '',
         phoneid : '',
-        party : ''
+        party : '',
+        picture : '',
+        caseid : ''
     }
   }
 
@@ -51,6 +53,20 @@ const defaultState = {
                 form:{
                     ...state.form,
                     party:action.formParty
+                }
+            }
+        case 'changeFormPicture':
+            return {
+                form:{
+                    ...state.form,
+                    picture:action.formPicture
+                }
+            }
+        case 'changeFormCaseid':
+            return {
+                form:{
+                    ...state.form,
+                    caseid:action.formCaseid
                 }
             }
         default:

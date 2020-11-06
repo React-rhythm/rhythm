@@ -17,7 +17,7 @@ const LitigantUi = (props) => {
                 radius={0.06}
             ></Search>
             {
-                true ? <Bell></Bell> : null
+                true ? <Bell {...props}></Bell> : null
             }
             
             <Swiper></Swiper>

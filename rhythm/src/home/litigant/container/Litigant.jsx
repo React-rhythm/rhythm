@@ -16,6 +16,7 @@ import MyProfile from "@/home/profile/Profile"
 import { SearchComp } from '@/newspaper/search/'
 
 import LitigantUi from "../ui/LitigantUi"
+import { withRouter } from 'react-router-dom'
 
 @connect(state=>({
   selectedTab:state.newspaper.tabType,
@@ -28,6 +29,7 @@ import LitigantUi from "../ui/LitigantUi"
     dispatch(acc.loadMsgDataAsync())
   }
 }))
+@withRouter
 class Litigant extends Component{
     state = {
         selectedTab: 'redTab',
@@ -95,7 +97,7 @@ class Litigant extends Component{
                 selected={this.props.selectedTab === 'yellowTab'}
                 onPress={()=> this.props.changeTab("yellowTab")}
               >
-                <MyProfile></MyProfile>
+                <MyProfile {...this.props}></MyProfile>
               </TabBar.Item>
             </TabBar>
           </div>

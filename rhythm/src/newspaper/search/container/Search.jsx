@@ -9,9 +9,9 @@ const [value,setValue] = useState('')
   useEffect(() => {
     async function loadData(){
       // console.log(value)
-      let result=await http.get({
-        url:'/api/name'
-      })
+      let result=await http.gett(
+        '/api/name'
+      )
       setList(result.data)
     }
     loadData()

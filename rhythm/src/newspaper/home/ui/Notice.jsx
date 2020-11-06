@@ -14,13 +14,14 @@ const tabs = [
 
 
 const Notice = (props) => {
+  console.log(props)
   const {push} =useHistory()
   const noticeType = useSelector(state => state.newspaper.noticeType)
   const dispatch = useDispatch()
   const gotoDetail=(id)=>{
     return ()=>{
       push({
-        pathname:'/notice',
+        pathname:'/noticedetail',
         state:{id}
       })
     }

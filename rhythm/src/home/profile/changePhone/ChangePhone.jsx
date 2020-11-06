@@ -6,14 +6,42 @@ import Header from "@c/notice/Header.jsx"
 import Phone from "@a/images/iphone@2x.png"
 import {Container} from "./StyledChangePhone"
 
+import http from "@u/http"
 
 class Change extends Component{
-
-    handleGetCodeClick = () => {
-        return () => {
-            console.log("验证码")
+    
+    state={
+        phoneid:"",
+        uuid:"",
+    }
+    handlePutPhoneKeyUp = () => {
+        return (e) => {
+            this.setState({
+                phoneid:e
+            })
         }
     }
+    handlePutCode = () => {
+        return (e) => {
+            this.setState({
+                uuid:e
+            })
+        }
+    }
+    handleGetCodeClick = async() => {
+        const phoneid = this.state.phoneid
+        const findPhoneRes = await http.get(`http://123.57.109.224:8081/userInfo/register/phone/${phoneid}`)
+        console.log(findPhoneRes)
+        // if(!findPhoneRes.flag){
+        //     alert("请输入正确的手机号")
+        // }
+    }
+    handleResetPhone = async() => {
+        const token =window.localStorage.getItem("token")
+        const result = await http.post('http://123.57.109.224:8081/userInfo/phoneUpdate',{...this.state,token})
+        console.log(result)
+    }
+
     render(){
         const { getFieldProps } = this.props.form;
         return (
@@ -32,16 +60,20 @@ class Change extends Component{
                         {...getFieldProps('phone')}
                         type="phone"
                         placeholder="请输入手机号"
+                        value={this.state.phoneid}
+                        onChange={this.handlePutPhoneKeyUp()}
                     ></InputItem>
                     <InputItem
                         {...getFieldProps('code')}
                         type="code"
                         placeholder="请输入验证码"
-                        extra={<div onClick={this.handleGetCodeClick()}>获取验证码</div>}
+                        value={this.state.uuid}
+                        onChange={this.handlePutCode()}
+                        extra={<div onClick={this.handleGetCodeClick}>获取验证码</div>}
                     ></InputItem>
                     </List>
-                    <Button type="primary" >确认</Button>
-                    <div className="remind">一个月内只允许更换一次手机号</div>
+                    <Button type="primary" onClick={this.handleResetPhone}>确认</Button>
+                    <div className="remind" >一个月内只允许更换一次手机号</div>
                 </Container>
             </>
         )

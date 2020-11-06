@@ -5,6 +5,7 @@ import { Container } from '../ui/SytledDetails'
 import Img from '../ui/Img'
 import Content from '../ui/Content'
 class Detail extends Component {
+    
     render() {
         return (
            

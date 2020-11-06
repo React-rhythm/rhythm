@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-
+import {connect} from 'react-redux'
 import {ProfileContentWrap} from "../StyledProfile"
 
 import {withRouter} from "react-router-dom"
@@ -8,10 +8,20 @@ import { List,Modal} from 'antd-mobile';
 const Item = List.Item;
 const alert = Modal.alert;
 
+
+
+@connect(state=>({
+    roles:state.notice.roles
+  }))
 @withRouter
 class ProfileContent extends Component{
     state = {
         disabled: false,
+      }
+      handleQuitLogin = () => {
+        console.log(this.props.roles)
+        window.localStorage.removeItem("token")
+        this.props.history.push("/login",{roles : this.props.roles})
       }
     render() {
         return (<ProfileContentWrap>
@@ -35,7 +45,7 @@ class ProfileContent extends Component{
               onClick={() =>
                 alert('提示', '确认退出登录?', [
                   { text: '取消', onPress: () => console.log('cancel') },
-                  { text: '确定', onPress: () => console.log('ok') },
+                  { text: '确定', onPress: this.handleQuitLogin },
                 ])
               }
               arrow="horizontal"

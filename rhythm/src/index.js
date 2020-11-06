@@ -10,6 +10,9 @@ import App from "./App"
 
 import "@a/styles/reset.css"
 import "@a/iconfont/iconfont.css"
+
+import registerServiceWorker from './registerServiceWorker';
+
 ReactDom.render(
   <Provider store={store}>
     <Router>
@@ -17,4 +20,5 @@ ReactDom.render(
     </Router>
   </Provider>,
   document.querySelector("#root")
-)
+);
+registerServiceWorker();

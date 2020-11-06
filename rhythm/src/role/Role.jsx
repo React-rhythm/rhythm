@@ -35,11 +35,11 @@ class role extends Component {
         history.push('/register',{roles : this.state.roles})
         // console.log(this.state.roles);
         // if(this.state.roles == 1){
-        //     history.push('/register',{roles : this.state.roles})
+        //     history.push('/lawyer',{roles : this.state.roles})
         // }else if (this.state.roles == 0){
-        //     history.push('/register0',{roles : this.state.roles})
+        //     history.push('/litigant',{roles : this.state.roles})
         // }else{
-        //     history.push('/register-1',{roles : this.state.roles})
+        //     history.push('/home',{roles : this.state.roles})
         // }
     }
     logIn = () => {
@@ -56,7 +56,7 @@ class role extends Component {
     componentDidUpdate(){
         // console.log(this.state.currentX)
         // console.log(this.state.currentY)
-        console.log(this.state.roles);
+        // console.log(this.state.roles);
     }
 
     render() {

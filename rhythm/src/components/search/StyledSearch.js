@@ -40,6 +40,9 @@ const InnerContainer = border(
         padding: 0;
         color:#fff;
     }
+    .am-list-item .am-input-control  input::-webkit-input-placeholder {
+         color: #fff;
+    }
   `
 )
 

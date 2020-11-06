@@ -88,16 +88,33 @@ const LoginInput1Wrap=styled.div`
             color:999999;
             font-size:0.14rem;
             width:75%;
-            margin:0.30rem 0 0 0;
+            margin:0.15rem 0 0 0;
             border:none;
             height:0.27rem;
-           
             
         }
         span{
             text-align:right;
             color:#94c4f2;
         }
+    }
+    .loginshow{
+        color:red;
+        width:100%;
+        display: inline;
+        height:0.14rem;
+        line-height:0.14rem;
+        font-size:0.14rem
+
+    }
+    .codeshow{
+        color:red;
+        width:100%;
+        display: inline;
+        height:0.14rem;
+        line-height:0.14rem;
+        font-size:0.14rem
+
     }
         
     >div:last-child{

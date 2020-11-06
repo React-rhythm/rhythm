@@ -1,5 +1,6 @@
 import React,{Component} from 'react'
 import { connect } from 'react-redux'
+import {withRouter} from "react-router-dom"
 import {actionCreator as ac} from '@/newspaper/home'
 import {actionCreator as acc} from "@h/"
 import {
@@ -19,6 +20,8 @@ import Publish from '@p/container/Publish'
 import { SearchComp } from '../newspaper/search'
 import LitigantUi from "@/home/litigant/ui/LitigantUi"
 
+
+
 @connect(state=>({
   selectedTab:state.newspaper.tabType,
   list:state.MsgDetail.list
@@ -30,6 +33,7 @@ import LitigantUi from "@/home/litigant/ui/LitigantUi"
     dispatch(acc.loadMsgDataAsync())
   }
 }))
+@withRouter
 class Lawyer extends Component{
     state = {
         selectedTab: 'redTab',
@@ -107,7 +111,7 @@ class Lawyer extends Component{
                 selected={this.props.selectedTab === 'yellowTab'}
                 onPress={()=> this.props.changeTab("yellowTab")}
               >
-                <MyProfile></MyProfile>
+                <MyProfile {...this.props}></MyProfile>
               </TabBar.Item>
             </TabBar>
           </div>

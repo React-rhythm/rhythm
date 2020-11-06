@@ -1,107 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import {  List, InputItem, Button, Toast } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import {ContentWrap2} from './StyledLogin'
-import http from '../../utils/http'
+import {validateAddress, validateID,validateName,validatePassword,validatePhone,validateRePassword,validateuuid,validateuserName} from './useChangeLogin'    
+
 const Content2 = (props) => {
-   
     const { getFieldProps, getFieldError } = props.form;
-    const [Password, setPassword] = useState('');
-    const onSubmit = () => {
-        props.form.validateFields({ force: true }, (error) => {
-            if (!error) {
-                let register=props.form.getFieldsValue()
-                let userLogin={
-                    ...register,
-                    status:"1",
-                }
-                const res = http.post('http://123.57.109.224:8081/userInfo/register',JSON.stringify(userLogin))
-            } else {
-                console.log('Validation failed');
-            }
-        });
-    }
-    const validateAddress = (rule, value, callback) => {
-        if (value && value.length >= 2) {
-            callback();
-          
-        } else if (value.length === 0) {
-            callback(new Error('请输入用户名'));
-        } else {
-            callback(new Error('用户名最少2位'));
-        }
-    }
-    const validateuserName = (rule, value, callback) => {
-        if (value && value.length >= 2) {
-            callback();
-          
-        } else if (value.length === 0) {
-            callback(new Error('请输入用户名'));
-        } else {
-            callback(new Error('用户名最少2位'));
-        }
-    }
-    const validateName = (rule, value, callback) => {
-        if (value && value.length >= 2) {
-          
-            callback();
-           
-        } else if (value.length === 0) {
-            callback(new Error('请输入姓名'));
-        } else {
-            callback(new Error('姓名不合法'));
-        }
-    }
-    const validateID = (rule, value, callback) => {
-        if (value && value.length === 18) {
-            callback();
-        } else if (value.length === 0) {
-            callback(new Error('请输入身份证号'));
-        } else {
-            callback(new Error('身份证号不合法'));
-        }
-    }
-    const validatePhone = (rule, value, callback) => {
-        
-        if (/^1[34578]\d{9}$/.test(value)) {
-            callback();
-        } else if (value.length === 0) {
-            callback(new Error('请输入手机号'));
-        } else {
-            callback(new Error('手机号不合法'));
-        }
-    }
-    const validateuuid= (rule, value, callback) => {
-        if (value && value.length === 4) {
-            callback();
-        } else if (value.length === 0) {
-            callback(new Error('验证码不能为空'));
-        } else {
-            callback(new Error('验证码不正确'));
-        }
-    }
-
-    const validatePassword = (rule, value, callback) => {
-        if (value && value.length >= 8) {
-            setPassword(value)
-            callback()
-        } else if (value.length === 0) {
-            callback(new Error('密码不能为空'));
-        } else {
-            callback(new Error('密码最少为8位'))
-        }
-    }
-    const validateRePassword = (rule, value, callback) => {
-        if (value && value === Password) {
-            callback()
-        } else if (value.length === 0) {
-            callback(new Error('请再此输入密码'));
-        } else {
-            callback(new Error('两次密码不一致'))
-        }
-    }
-
-    
     return (
         <>   
             <ContentWrap2>
@@ -124,7 +28,6 @@ const Content2 = (props) => {
                        
                        
                     >
-
                     </InputItem>
                     <InputItem
                         {...getFieldProps('realname', {
@@ -139,8 +42,7 @@ const Content2 = (props) => {
                         clear
                         type="text"
                         placeholder="请输入姓名"
-                       
-                       
+                        onBlur={props.onRealName}
                     >
 
                     </InputItem>
@@ -157,6 +59,7 @@ const Content2 = (props) => {
                         clear
                         type="text"
                         placeholder="请输入用户名"
+                        onBlur={props.onName}
                     >
 
                     </InputItem>
@@ -175,6 +78,7 @@ const Content2 = (props) => {
                         type="number"
                         placeholder="请输入身份证号码"
                         maxLength='18'
+                        onBlur={props.onIdCard}
                     >
 
                     </InputItem>
@@ -191,6 +95,8 @@ const Content2 = (props) => {
                         clear
                         type="number"
                         placeholder="手机号"
+                        id="phoneid"
+                        onBlur={props.onPhoneId}
                     >
 
                     </InputItem>
@@ -206,6 +112,7 @@ const Content2 = (props) => {
                         }}
                         clear
                         placeholder="请输入验证码"
+                       
                     >
                         <span className="yanzhengma" onClick={props.onGetCode}>发送验证码</span>
                     </InputItem>

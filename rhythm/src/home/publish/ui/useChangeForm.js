@@ -35,6 +35,14 @@ const useChangeForm = () => {
             dispatch(ac.changeFormParty(partyInfo))
       }, [dispatch])
 
+    const handlePictureChange = useCallback((partyInfo) => {
+            dispatch(ac.changeFormPicture(partyInfo))
+      }, [dispatch])
+
+    const handleCaseidChange = useCallback((partyInfo) => {
+            dispatch(ac.changeFormCaseid(partyInfo))
+      }, [dispatch])
+
     return {
         casetype,
         court,
@@ -47,7 +55,9 @@ const useChangeForm = () => {
         handleRegionChange,
         handleIdcardChange,
         handlePhoneidChange,
-        handlePartyChange
+        handlePartyChange,
+        handlePictureChange,
+        handleCaseidChange,
     }
 }
 

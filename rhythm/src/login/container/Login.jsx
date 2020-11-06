@@ -4,8 +4,17 @@ import LoginIcon from '../ui/LoginIcon'
 import WillLogin from '../ui/LoginInput1'
 import http from '../../utils/http'
 
-// import {connect} from 'react-redux'
-// @connect()
+import {connect} from 'react-redux'
+import {actionCreator as ac} from "@h/content"
+
+
+@connect(state=>({
+    roles:state.notice.roles
+  }),dispatch=>({
+    changeRole(roles){
+      dispatch(ac.changeRoles(roles))
+    }
+  }))
 class Login1 extends Component {
     state = {
         role: '',
@@ -15,6 +24,9 @@ class Login1 extends Component {
         phoneid: '',
         password: '',
         status: this.props.location.state.roles,
+        loginshow:'',
+        codeshow:''
+
     }
 
     roles = () => {
@@ -31,7 +43,7 @@ class Login1 extends Component {
     }
     handleRegister1 = () => {
         return () => {
-            this.props.history.push('/register', { status: this.props.location.state.roles })
+            this.props.history.push('/register', { roles: this.props.location.state.roles })
         }
     }
     handleForget = () => {
@@ -53,19 +65,17 @@ class Login1 extends Component {
                 console.log(res);
                 let token=res.token
                 localStorage.setItem('token',token)
+                if(token){
+                    this.props.changeRole(this.state.status)
+                }
                 if(this.state.status===1){
-                    this.props.history.push('/laywer',{
-                        roles: 1,
-                        userLogin:this.state.username
-                    })
+                    this.props.history.push('/laywer',{roles: 1,username:this.state.username})
                 }else if(this.state.status===0){
-                    this.props.history.push('/litigant',{roles: 0})
+                    this.props.history.push('/litigant',{roles: 0,username:this.state.username})
                 }else{
-                    this.props.history.push('/home',{roles: -1})
+                    this.props.history.push('/home',{roles: -1,username:this.state.username})
                 }
             })
-           
-           
         }
 
     }
@@ -73,6 +83,18 @@ class Login1 extends Component {
         this.setState({
             username: e.target.value
         })
+        let user=e.target.value
+        if(user===""){
+           this.setState({
+            loginshow:'用户名不能为空'
+           })
+        }else{
+            this.setState({
+                loginshow:''
+               })   
+        }
+
+        
     }
     handlemima = (e) => {
 
@@ -80,6 +102,18 @@ class Login1 extends Component {
             mima: true,
             password: e.target.value
         })
+
+        let password=e.target.value
+        if(password===""){
+           this.setState({
+            codeshow:'密码不能为空'
+           })
+        }else{
+            this.setState({
+                codeshow:''
+               })   
+        }
+
     }
     componentDidMount() {
         let r = this.roles()
@@ -107,7 +141,7 @@ class Login1 extends Component {
                     onLeftClick={() => { this.props.history.goBack() }}
                 >{this.state.role}</NavBar>
                 <LoginIcon></LoginIcon>
-                <WillLogin onMessage={this.handleMessage} onRegister1={this.handleRegister1} onForget={this.handleForget} onLogin={this.handleLogin} onIdcard={this.handleIdcard} onMima={this.handlemima}></WillLogin>
+                <WillLogin state={this.state} onMessage={this.handleMessage} onRegister1={this.handleRegister1} onForget={this.handleForget} onLogin={this.handleLogin} onIdcard={this.handleIdcard} onMima={this.handlemima}></WillLogin>
 
             </div>
         );
