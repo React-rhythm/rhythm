@@ -4,6 +4,17 @@ import Content2 from '../ui/Content2'
 import {withRouter} from 'react-router-dom'
 import Phoneid from '../../home/publish/ui/Phoneid';
 import http from '../../utils/http'
+
+import {connect} from 'react-redux'
+import {actionCreator as ac} from "@h/changePhone"
+
+@connect(state=>({
+    phoneid:state.changephone.phoneid
+  }),dispatch=>({
+    getphoneid(phoneid){
+        dispatch(ac.getphoneid(phoneid))
+    }
+  }))
 @withRouter
 class Register2 extends Component {
     state={
@@ -18,9 +29,10 @@ class Register2 extends Component {
         }  
     }
     handleGetCode(){
-        let Phoneid=document.querySelector('#phoneid').value
-        console.log(Phoneid);
-        http.get('http://10.9.70.205:8080/userInfo/register/phone/'+Phoneid)
+        let phoneid=document.querySelector('#phoneid').value
+        this.props.getphoneid(phoneid)
+        console.log(phoneid);
+        http.get('http://10.9.70.205:8080/userInfo/register/phone/'+phoneid)
     }
     componentDidMount(){
         let r=this.roles()

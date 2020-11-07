@@ -33,14 +33,6 @@ class role extends Component {
     signIn = () => {
         let { history } = this.props
         history.push('/register',{roles : this.state.roles})
-        // console.log(this.state.roles);
-        // if(this.state.roles == 1){
-        //     history.push('/lawyer',{roles : this.state.roles})
-        // }else if (this.state.roles == 0){
-        //     history.push('/litigant',{roles : this.state.roles})
-        // }else{
-        //     history.push('/home',{roles : this.state.roles})
-        // }
     }
     logIn = () => {
         let { history } = this.props

@@ -8,7 +8,7 @@ import {connect} from 'react-redux'
 import {actionCreator as ac} from "@h/content"
 
 @connect(state=>({
-    roles:state.notice.roles
+    roles:state.notice.roles,
   }),dispatch=>({
     changeRole(roles){
       dispatch(ac.changeRoles(roles))
@@ -58,7 +58,6 @@ class Login1 extends Component {
           
             await http.post('http://10.9.70.205:8080/userInfo/userLogin',JSON.stringify(userLogin))
             .then(res=>{
-                console.log(res);
                 let token=res.token
                 localStorage.setItem('token',token)
                 if(token){
