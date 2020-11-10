@@ -41,16 +41,28 @@ const ContentWrap= styled.div`
 `
 
 const ContentWrap2= styled.div`
+    margin-top:0.05rem;
     padding:0  0.35rem;
     background-color:#fff;
     .count-setting{
         width:100%;
-        .am-list-item .am-input-item .am-list-item-middle{
-            height:0.5rem;
-            .am-input-label .am-input-label-5{
-                
+        .am-list{
+            .am-list-body{
+                .am-list-item .am-input-item .am-list-item-middle{
+                height:0.5rem;
+                    .am-list-line{
+                        .am-input-control{
+                            input{
+                            font-size:0.14rem;
+                            }
+                        
+                        }
+                    }
+            
+                }
             }
         }
+       
     }
 `
 

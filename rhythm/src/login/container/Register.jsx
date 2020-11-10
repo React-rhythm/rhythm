@@ -10,7 +10,7 @@ class Register2 extends Component {
         status:this.props.location.state.roles,
         phoneid:'',
         uuid:'',
-        flag:0
+        flag:""
     }
     roles=()=>{
         switch(this.props.location.state.roles){
@@ -19,28 +19,28 @@ class Register2 extends Component {
             case -1:return'报社注册'
         }  
     }
-
+   
     handleCode=()=>{
         let phoneid=document.getElementById('phoneid').value
        
-        let uuid=http.get('http://123.57.109.224:8081/userInfo/register/phone/'+phoneid)
+        let uuid=http.get(' http://123.57.109.224:8081/userInfo/register/phone/'+phoneid)
     }
-    handlePhoneId=(e)=>{
-        http.get('http://123.57.109.224:8081/userInfo/register/findPhone')
+   handlePhoneId=(e)=>{
+       http.get('http://123.57.109.224:8081/userInfo/register/phone/'+e)
         .then(res=>{
-            if(res.flag===1){
-                this.setState({
-                    flag:1
-                })
-            }
-        })       
+            if(res.flag===0){
+                alert('手机号已被注册')
+            } 
+        })    
+        
     }
     handleUserName=()=>{
-        http.get('http://123.57.109.224:8081/userInfo/register/findPhone')
+        http.get('http://123.57.109.224:8081/userInfo/findPhone')
         .then(res=>{
-            if(res.flag===1){
+            if(res.flag===0){
+               
                 this.setState({
-                    flag:1
+                    flag:0
                 })
             }
         })       

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavBar, Icon } from 'antd-mobile';
+import { NavBar, Icon ,Modal} from 'antd-mobile';
 import LoginIcon from '../ui/LoginIcon'
 import WillLogin from '../ui/LoginInput1'
 import http from '../../utils/http'
@@ -7,6 +7,7 @@ import http from '../../utils/http'
 import {connect} from 'react-redux'
 import {actionCreator as ac} from "@h/content"
 
+const alert=Modal.alert
 
 @connect(state=>({
     roles:state.notice.roles
@@ -28,7 +29,18 @@ class Login1 extends Component {
         codeshow:''
 
     }
-
+     showAlert = () => {
+        const alertInstance = alert('律动', '账号或者密码错误', [
+          { text: '取消', onPress: () => console.log('取消'), style: 'default' },
+          { text: '确认', onPress: () => console.log('确认') },
+        ]);
+        setTimeout(() => {
+          // 可以调用close方法以在外部close
+          console.log('auto close');
+          alertInstance.close();
+        }, 500000);
+      };
+    
     roles = () => {
         switch (this.props.location.state.roles) {
             case 1: return { roles: '法官登录' }
@@ -37,8 +49,8 @@ class Login1 extends Component {
         }
     }
     handleMessage = () => {
-        return async () => {
-            this.props.history.push('/MessageLogin')
+        return  () => {
+            this.props.history.push('/MessageLogin',{status:this.state.status})
         }
     }
     handleRegister1 = () => {
@@ -48,33 +60,38 @@ class Login1 extends Component {
     }
     handleForget = () => {
         return () => {
-            this.props.history.push('/MessageLogin')
+            this.props.history.push('/MessageLogin',{status:this.state.status})
         }
     }
     handleLogin = () => {
-        return async() => {
+        return () => {
 
             let userLogin = {
                 username: this.state.username,
                 password: this.state.password,
                 status: this.state.status
             }
-          
-            await http.post('http://123.57.109.224:8081/userInfo/userLogin',JSON.stringify(userLogin))
+           
+             http.post('http://123.57.109.224:8081/userInfo/userLogin',JSON.stringify(userLogin))
             .then(res=>{
                 console.log(res);
                 let token=res.token
+                let flag=res.flag
                 localStorage.setItem('token',token)
                 if(token){
                     this.props.changeRole(this.state.status)
                 }
-                if(this.state.status===1){
+                if(this.state.status===1&&flag===0){
                     this.props.history.push('/laywer',{roles: 1,username:this.state.username})
-                }else if(this.state.status===0){
+                }else if(this.state.status===0&&flag===0){
                     this.props.history.push('/litigant',{roles: 0,username:this.state.username})
-                }else{
+                }else if(this.state.status===-1&&flag===0){
                     this.props.history.push('/home',{roles: -1,username:this.state.username})
+                }else{
+                    
                 }
+            }).catch(err =>{
+                this.showAlert()
             })
         }
 

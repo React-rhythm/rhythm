@@ -7,10 +7,13 @@ const Content=()=> {
             <Content1>
                 <p><span>公告类别:</span><input type="text"/></p>
                 <p><span>法院名称:</span><input type="text"/></p>
-                <p><span>案件号:</span><input type="text"/></p>
-                <p><span>当事人:</span><input type="text"/></p>
+                <p><span>案&ensp;件&ensp;号:</span><input type="text"/></p>
+                <p><span>当&ensp;事&ensp;人:</span><input type="text"/></p>
                 <p><span>公告进展:</span><input type="text"/></p>
-                <WillPay></WillPay>
+                {
+                    // flag===1?<WillPay></WillPay>:(flag===0?'已支付':'未支付')
+                }
+                
             </Content1>
 
 

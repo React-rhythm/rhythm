@@ -2,20 +2,7 @@ import { useState} from 'react';
 import http from '../../utils/http'
 const [Password, setPassword] = useState('');
 
-const onSubmit = () => {
-    props.form.validateFields({ force: true }, (error) => {
-        if (!error) {
-            let register=props.form.getFieldsValue()
-            let userLogin={
-                ...register,
-                status:"1",
-            }
-            const res = http.post('http://123.57.109.224:8081/userInfo/register',JSON.stringify(userLogin))
-        } else {
-            console.log('Validation failed');
-        }
-    });
-}
+
 const validateAddress = (rule, value, callback) => {
     if (value && value.length >= 2) {
         callback();
@@ -55,18 +42,7 @@ const validateID = (rule, value, callback) => {
         callback(new Error('身份证号不合法'));
     }
 }
-const validatePhone = (rule, value, callback) => {
-    console.log(props.state.flag);
-    if(props.state.flag===1){
-        callback(new Error('手机号存在'))
-    }else if (/^1[34578]\d{9}$/.test(value)) {
-        callback();
-    } else if (value.length === 0) {
-        callback(new Error('请输入手机号'));
-    }else{
-        callback(new Error('手机号不合法'));
-    }
-}
+
 const validateuuid= (rule, value, callback) => {
     
     if (value && value.length === 4) {
@@ -106,5 +82,6 @@ export{
     validatePhone,
     validateRePassword,
     validateuuid,
-    validateuserName
+    validateuserName,
+    onSubmit
 }

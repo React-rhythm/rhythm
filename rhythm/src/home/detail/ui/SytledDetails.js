@@ -4,6 +4,7 @@ const Container=styled.div`
      padding:.15rem; 
     background:#fff;
     margin-top:0.1rem;
+    padding-bottom:0;
 `
 const Img=styled.div`
     height:1.65rem;
@@ -20,9 +21,9 @@ const Img=styled.div`
         
        
         img{
-            margin-left:0.25rem;
+            margin-left:0.20rem;
             height:1.06rem;
-            width:.8rem;
+            width:.79rem;
         }
     }
     
@@ -35,7 +36,7 @@ const Content1 =styled.div`
     padding:0 .15rem; 
     p{
         
-        line-height:0.5rem;
+        line-height:0.4rem;
         span{
             display:inline-block;
             width:0.69rem;
@@ -43,7 +44,8 @@ const Content1 =styled.div`
             font-family: PingFang;
             font-weight: 400;
             color: #333333;
-            text-align: justify;
+            word-break:keep-all;
+            white-space:nowrap;
             /* overflow:hidden;
             >span{
                 width:100%;

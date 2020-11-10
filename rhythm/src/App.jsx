@@ -24,7 +24,7 @@ import MsgDetail from "./components/msgdetail/MsgDetail"
 import Lawyer from "@/lawyer/Lawyer"
 import Litigant from "@/home/litigant/container/Litigant"
 import ChatRoom from "@c/chatRoom/ChatRoom"
-
+import Details from "./home/detail/container/Detail"
 
 
 import Guide from '@g/Guide.jsx'
@@ -32,7 +32,7 @@ import Role from '@r/Role.jsx'
 import Pay from './home/pay/container/Pay'
 
 import { Newspaper } from "./newspaper"
-
+import Success from './goback/container/goback'
 
 class App extends Component{
     render(){
@@ -66,8 +66,8 @@ class App extends Component{
                 <Route path='/laywer' component={Lawyer}></Route>
                 <Route path='/litigant' component={Litigant}></Route>
                 <Route path='/register' component={Register}></Route>
-                
-                
+                <Route path='/success' component={Success}></Route>
+                <Route path='/details' component={Details}></Route>
                 <Redirect from="/" to="/Guide"></Redirect>
             </Switch>
             
