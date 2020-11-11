@@ -2,24 +2,29 @@ import React, { useState } from 'react';
 import { List, InputItem, Button, Toast } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { ContentWrap2 } from './StyledLogin'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
+
 import http from '../../utils/http'
+
 
 const Content2 = (props) => {
     const { getFieldProps, getFieldError } = props.form;
     const [Password, setPassword] = useState('');
+   
     const history = useHistory();
- 
+
+
+    
     const onSubmit = () => {
-        history.push('/success',{roles:props.state.status})
+        history.push('/success', { roles: props.state.status })
         props.form.validateFields({ force: true }, (error) => {
             if (!error) {
-                let register=props.form.getFieldsValue()
-                let userLogin={
+                let register = props.form.getFieldsValue()
+                let userLogin = {
                     ...register,
-                    status:"1",
+                    status: "1",
                 }
-                const res = http.post('http://123.57.109.224:8081/userInfo/register',JSON.stringify(userLogin))
+                const res = http.post('http://123.57.109.224:8081/userInfo/register', JSON.stringify(userLogin))
             } else {
                 console.log('Validation failed');
             }
@@ -67,17 +72,17 @@ const Content2 = (props) => {
     }
     const validatePhone = (rule, value, callback) => {
         console.log(props.state.flag);
-        if(props.state.flag===0){
+        if (props.state.flag === 0) {
             callback(new Error('手机号存在'))
-        }else if (/^1[34578]\d{9}$/.test(value)) {
+        } else if (/^1[34578]\d{9}$/.test(value)) {
             callback();
         } else if (value.length === 0) {
             callback(new Error('请输入手机号'));
-        }else{
+        } else {
             callback(new Error('手机号不合法'));
         }
     }
-    
+
     const validateuuid = (rule, value, callback) => {
 
         if (value && value.length === 4) {
@@ -129,7 +134,7 @@ const Content2 = (props) => {
                             type="text"
                             placeholder="请输入图片地址"
                             style={{
-                                fontSize:"0.14rem"
+                                fontSize: "0.14rem"
                             }}
 
                         >
@@ -149,7 +154,7 @@ const Content2 = (props) => {
                             placeholder="请输入姓名"
                             onBlur={props.onRealName}
                             style={{
-                                fontSize:"0.14rem"
+                                fontSize: "0.14rem"
                             }}
                         >
 
@@ -169,7 +174,7 @@ const Content2 = (props) => {
                             placeholder="请输入用户名"
                             onBlur={props.onName}
                             style={{
-                                fontSize:"0.14rem"
+                                fontSize: "0.14rem"
                             }}
                         >
 
@@ -191,7 +196,7 @@ const Content2 = (props) => {
                             maxLength='18'
                             onBlur={props.onIdCard}
                             style={{
-                                fontSize:"0.14rem"
+                                fontSize: "0.14rem"
                             }}
                         >
 
@@ -212,7 +217,7 @@ const Content2 = (props) => {
                             id="phoneid"
                             onBlur={props.onPhoneId}
                             style={{
-                                fontSize:"0.14rem"
+                                fontSize: "0.14rem"
                             }}
                         >
 
@@ -230,11 +235,18 @@ const Content2 = (props) => {
                             clear
                             placeholder="请输入验证码"
                             style={{
-                                fontSize:"0.14rem"
+                                fontSize: "0.14rem"
                             }}
 
                         >
-                            <span className="yanzhengma" onClick={props.onGetCode}>发送验证码</span>
+                            {
+                                    props.state.liked
+                                    ?
+                                    <span className='yanzhengma' onClick={props.onGetCode} >获取验证码</span>
+                                    :
+                                    <span style={{ fontSize: "0.14rem" }}>{props.state.seconds + ' s 后发送'}</span>
+                            }
+                            
                         </InputItem>
                         <InputItem
                             {...getFieldProps('password', {
@@ -250,7 +262,7 @@ const Content2 = (props) => {
                             type="password"
                             placeholder="请输入密码"
                             style={{
-                                fontSize:"0.14rem"
+                                fontSize: "0.14rem"
                             }}
                         >
 
@@ -269,7 +281,7 @@ const Content2 = (props) => {
                             type="password"
                             placeholder="确认密码"
                             style={{
-                                fontSize:"0.14rem"
+                                fontSize: "0.14rem"
                             }}
                         >
 

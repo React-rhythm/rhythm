@@ -10,7 +10,10 @@ class Register2 extends Component {
         status:this.props.location.state.roles,
         phoneid:'',
         uuid:'',
-        flag:""
+        flag:"",
+        btnText:'获取验证码',
+        seconds: 60, //称数初始化
+        liked: true //获取验证码文案
     }
     roles=()=>{
         switch(this.props.location.state.roles){
@@ -20,7 +23,32 @@ class Register2 extends Component {
         }  
     }
    
+    showAlert = () => {
+        const alertInstance = alert('律动', '账号或者验证码错误', [
+            { text: '取消', onPress: () => console.log('取消'), style: 'default' },
+            { text: '确认', onPress: () => console.log('确认') },
+        ]);
+        setTimeout(() => {
+            // 可以调用close方法以在外部close
+            console.log('auto close');
+            alertInstance.close();
+        }, 500000);
+    };
     handleCode=()=>{
+        let siv = setInterval(() => {
+            this.setState({
+              liked:false,
+              seconds:this.state.seconds - 1,  
+            },() => {
+              if(this.state.seconds == 0){
+                clearInterval(siv);
+                this.setState({
+                  liked:true,
+                  secounds:60
+                })
+              }
+            });  
+          },1000);  
         let phoneid=document.getElementById('phoneid').value
        
         let uuid=http.get(' http://123.57.109.224:8081/userInfo/register/phone/'+phoneid)

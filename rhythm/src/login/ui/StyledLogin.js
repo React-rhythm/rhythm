@@ -196,6 +196,20 @@ const MessageLoginWrap=styled.div`
     padding:0 0.5rem;
     justify-content: center;
     align-items: center;
+    .am-input-item:last-child{
+        position: relative;
+        .am-input-label-5{
+            position:absolute;
+            right:0;
+        }
+        .am-input-control{
+            position: absolute;
+            input{
+                width:60%;
+            }
+        }
+    }
+      
     
     
     .inp{
@@ -204,8 +218,6 @@ const MessageLoginWrap=styled.div`
         margin-bottom:0.1rem;
         border:1px solid #d8d8d8;
         >input{
-           
-  
             color:999999;
             font-size:0.14rem;
             width:75%;
