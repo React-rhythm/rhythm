@@ -6,7 +6,7 @@ const Container = styled.div`
     flex-direction:column;
     justify-content: center;
     align-items: center;
-    height:100%;
+    /* height:100%; */
     .App {
         width: 100%;
         flex:1;
@@ -55,20 +55,7 @@ const Container = styled.div`
         /* border: 1px solid #D7DBE6; */
         /* border-radius: 3px; */
         }
-        .input--box{
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        display: flex;
-        justify-content: space-between;
-        }
-        .input--box input {
-        flex: 1;
-        padding: 5px 10px;
-        border: 1px solid #D7DBE6;
-        border-radius: 3px;
-        margin-right: 20px;
-        }
+        
 
         /* chat */
         .message--list {

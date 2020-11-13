@@ -32,7 +32,8 @@ class role extends Component {
 
     signIn = () => {
         let { history } = this.props
-        history.push('/register',{roles : this.state.roles})
+        // history.push('/register',{roles : this.state.roles})
+        history.push('/home',{roles: 1,username:"aaa"})
     }
     logIn = () => {
         let { history } = this.props
