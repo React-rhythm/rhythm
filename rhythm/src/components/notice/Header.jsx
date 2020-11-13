@@ -14,6 +14,10 @@ class App extends Component{
      successToast =() => {
         Toast.success('修改成功 !!!', 1);
       }
+
+      handleSearchClick = () => {
+        this.props.history.push("/chatSearch")
+      }
       
     render(){
         return (
@@ -22,7 +26,9 @@ class App extends Component{
                 mode="light"
                 icon={<Icon type="left" />}
                 onLeftClick={() => this.props.history.goBack()}
-                rightContent={this.props.location.state.right ? <List onClick={this.successToast} color="#5cb85c">保存</List> : ""}
+                rightContent={this.props.location.state.right && 
+                  (this.props.location.state.right ?<List onClick={this.successToast} color="#5cb85c">保存</List> : "") ||
+                  this.props.location.state.search &&  (this.props.location.state.search ? <Icon onClick={this.handleSearchClick} type="search" color="#fff"/>: "")}
             >{this.props.children ? this.props.children : this.props.location.state.title}</NavBar>
             </HeaderWrap>
         )

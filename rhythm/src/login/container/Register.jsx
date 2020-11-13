@@ -2,7 +2,19 @@ import React, { Component } from 'react';
 import {NavBar, Icon } from 'antd-mobile';
 import Content2 from '../ui/Content2'
 import {withRouter} from 'react-router-dom'
+import Phoneid from '../../home/publish/ui/Phoneid';
+import http from '../../utils/http'
 
+import {connect} from 'react-redux'
+import {actionCreator as ac} from "@h/changePhone"
+
+@connect(state=>({
+    phoneid:state.changephone.phoneid
+  }),dispatch=>({
+    getphoneid(phoneid){
+        dispatch(ac.getphoneid(phoneid))
+    }
+  }))
 @withRouter
 class Register2 extends Component {
     state={
@@ -16,7 +28,12 @@ class Register2 extends Component {
             case -1:return'报社注册'
         }  
     }
-
+    handleGetCode(){
+        let phoneid=document.querySelector('#phoneid').value
+        this.props.getphoneid(phoneid)
+        console.log(phoneid);
+        http.get('http://10.9.70.205:8080/userInfo/register/phone/'+phoneid)
+    }
     componentDidMount(){
         let r=this.roles()
         this.setState({
@@ -43,7 +60,7 @@ class Register2 extends Component {
                     }}
                    
                 >{this.state.role}</NavBar>
-                 <Content2 ></Content2>
+                 <Content2 onGetCode={this.handleGetCode}></Content2>
             </>
         );
     }

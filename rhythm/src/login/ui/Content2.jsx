@@ -15,7 +15,7 @@ const Content2 = (props) => {
                     ...register,
                     status:"1",
                 }
-                const res = http.ajaxpost('http://123.57.109.224:8081/userInfo/register',JSON.stringify(userLogin))
+                const res = http.post('http://10.9.70.205:8080/userInfo/register',JSON.stringify(userLogin))
             } else {
                 console.log('Validation failed');
             }
@@ -63,7 +63,7 @@ const Content2 = (props) => {
     }
     const validatePhone = (rule, value, callback) => {
         
-        if (/^1[34578]\d{9}$/.test(value)) {
+        if (/^1[345678]\d{9}$/.test(value)) {
             callback();
         } else if (value.length === 0) {
             callback(new Error('请输入手机号'));
@@ -191,6 +191,7 @@ const Content2 = (props) => {
                         clear
                         type="number"
                         placeholder="手机号"
+                        id="phoneid"
                     >
 
                     </InputItem>

@@ -35,7 +35,7 @@ class ProfileContent extends Component{
             <Item
               thumb={CallService}
               arrow="horizontal"
-              onClick={() => {this.props.history.push("/chatroom",{title:"聊天室"})}}
+              onClick={() => {this.props.history.push("/chatroom",{title:"聊天室",search:true})}}
             >客服</Item>
             {
               role === -1 ? "" : <Item
