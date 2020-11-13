@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { NavBar } from "antd-mobile";
+import { NavBar,Toast } from "antd-mobile";
 import Type from '../ui/Type'
 import Court from '../ui/Court'
 import Region from '../ui/Region'
@@ -19,28 +19,54 @@ import {ButtonWrap} from '../ui/publish'
   (state) => {
     return {
       //这里的state就以及是reducer中的state了，加上命名空间cookbook，就可以找到当前模块的state
-      form: state.publish.form
+      form: state.publish.form,
     }
   }
 )
 class Publish extends Component {
 
   state = {
-    type:'ffff'
+    whether:1
+  }
+
+  failToast= () => {
+    Toast.fail('该案号已经存在 ', 1);
+  }
+
+  successToast = () => {
+    Toast.success('发布公告成功 ', 1);
   }
 
   toPublish = () => {
-    // http.post('')
-    http.post('http://10.9.70.205:8080/lawyer/noticeUpload',JSON.stringify(this.props.form))
+    if(this.state.whether === 0) {
+      this.failToast()
+      return 
+    }
+    else {
+      // http.post('http://123.57.109.224:8081/lawyer/noticeUpload',JSON.stringify(this.props.form))
+      this.successToast()
+      setTimeout(() => {
+        window.location.reload()
+      },2000)
+    }
   }
-  
+
   cancel = () => {
     // console.log(1);
     this.props.history.push('/pay')
   }
 
-  componentDidUpdate(){
-    // console.log(this.state.type)
+  isPublish = (flag) => {
+      this.setState({
+        whether:flag
+      })
+      console.log(this.state.whether)
+  }
+
+  componentDidMount(){
+    setTimeout(() => {
+      Toast.hide();
+    }, 3000);
   }
 
   render() {
@@ -54,7 +80,7 @@ class Publish extends Component {
           <Idcard></Idcard>
           <Phoneid></Phoneid>
           <Party></Party>
-          <CaseId></CaseId>
+          <CaseId onCaseId={this.isPublish}></CaseId>
           <CaseImg onChange={this.getImg}></CaseImg>
           <ButtonWrap>
             <div className='cansel' onClick={this.cancel}>取消</div>

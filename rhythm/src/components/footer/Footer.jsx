@@ -18,7 +18,7 @@ import Publish from '@p/container/Publish'
 
 export default  class Home extends Component{
     state = {
-        selectedTab: 'litigant',
+        selectedTab: 'publish',
         hidden: false,
         fullScreen: true,
     }

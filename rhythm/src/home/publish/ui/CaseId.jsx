@@ -6,13 +6,13 @@ import {
     TypeWrap,
 } from './publish'
 const CaseId = (props) => {
-
     const { handleCaseidChange } = useChangeForm()
 
+
     const verify = useCallback((e) => {
-        http.get('http://10.9.70.205:8080/lawyer/noticeUpload/1234')
-        .then(res => { console.log(res); })
-        // console.log(1)
+        http.get(`http://www.orangexy.cn:8081/lawyer/noticeUpload/${e.target.value}`)
+        .then(res => { props.onCaseId(res.flag) })
+        
         handleCaseidChange(e.target.value)
     })
 

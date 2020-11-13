@@ -22,7 +22,7 @@ const CaseImg = (props) => {
         
         // http.post('http://10.9.70.205:8081/uploadImgToOSS',imgForm)
         // .then(res => { handlePictureChange(res) })
-        http.post('http://10.9.70.205:8080/uploadImgToOSS',imgForm)
+        http.post('http://www.orange.cn:8081/uploadImgToOSS',imgForm)
         .then(res => { handlePictureChange(res) })
     })
 
