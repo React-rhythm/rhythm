@@ -30,6 +30,7 @@ import ChatMain from "@c/chatRoom/chatmain/container/ChatMain"
 import Guide from '@g/Guide.jsx'
 import Role from '@r/Role.jsx'
 import Pay from './home/pay/container/Pay'
+import Payto from './home/payto/Payto'
 
 import { Newspaper } from "./newspaper"
 
@@ -55,6 +56,7 @@ class App extends Component{
                 <Route path="/guide" component={Guide}></Route>
                 <Route path="/role" component={Role}></Route>
                 <Route path="/pay" component={Pay}></Route>
+                <Route path="/payto" component={Payto}></Route>
                 <Route path='/MessageLogin' component={MessageLogin}></Route>
                 
       

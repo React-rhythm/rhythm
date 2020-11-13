@@ -22,10 +22,10 @@ const changeFormIdcard = formIdcard => {
       formIdcard
     }
 }
-const changeFormPhoneid = formPhoneid => {
+const changeFormPhone = formPhone => {
     return {
-      type: 'changeFormPhoneid',
-      formPhoneid
+      type: 'changeFormPhone',
+      formPhone
     }
 }
 const changeFormParty = formParty => {
@@ -47,14 +47,21 @@ const changeFormCaseid = formCaseid => {
       formCaseid
     }
 }
+const changeFormDay = formDay => {
+    return {
+      type: 'changeFormDay',
+      formDay
+    }
+}
 
   export default {
     changeFormType,
     changeFormCourt,
     changeFormRegion,
     changeFormIdcard,
-    changeFormPhoneid,
+    changeFormPhone,
     changeFormParty,
     changeFormPicture,
-    changeFormCaseid
+    changeFormCaseid,
+    changeFormDay
 }

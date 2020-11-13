@@ -8,7 +8,7 @@ const TypeWrap = styled.div `
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:0.2rem;
+    margin-bottom:0.15rem;
     label{
         display:flex;
         justify-content:space-between;

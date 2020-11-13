@@ -3,12 +3,13 @@ const defaultState = {
         court : '',
         region : '',
         party : '',
-        payState : '',
+        caseId : '',
         news : '',
         layout : '',
         count : '',
         invoice : '',
-        address : ''
+        address : '',
+        html : ''
     }
 }
 
@@ -35,11 +36,11 @@ const reducer = (state = defaultState,action) => {
                     party:action.party
                 }
             }
-        case 'changePayState':
+        case 'changeCaseId':
             return {
                 payForm:{
                     ...state.payForm,
-                    payState:action.payState
+                    caseId:action.caseId
                 }
             }
         case 'changeNews':
@@ -77,6 +78,15 @@ const reducer = (state = defaultState,action) => {
                     address:action.address
                 }
             }
+        case 'changeHtml':
+            console.log(action.html)
+            return {
+                payForm:{
+                    ...state.payForm,
+                    html:action.html
+                }
+            }
+            // console.log(payForm)
         default:
             return state
     }

@@ -10,7 +10,7 @@ const CaseId = (props) => {
 
 
     const verify = useCallback((e) => {
-        http.get(`http://www.orangexy.cn:8081/lawyer/noticeUpload/${e.target.value}`)
+        http.get(`http://10.9.27.166:8080/lawyer/noticeUpload/${e.target.value}`)
         .then(res => { props.onCaseId(res.flag) })
         
         handleCaseidChange(e.target.value)

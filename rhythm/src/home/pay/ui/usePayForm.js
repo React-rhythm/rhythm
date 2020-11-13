@@ -20,8 +20,8 @@ const usePayForm = () => {
         dispatch(ac.changeParty(party))
     },[dispatch])
 
-    const changePayState = useCallback((payState) => {
-        dispatch(ac.changePayState(payState))
+    const changeCaseId = useCallback((caseId) => {
+        dispatch(ac.changeCaseId(caseId))
     },[dispatch])
 
     const changeNews = useCallback((news) => {
@@ -44,17 +44,22 @@ const usePayForm = () => {
         dispatch(ac.changeAddress(address))
     },[dispatch])
 
+    const changeHtml = useCallback((html) => {
+        dispatch(ac.changeHtml(html))
+    },[dispatch])
+
     return {
         payForm,
         changeCourt,
         changeRegion,
         changeParty,
-        changePayState,
+        changeCaseId,
         changeNews,
         changeLayout,
         changeCount,
         changeInvoice,
-        changeAddress
+        changeAddress,
+        changeHtml,
     }
 
 }
