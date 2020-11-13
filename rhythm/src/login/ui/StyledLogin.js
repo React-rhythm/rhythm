@@ -47,6 +47,23 @@ const ContentWrap2= styled.div`
     .count-setting{
         width:100%;
     }
+    .am-list-line{
+
+        position:relative;
+        .am-input-label-5{
+            width:40%;
+            font-size:0.14rem;
+            position:absolute;
+            right:20%;
+            .has{
+               text-align:right;
+                color:red;
+            
+            }
+        }
+       
+        
+    }
     .am-input-item:nth-child(6){
         position: relative;
         .am-input-label-5{

@@ -41,55 +41,44 @@ class Register2 extends Component {
           },1000);  
         let phoneid=document.getElementById('phoneid').value
        
-        let uuid=http.get(' http://123.57.109.224:8081/userInfo/register/phone/'+phoneid)
+        let uuid=http.get(' http://10.9.27.166:8080/userInfo/register/phone/'+phoneid)
     }
 
     //手机号是否已注册
-   handlePhoneId=(e)=>{
-       http.get('http://123.57.109.224:8081/userInfo/register/phone/'+e)
-        .then(res=>{
-            if(res.flag===0){
-                alert('手机号已被注册')
-            } 
-        })    
+   handlePhoneId=async(phone)=>{
+       await http.get('http://10.9.27.166:8080/userInfo/register/phone/'+phone)
+        
         
     }
 
     //用户名是否存在
-    handleUserName=()=>{
-        http.get('http://123.57.109.224:8081/userInfo/findPhone')
-        .then(res=>{
-            if(res.flag===0){
-               
-                this.setState({
-                    flag:0
-                })
-            }
-        })       
+    handleUserName=async(username)=>{
+        
+        console.log(username);
+        let res=await http.get('http://10.9.27.166:8080/userInfo/register/isUsername/'+username)
+        if(res.flag===0){
+            this.setState({
+                flag:0
+            })
+        }else{
+            this.setState({
+                flag:1
+            })
+        }
+       
+        
     }
 
     //身份证号是否存在
-    handleIdCard=()=>{
-        // http.get('http://123.57.109.224:8081/userInfo/register/findPhone')
-        // .then(res=>{
-        //     if(res.flag===1){
-        //         this.setState({
-        //             flag:1
-        //         })
-        //     }
-        // })       
+    handleIdCard=async(idcard)=>{
+        // await http.get('http://10.9.27.166:8080/userInfo/register/isIdCardEmpty/'+idcard)
+        
     }
 
     //真实姓名是否存在
-    handleRealName=()=>{
-        // http.get('http://123.57.109.224:8081/userInfo/register/findPhone')
-        // .then(res=>{
-        //     if(res.flag===1){
-        //         this.setState({
-        //             flag:1
-        //         })
-        //     }
-        // })       
+    handleRealName=async(realname)=>{
+        await http.get('http://10.9.27.166:8080/userInfo/register/isRealname/'+realname)
+         
     }
 
     componentDidMount(){

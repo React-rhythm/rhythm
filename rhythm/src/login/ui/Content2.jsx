@@ -13,7 +13,7 @@ const Content2 = (props) => {
    
     const history = useHistory();
 
-
+    
     
     const onSubmit = () => {
         history.push('/success', { roles: props.state.status })
@@ -22,7 +22,7 @@ const Content2 = (props) => {
                 let register = props.form.getFieldsValue()
                 let userLogin = {
                     ...register,
-                    status: "1",
+                    status: props.state.status,
                 }
                 const res = http.post('http://123.57.109.224:8081/userInfo/register', JSON.stringify(userLogin))
             } else {
@@ -147,6 +147,7 @@ const Content2 = (props) => {
                             onErrorClick={() => {
                                 Toast.info(getFieldError('realname'), 1);
                             }}
+                            id='realname'
                             clear
                             type="text"
                             placeholder="请输入姓名"
@@ -174,8 +175,12 @@ const Content2 = (props) => {
                             style={{
                                 fontSize: "0.14rem"
                             }}
+                            id="username"
                         >
-
+                            {
+                                props.state.flag===0?<div className="has">用户名已存在</div>:''
+                            }
+                            
                         </InputItem>
 
                         <InputItem
@@ -196,8 +201,11 @@ const Content2 = (props) => {
                             style={{
                                 fontSize: "0.14rem"
                             }}
+                            id='idcard'
                         >
-
+                            {/* {
+                                props.state.flag===0?<div className="has">身份证号已存在</div>:''
+                            } */}
                         </InputItem>
                         <InputItem
                             {...getFieldProps('phoneid', {
@@ -218,7 +226,9 @@ const Content2 = (props) => {
                                 fontSize: "0.14rem"
                             }}
                         >
-
+                            {/* {
+                                props.state.flag===0?<div className="has">手机号已注册</div>:''
+                            } */}
                         </InputItem>
                         <InputItem
                             {...getFieldProps('uuid', {
