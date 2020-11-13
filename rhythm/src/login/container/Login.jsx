@@ -56,7 +56,7 @@ class Login1 extends Component {
                 status: this.state.status
             }
           
-            await http.post('http://10.9.70.205:8080/userInfo/userLogin',JSON.stringify(userLogin))
+            await http.post('http://123.57.109.224:8081/userInfo/userLogin',JSON.stringify(userLogin))
             .then(res=>{
                 console.log(res);
                 let token=res.token

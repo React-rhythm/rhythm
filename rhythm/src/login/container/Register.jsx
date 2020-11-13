@@ -20,7 +20,7 @@ class Register2 extends Component {
     handleGetCode(){
         let Phoneid=document.querySelector('#phoneid').value
         console.log(Phoneid);
-        http.get('http://10.9.70.205:8080/userInfo/register/phone/'+Phoneid)
+        http.get('http://123.57.109.224:8081/userInfo/register/phone/'+Phoneid)
     }
     componentDidMount(){
         let r=this.roles()
