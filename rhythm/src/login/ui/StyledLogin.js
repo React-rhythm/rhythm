@@ -46,23 +46,25 @@ const ContentWrap2= styled.div`
     background-color:#fff;
     .count-setting{
         width:100%;
-        .am-list{
-            .am-list-body{
-                .am-list-item .am-input-item .am-list-item-middle{
-                height:0.5rem;
-                    .am-list-line{
-                        .am-input-control{
-                            input{
-                            font-size:0.14rem;
-                            }
-                        
-                        }
-                    }
+    }
+    .am-input-item:nth-child(6){
+        position: relative;
+        .am-input-label-5{
+           
+            position:absolute;
+            right:0;
+        }
+        .am-input-control{
+            position: absolute;
             
-                }
+            input{
+                width:60%;
             }
         }
-       
+    }
+    .am-input-error-extra{
+        position:absolute;
+        right:40%;
     }
 `
 

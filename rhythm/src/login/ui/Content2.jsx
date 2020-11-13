@@ -32,7 +32,7 @@ const Content2 = (props) => {
     }
 
     const validateAddress = (rule, value, callback) => {
-        if (value && value.length >= 2) {
+        if (value && value.length >= 4) {
             callback();
         } else if (value.length === 0) {
             callback(new Error('请输入图片地址'));
@@ -51,10 +51,8 @@ const Content2 = (props) => {
         }
     }
     const validateName = (rule, value, callback) => {
-        if (value && value.length >= 2) {
-
+        if (value && value.length >= 2&&/^[\u4e00-\u9fa5](\s*[\u4e00-\u9fa5])*$/.test(value)) {
             callback();
-
         } else if (value.length === 0) {
             callback(new Error('请输入姓名'));
         } else {
@@ -62,7 +60,7 @@ const Content2 = (props) => {
         }
     }
     const validateID = (rule, value, callback) => {
-        if (value && value.length === 18) {
+        if ( /^([0-9]{15}|[0-9]{18})$/.test(value)) {
             callback();
         } else if (value.length === 0) {
             callback(new Error('请输入身份证号'));

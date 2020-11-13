@@ -23,17 +23,7 @@ class Register2 extends Component {
         }  
     }
    
-    showAlert = () => {
-        const alertInstance = alert('律动', '账号或者验证码错误', [
-            { text: '取消', onPress: () => console.log('取消'), style: 'default' },
-            { text: '确认', onPress: () => console.log('确认') },
-        ]);
-        setTimeout(() => {
-            // 可以调用close方法以在外部close
-            console.log('auto close');
-            alertInstance.close();
-        }, 500000);
-    };
+   //获取验证码
     handleCode=()=>{
         let siv = setInterval(() => {
             this.setState({
@@ -53,6 +43,8 @@ class Register2 extends Component {
        
         let uuid=http.get(' http://123.57.109.224:8081/userInfo/register/phone/'+phoneid)
     }
+
+    //手机号是否已注册
    handlePhoneId=(e)=>{
        http.get('http://123.57.109.224:8081/userInfo/register/phone/'+e)
         .then(res=>{
@@ -62,6 +54,8 @@ class Register2 extends Component {
         })    
         
     }
+
+    //用户名是否存在
     handleUserName=()=>{
         http.get('http://123.57.109.224:8081/userInfo/findPhone')
         .then(res=>{
@@ -74,6 +68,7 @@ class Register2 extends Component {
         })       
     }
 
+    //身份证号是否存在
     handleIdCard=()=>{
         // http.get('http://123.57.109.224:8081/userInfo/register/findPhone')
         // .then(res=>{
@@ -85,6 +80,7 @@ class Register2 extends Component {
         // })       
     }
 
+    //真实姓名是否存在
     handleRealName=()=>{
         // http.get('http://123.57.109.224:8081/userInfo/register/findPhone')
         // .then(res=>{

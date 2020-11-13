@@ -72,7 +72,7 @@ class Login1 extends Component {
                 status: this.state.status
             }
            
-             http.post('http://123.57.109.224:8081/userInfo/userLogin',JSON.stringify(userLogin))
+             http.post('http://10.9.27.166:8080/userInfo/userLogin',JSON.stringify(userLogin))
             .then(res=>{
                 console.log(res);
                 let token=res.token
@@ -81,11 +81,11 @@ class Login1 extends Component {
                 if(token){
                     this.props.changeRole(this.state.status)
                 }
-                if(this.state.status===1&&flag===0){
+                if(this.state.status===1&&flag===1){
                     this.props.history.push('/laywer',{roles: 1,username:this.state.username})
-                }else if(this.state.status===0&&flag===0){
+                }else if(this.state.status===0&&flag===1){
                     this.props.history.push('/litigant',{roles: 0,username:this.state.username})
-                }else if(this.state.status===-1&&flag===0){
+                }else if(this.state.status===-1&&flag===1){
                     this.props.history.push('/home',{roles: -1,username:this.state.username})
                 }else{
                     
@@ -105,10 +105,14 @@ class Login1 extends Component {
            this.setState({
             loginshow:'用户名不能为空'
            })
+        }else if(user.length<4){
+            this.setState({
+                loginshow:'用户名不少于4位'
+               })   
         }else{
             this.setState({
                 loginshow:''
-               })   
+            })
         }
 
         
@@ -125,10 +129,14 @@ class Login1 extends Component {
            this.setState({
             codeshow:'密码不能为空'
            })
+        }else if(password.length<8){
+            this.setState({
+                codeshow:"密码不不能少于8位数"
+               })   
         }else{
             this.setState({
                 codeshow:''
-               })   
+            })
         }
 
     }
@@ -137,7 +145,8 @@ class Login1 extends Component {
         this.setState({
             role: r.roles,
         })
-
+        
+        
     }
     render() {
         return (
