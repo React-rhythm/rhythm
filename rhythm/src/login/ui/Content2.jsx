@@ -1,40 +1,72 @@
-import React, { useState } from 'react';
-import {  List, InputItem, Button, Toast } from 'antd-mobile';
+import React, { useState,useCallback } from 'react';
+import { List, InputItem, Button, Toast,ImagePicker } from 'antd-mobile';
 import { createForm } from 'rc-form';
-import {ContentWrap2} from './StyledLogin'
+import { ContentWrap2 } from './StyledLogin'
+import { useHistory, } from 'react-router-dom'
+
 import http from '../../utils/http'
+
+
 const Content2 = (props) => {
-   
     const { getFieldProps, getFieldError } = props.form;
     const [Password, setPassword] = useState('');
+    const history = useHistory();
+    const data=[]
+    const [files,setFiles] = useState(data)
+
+    //图片选择
+    const onChange = useCallback((files) => {
+        setFiles(files);
+        console.log(files[0].file);
+        let imgForm = new FormData()
+        imgForm.append('imgFile',files[0].file)
+        console.log(imgForm);
+        // http.post('http://www.orange.cn:8081/uploadImgToOSS',imgForm)
+        // .then(res => {
+            
+        // })
+    })
+
+    const getUrl = useCallback((index,file) => {
+        
+    })
+
+    
     const onSubmit = () => {
+        
+        
         props.form.validateFields({ force: true }, (error) => {
             if (!error) {
-                let register=props.form.getFieldsValue()
-                let userLogin={
+               
+                let register = props.form.getFieldsValue()
+                let userLogin = {
                     ...register,
-                    status:"1",
+                    status: props.state.status,
+                    files
                 }
-                const res = http.post('http://10.9.70.205:8080/userInfo/register',JSON.stringify(userLogin))
+                console.log(userLogin);
+                const res = http.post('http://123.57.109.224:8081/userInfo/register', JSON.stringify(userLogin)).then(res=>{
+                    history.push('/success', { roles: props.state.status })
+                })
             } else {
                 console.log('Validation failed');
             }
         });
     }
+
     const validateAddress = (rule, value, callback) => {
-        if (value && value.length >= 2) {
+        if (value && value.length >= 4) {
             callback();
-          
         } else if (value.length === 0) {
-            callback(new Error('请输入用户名'));
+            callback(new Error('请输入图片地址'));
         } else {
-            callback(new Error('用户名最少2位'));
+            callback(new Error('地址有误'));
         }
     }
     const validateuserName = (rule, value, callback) => {
         if (value && value.length >= 2) {
             callback();
-          
+
         } else if (value.length === 0) {
             callback(new Error('请输入用户名'));
         } else {
@@ -42,10 +74,8 @@ const Content2 = (props) => {
         }
     }
     const validateName = (rule, value, callback) => {
-        if (value && value.length >= 2) {
-          
+        if (value && value.length >= 2&&/^[\u4e00-\u9fa5](\s*[\u4e00-\u9fa5])*$/.test(value)) {
             callback();
-           
         } else if (value.length === 0) {
             callback(new Error('请输入姓名'));
         } else {
@@ -53,7 +83,7 @@ const Content2 = (props) => {
         }
     }
     const validateID = (rule, value, callback) => {
-        if (value && value.length === 18) {
+        if ( /^([0-9]{15}|[0-9]{18})$/.test(value)) {
             callback();
         } else if (value.length === 0) {
             callback(new Error('请输入身份证号'));
@@ -62,8 +92,10 @@ const Content2 = (props) => {
         }
     }
     const validatePhone = (rule, value, callback) => {
-        
-        if (/^1[345678]\d{9}$/.test(value)) {
+        console.log(props.state.flag);
+        if (props.state.flag === 0) {
+            callback(new Error('手机号存在'))
+        } else if (/^1[34578]\d{9}$/.test(value)) {
             callback();
         } else if (value.length === 0) {
             callback(new Error('请输入手机号'));
@@ -71,7 +103,9 @@ const Content2 = (props) => {
             callback(new Error('手机号不合法'));
         }
     }
-    const validateuuid= (rule, value, callback) => {
+
+    const validateuuid = (rule, value, callback) => {
+
         if (value && value.length === 4) {
             callback();
         } else if (value.length === 0) {
@@ -101,154 +135,209 @@ const Content2 = (props) => {
         }
     }
 
-    
     return (
-        <>   
+        <>
             <ContentWrap2>
-            <form className='count-setting'>
-                
-                <List>
-                <InputItem
-                        {...getFieldProps('photoaddress', {
-                            rules: [
-                                { validator: validateAddress },
-                            ],
-                        })}
-                        error={!!getFieldError('photoaddress')}
-                        onErrorClick={() => {
-                            Toast.info(getFieldError('photoaddress'), 1);
-                        }}
-                        clear
-                        type="text"
-                        placeholder="请输入图片地址"
-                       
-                       
-                    >
+                <form className='count-setting'>
 
-                    </InputItem>
-                    <InputItem
-                        {...getFieldProps('realname', {
-                            rules: [
-                                { validator: validateName },
-                            ],
-                        })}
-                        error={!!getFieldError('realname')}
-                        onErrorClick={() => {
-                            Toast.info(getFieldError('realname'), 1);
-                        }}
-                        clear
-                        type="text"
-                        placeholder="请输入姓名"
-                       
-                       
-                    >
+                    <List>
+                        <InputItem
+                            {...getFieldProps('photoaddress', {
+                                rules: [
+                                    { validator: validateAddress },
+                                ],
+                            })}
+                            error={!!getFieldError('photoaddress')}
+                            onErrorClick={() => {
+                                Toast.info(getFieldError('photoaddress'), 1);
+                            }}
+                            clear
+                            type="text"
+                            placeholder="请输入图片地址"
+                            style={{
+                                fontSize: "0.14rem"
+                            }}
 
-                    </InputItem>
-                    <InputItem
-                        {...getFieldProps('username', {
-                            rules: [
-                                { validator: validateuserName },
-                            ],
-                        })}
-                        error={!!getFieldError('username')}
-                        onErrorClick={() => {
-                            Toast.info(getFieldError('username'), 1);
-                        }}
-                        clear
-                        type="text"
-                        placeholder="请输入用户名"
-                    >
+                        >
+                        </InputItem>
+                        <InputItem
+                            {...getFieldProps('realname', {
+                                rules: [
+                                    { validator: validateName },
+                                ],
+                            })}
+                            error={!!getFieldError('realname')}
+                            onErrorClick={() => {
+                                Toast.info(getFieldError('realname'), 1);
+                            }}
+                            id='realname'
+                            clear
+                            type="text"
+                            placeholder="请输入姓名"
+                            onBlur={props.onRealName}
+                            style={{
+                                fontSize: "0.14rem"
+                            }}
+                        >
 
-                    </InputItem>
+                        </InputItem>
+                        <InputItem
+                            {...getFieldProps('username', {
+                                rules: [
+                                    { validator: validateuserName },
+                                ],
+                            })}
+                            error={!!getFieldError('username')}
+                            onErrorClick={() => {
+                                Toast.info(getFieldError('username'), 1);
+                            }}
+                            clear
+                            type="text"
+                            placeholder="请输入用户名"
+                            onBlur={props.onName}
+                            style={{
+                                fontSize: "0.14rem"
+                            }}
+                            id="username"
+                        >
+                            {
+                                props.state.flag===0?<div className="has">用户名已存在</div>:''
+                            }
+                            
+                        </InputItem>
 
-                    <InputItem
-                        {...getFieldProps('idcard', {
-                            rules: [
-                                { validator: validateID },
-                            ],
-                        })}
-                        error={!!getFieldError('idcard')}
-                        onErrorClick={() => {
-                            Toast.info(getFieldError('idcard'), 1);
-                        }}
-                        clear
-                        type="number"
-                        placeholder="请输入身份证号码"
-                        maxLength='18'
-                    >
+                        <InputItem
+                            {...getFieldProps('idcard', {
+                                rules: [
+                                    { validator: validateID },
+                                ],
+                            })}
+                            error={!!getFieldError('idcard')}
+                            onErrorClick={() => {
+                                Toast.info(getFieldError('idcard'), 1);
+                            }}
+                            clear
+                            type="number"
+                            placeholder="请输入身份证号码"
+                            maxLength='18'
+                            onBlur={props.onIdCard}
+                            style={{
+                                fontSize: "0.14rem"
+                            }}
+                            id='idcard'
+                        >
+                            {
+                                props.state.flag2===0?<div className="has">身份证号已存在</div>:''
+                            }
+                        </InputItem>
+                        <InputItem
+                            {...getFieldProps('phoneid', {
+                                rules: [
+                                    { validator: validatePhone },
+                                ],
+                            })}
+                            error={!!getFieldError('phoneid')}
+                            onErrorClick={() => {
+                                Toast.info(getFieldError('phoneid'), 1);
+                            }}
+                            clear
+                            type="number"
+                            placeholder="手机号"
+                            id="phoneid"
+                            onBlur={props.onPhoneId}
+                            style={{
+                                fontSize: "0.14rem"
+                            }}
+                        >
+                            {/* {
+                                props.state.flag===0?<div className="has">手机号已注册</div>:''
+                            } */}
+                        </InputItem>
+                        <InputItem
+                            {...getFieldProps('uuid', {
+                                rules: [
+                                    { validator: validateuuid },
+                                ],
+                            })}
+                            error={!!getFieldError('uuid')}
+                            onErrorClick={() => {
+                                Toast.info(getFieldError('uuid'), 1);
+                            }}
+                            clear
+                            placeholder="请输入验证码"
+                            style={{
+                                fontSize: "0.14rem"
+                            }}
 
-                    </InputItem>
-                    <InputItem
-                        {...getFieldProps('phoneid', {
-                            rules: [
-                                { validator: validatePhone },
-                            ],
-                        })}
-                        error={!!getFieldError('phoneid')}
-                        onErrorClick={() => {
-                            Toast.info(getFieldError('phoneid'), 1);
-                        }}
-                        clear
-                        type="number"
-                        placeholder="手机号"
-                        id="phoneid"
-                    >
+                        >
+                            {
+                                    props.state.liked
+                                    ?
+                                    <span className='yanzhengma' onClick={props.onGetCode} >获取验证码</span>
+                                    :
+                                    <span style={{ fontSize: "0.14rem" }}>{props.state.seconds + ' s 后发送'}</span>
+                            }
+                            
+                        </InputItem>
+                        <InputItem
+                            {...getFieldProps('password', {
+                                rules: [
+                                    { validator: validatePassword },
+                                ],
+                            })}
+                            error={!!getFieldError('password')}
+                            onErrorClick={() => {
+                                Toast.info(getFieldError('password'), 1);
+                            }}
+                            clear
+                            type="password"
+                            placeholder="请输入密码"
+                            style={{
+                                fontSize: "0.14rem"
+                            }}
+                        >
 
-                    </InputItem>
-                    <InputItem
-                        {...getFieldProps('uuid', {
-                            rules: [
-                                { validator: validateuuid },
-                            ],
-                        })}
-                        error={!!getFieldError('uuid')}
-                        onErrorClick={() => {
-                            Toast.info(getFieldError('uuid'), 1);
-                        }}
-                        clear
-                        placeholder="请输入验证码"
-                    >
-                        <span className="yanzhengma" onClick={props.onGetCode}>发送验证码</span>
-                    </InputItem>
-                    <InputItem
-                        {...getFieldProps('password', {
-                            rules: [
-                                { validator: validatePassword },
-                            ],
-                        })}
-                        error={!!getFieldError('password')}
-                        onErrorClick={() => {
-                            Toast.info(getFieldError('password'), 1);
-                        }}
-                        clear
-                        type="password"
-                        placeholder="请输入密码"
-                    >
-                       
-                    </InputItem>
-                    <InputItem
-                        {...getFieldProps('replynewpassword', {
-                            rules: [
-                                { validator: validateRePassword },
-                            ],
-                        })}
-                        error={!!getFieldError('replynewpassword')}
-                        onErrorClick={() => {
-                            Toast.info(getFieldError('replynewpassword'), 1);
-                        }}
-                        clear
-                        type="password"
-                        placeholder="确认密码"
-                    >
-                        
-                    </InputItem>
-                    <List.Item>
-                        <Button type='primary' onClick={onSubmit}>注册</Button>
-                    </List.Item>
-                </List>
-            </form>
+                        </InputItem>
+                        <InputItem
+                            {...getFieldProps('replynewpassword', {
+                                rules: [
+                                    { validator: validateRePassword },
+                                ],
+                            })}
+                            error={!!getFieldError('replynewpassword')}
+                            onErrorClick={() => {
+                                Toast.info(getFieldError('replynewpassword'), 1);
+                            }}
+                            clear
+                            type="password"
+                            placeholder="确认密码"
+                            style={{
+                                fontSize: "0.14rem"
+                            }}
+                        >
+
+                        </InputItem>
+                        <p>头像上传:</p>
+                        <ImagePicker
+                            style={{
+                                height:"1.2rem",
+                                width:"1.2rem"
+                            }}
+                            files={files}
+                            onChange={onChange}
+                            onImageClick={getUrl}
+                            selectable={files.length < 1}
+                            length={1}
+                            disableDelete={true}
+                        />
+                        <List.Item>
+                            <Button type='primary' onClick={onSubmit}>注册</Button>
+                        </List.Item>
+                    </List>
+                    
+                </form>
             </ContentWrap2>
-           
+
         </>
     )
 }

@@ -19,6 +19,7 @@ const CaseImg = (props) => {
         setFiles(files);
         let imgForm = new FormData()
         imgForm.append('imgFile',files[0].file)
+        console.log(imgForm);
         
         // http.post('http://10.9.70.205:8081/uploadImgToOSS',imgForm)
         // .then(res => { handlePictureChange(res) })

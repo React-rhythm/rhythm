@@ -1,9 +1,7 @@
 import React from 'react';
 import {NavBar, Icon } from 'antd-mobile'
 const navBar=()=> {
-    
         return (
-            
                 <NavBar
                     style={{
                         height:'.44rem',
@@ -15,10 +13,8 @@ const navBar=()=> {
                     }}
                     mode="light"
                     icon={<Icon type="left" />}
-                    onLeftClick={() => console.log('onLeftClick')}
-                   
-                ></NavBar> 
-           
+                    onLeftClick={() => console.log('onLeftClick')} 
+                >公告详情</NavBar> 
         );
     
 }

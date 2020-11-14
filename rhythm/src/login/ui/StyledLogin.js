@@ -41,17 +41,60 @@ const ContentWrap= styled.div`
 `
 
 const ContentWrap2= styled.div`
+    margin-top:0.05rem;
     padding:0  0.35rem;
     background-color:#fff;
     .count-setting{
         width:100%;
-        .am-list-item .am-input-item .am-list-item-middle{
-            height:0.5rem;
-            .am-input-label .am-input-label-5{
-                
+    }
+    .am-list-line{
+
+        position:relative;
+        .am-input-label-5{
+            width:40%;
+            font-size:0.14rem;
+            position:absolute;
+            right:20%;
+            .has{
+               text-align:right;
+                color:red;
+            
             }
         }
+        
+        .am-input-error-extra{
+            position: absolute;
+            right:13%;
+        
+        }
+        
+       
+        
     }
+    .am-input-item:nth-child(6){
+        position: relative;
+        .am-input-label-5{
+           
+            position:absolute;
+            right:0;
+        }
+        .am-input-control{
+            position: absolute;
+            
+            input{
+                width:60%;
+            }
+        }
+        /* .am-list-line{
+        position: relative;
+        .am-input-error-extra{
+            position:absolute;
+            right:43%;
+    }
+    } */
+    
+    }
+    
 `
 
 
@@ -88,16 +131,33 @@ const LoginInput1Wrap=styled.div`
             color:999999;
             font-size:0.14rem;
             width:75%;
-            margin:0.30rem 0 0 0;
+            margin:0.15rem 0 0 0;
             border:none;
             height:0.27rem;
-           
             
         }
         span{
             text-align:right;
             color:#94c4f2;
         }
+    }
+    .loginshow{
+        color:red;
+        width:100%;
+        display: inline;
+        height:0.14rem;
+        line-height:0.14rem;
+        font-size:0.14rem
+
+    }
+    .codeshow{
+        color:red;
+        width:100%;
+        display: inline;
+        height:0.14rem;
+        line-height:0.14rem;
+        font-size:0.14rem
+
     }
         
     >div:last-child{
@@ -167,6 +227,20 @@ const MessageLoginWrap=styled.div`
     padding:0 0.5rem;
     justify-content: center;
     align-items: center;
+    .am-input-item:last-child{
+        position: relative;
+        .am-input-label-5{
+            position:absolute;
+            right:0;
+        }
+        .am-input-control{
+            position: absolute;
+            input{
+                width:60%;
+            }
+        }
+    }
+      
     
     
     .inp{
@@ -175,8 +249,6 @@ const MessageLoginWrap=styled.div`
         margin-bottom:0.1rem;
         border:1px solid #d8d8d8;
         >input{
-           
-  
             color:999999;
             font-size:0.14rem;
             width:75%;
