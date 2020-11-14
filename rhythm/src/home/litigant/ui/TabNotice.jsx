@@ -20,7 +20,7 @@ class TabNotice extends Component{
         const list = _.filter(litigantList,function(notice) {return notice.state==="1"})
       
         const listing = _.filter(litigantList,function(notice) {return notice.state===null})
-       
+       console.log(listing)
         const noticedList = _.filter(litigantList,function(notice) {return notice.noticeStatus==="1"})
        
         return (

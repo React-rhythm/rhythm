@@ -20,8 +20,8 @@ class ProfileContent extends Component{
       }
       handleQuitLogin = () => {
         console.log(this.props.roles)
+        this.props.history.push("/role")
         window.localStorage.removeItem("token")
-        this.props.history.push("/login",{roles : this.props.roles})
       }
     render() {
         return (<ProfileContentWrap>
