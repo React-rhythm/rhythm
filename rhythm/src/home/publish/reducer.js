@@ -1,6 +1,6 @@
 const defaultState = {
     form: {
-        casetype : '',
+        type : '',
         court : '',
         region : '',
         idcard : '',
@@ -18,7 +18,7 @@ const defaultState = {
             return {
                 form:{
                     ...state.form,
-                    casetype:action.formType
+                    type:action.formType
                 }
             }
         case 'changeFormCourt':
