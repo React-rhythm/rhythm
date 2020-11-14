@@ -5,7 +5,7 @@ import {
 const Count = (props) => {
     return (
         <PayWrap>
-            <label htmlFor='type'>费用标准 :</label>
+            <label htmlFor='type'>金 &ensp;&ensp;&ensp; 额 :</label>
             <input type="text" id='pay'/>
         </PayWrap>
     )

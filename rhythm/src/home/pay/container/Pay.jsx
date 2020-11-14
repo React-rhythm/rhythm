@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback,useRef,useEffect,useState } from "react";
 import { useHistory } from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux'
 import { NavBar, Icon } from "antd-mobile";
@@ -11,44 +11,64 @@ import Layout from '../ui/Layout'
 import Count from '../ui/Count'
 import Invoice from '../ui/Invoice'
 import Address from '../ui/Address'
+import http from '../../../utils/https'
 
 import usePayFomr from '../ui/usePayForm'
 
 import { ButtonPay } from '../ui/pay'
 
 const Pay = (props) => {
+  // const QR=useRef()
+  const [html,setHtml] = useState()
+//  useEffect(()=>{
+//   QR.current.innerHTML
+//  },[])
 
-  const { goBack } = useHistory()
+  const { goBack,push } = useHistory()
   
   const { payForm,
           changeCourt, 
           changeRegion, 
           changeParty,  
-          changePayState,
+          changeCaseId,
           changeNews,
           changeLayout,
           changeCount,
           changeInvoice,
+          changeHtml,
           changeAddress} = usePayFomr()
 
           const changeState = useCallback((index)=>{
             // console.log(index);
             return (e) => {
-              console.log(e.target.value);
+              // console.log(e.target.value);
               index==='court' && changeCourt(e.target.value);
               index==='region' && changeRegion(e.target.value);
               index==='party' && changeParty(e.target.value);
-              index==='payState' && changePayState(e.target.value);
+              index==='caseId' && changeCaseId(e.target.value);
               index==='news' && changeNews(e.target.value);
               index==='layout' && changeLayout(e.target.value);
               index==='count' && changeCount(e.target.value);
               index==='invoice' && changeInvoice(e.target.value);
-              index==='address' && changeAddress(e.target.value);
+              index==='address' && changeAddress(e.target.value)
             }
           },[])
           
           const toPay = useCallback(() => {
-              console.log(payForm)
+            let payInfo = {}  
+            payInfo.address = payForm.address
+            payInfo.caseId = payForm.caseId
+            payInfo.detail = payForm.invoice
+            payInfo.place = payForm.news
+            payInfo.page = payForm.layout
+            payInfo.price = payForm.count
+            console.log(payInfo)
+            http.post('http://10.9.27.166:8080/alipay',JSON.stringify(payInfo)).
+            then(res => {
+
+              document.write(res)
+
+            })
           })
 
     return (
@@ -77,13 +97,14 @@ const Pay = (props) => {
           <div onBlur={changeState('court')}><Court></Court></div>
           <div onBlur={changeState('region')}><Region></Region></div>
           <div onBlur={changeState('party')}><Party></Party></div>
-          <div onBlur={changeState('payState')}><State></State></div>
+          <div onBlur={changeState('caseId')}><State></State></div>
           <div onBlur={changeState('news')}><News></News></div>
           <div onBlur={changeState('layout')}><Layout></Layout></div>
           <div onBlur={changeState('count')}><Count></Count></div>
           <div onBlur={changeState('invoice')}><Invoice></Invoice></div>
           <div onBlur={changeState('address')}><Address></Address></div>
           <div><ButtonPay><div onClick={toPay}>支付</div></ButtonPay></div>
+          {/* <div ref={QR}></div> */}
         </div>
       </>
     );

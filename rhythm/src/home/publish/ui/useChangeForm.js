@@ -7,7 +7,7 @@ const useChangeForm = () => {
     const court = useSelector(state => state.publish.form.court)
     const region = useSelector(state => state.publish.form.region)
     const idcard = useSelector(state => state.publish.form.idcard)
-    const phoneid = useSelector(state => state.publish.form.phoneid)
+    const phone = useSelector(state => state.publish.form.phone)
     const party = useSelector(state => state.publish.form.party)
     const dispatch = useDispatch()
 
@@ -27,8 +27,8 @@ const useChangeForm = () => {
             dispatch(ac.changeFormIdcard(idcardInfo))
       }, [dispatch])
 
-    const handlePhoneidChange = useCallback((phoneidInfo) => {
-            dispatch(ac.changeFormPhoneid(phoneidInfo))
+    const handlePhoneChange = useCallback((phoneInfo) => {
+            dispatch(ac.changeFormPhone(phoneInfo))
       }, [dispatch])
 
     const handlePartyChange = useCallback((partyInfo) => {
@@ -42,22 +42,26 @@ const useChangeForm = () => {
     const handleCaseidChange = useCallback((partyInfo) => {
             dispatch(ac.changeFormCaseid(partyInfo))
       }, [dispatch])
+    const handleDayChange = useCallback((dayInfo) => {
+            dispatch(ac.changeFormDay(dayInfo))
+      }, [dispatch])
 
     return {
         casetype,
         court,
         region,
         idcard,
-        phoneid,
+        phone,
         party,
         handleTypeChange,
         handleCourtChange,
         handleRegionChange,
         handleIdcardChange,
-        handlePhoneidChange,
+        handlePhoneChange,
         handlePartyChange,
         handlePictureChange,
         handleCaseidChange,
+        handleDayChange
     }
 }
 

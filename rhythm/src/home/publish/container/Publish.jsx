@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { NavBar,Toast } from "antd-mobile";
 import Type from '../ui/Type'
+import Day from '../ui/Day'
 import Court from '../ui/Court'
 import Region from '../ui/Region'
 import Idcard from '../ui/Idcard'
@@ -43,11 +44,11 @@ class Publish extends Component {
       return 
     }
     else {
-      // http.post('http://123.57.109.224:8081/lawyer/noticeUpload',JSON.stringify(this.props.form))
+      http.post('http://10.9.27.166:8080/lawyer/noticeUpload',JSON.stringify(this.props.form))
       this.successToast()
-      setTimeout(() => {
-        window.location.reload()
-      },2000)
+      // setTimeout(() => {
+      //   window.location.reload()
+      // },2000)
     }
   }
 
@@ -80,6 +81,7 @@ class Publish extends Component {
           <Idcard></Idcard>
           <Phoneid></Phoneid>
           <Party></Party>
+          <Day></Day>
           <CaseId onCaseId={this.isPublish}></CaseId>
           <CaseImg onChange={this.getImg}></CaseImg>
           <ButtonWrap>

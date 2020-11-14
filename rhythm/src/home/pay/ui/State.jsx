@@ -5,7 +5,7 @@ import {
 const State = (props) => {
     return (
         <PayWrap>
-            <label htmlFor='type'>状 &ensp;&ensp;&ensp; 态 :</label>
+            <label htmlFor='type'>案 &ensp;&ensp;&ensp; 号 :</label>
             <input type="text" id='pay' placeholder='正常'/>
         </PayWrap>
     )

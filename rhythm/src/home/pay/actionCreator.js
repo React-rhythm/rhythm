@@ -19,10 +19,10 @@ const changeParty = (party) => {
     }
 }
 
-const changePayState = (payState) => {
+const changeCaseId = (caseId) => {
     return {
-        type:'changePayState',
-        payState
+        type:'changeCaseId',
+        caseId
     }
 }
 
@@ -59,17 +59,24 @@ const changeAddress = (address) => {
         address
     }
 }
+const changeHtml = (html) => {
+    return {
+        type:'changeHtml',
+        html
+    }
+}
 
 export default {
     changeCourt,
     changeRegion,
     changeParty,
-    changePayState,
+    changeCaseId,
     changeNews,
     changeLayout,
     changeCount,
     changeInvoice,
-    changeAddress
+    changeAddress,
+    changeHtml
 }
 
 

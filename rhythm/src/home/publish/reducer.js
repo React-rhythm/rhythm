@@ -4,10 +4,11 @@ const defaultState = {
         court : '',
         region : '',
         idcard : '',
-        phoneid : '',
+        phone : '',
         party : '',
         picture : '',
-        caseid : ''
+        caseid : '',
+        day : ''
     }
   }
 
@@ -41,11 +42,11 @@ const defaultState = {
                     idcard:action.formIdcard
                 }
             }
-        case 'changeFormPhoneid':
+        case 'changeFormPhone':
             return {
                 form:{
                     ...state.form,
-                    phoneid:action.formPhoneid
+                    phone:action.formPhone
                 }
             }
         case 'changeFormParty':
@@ -67,6 +68,13 @@ const defaultState = {
                 form:{
                     ...state.form,
                     caseid:action.formCaseid
+                }
+            }
+        case 'changeFormDay':
+            return {
+                form:{
+                    ...state.form,
+                    day:action.formDay
                 }
             }
         default:
