@@ -28,7 +28,7 @@ class NewsHome extends Component {
     let result=await https.get('http://10.9.27.166:8080/searchInfo/show')
     console.log(result)
     this.setState({
-      list:result.data
+      list:result.SearchDto
     })
   }
   render() {

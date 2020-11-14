@@ -41,7 +41,7 @@ const Content2 = (props) => {
                     photoaddress:url
                 }
                 console.log(userLogin);
-                const res = http.post('http://123.57.109.224:8081/userInfo/register', JSON.stringify(userLogin)).then(res=>{
+                const res = http.post('http://10.9.27.166:8080/userInfo/register', JSON.stringify(userLogin)).then(res=>{
                     history.push('/success', { roles: props.state.status })
                 })
             } else {

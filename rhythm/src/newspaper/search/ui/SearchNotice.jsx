@@ -22,7 +22,7 @@ export default function SearchNotice(props) {
         {
           props.list && props.list.map(item=>{
             return(
-              <NoticeLi item={item} onGotoDetail={gotoDetail} key={item.id}></NoticeLi>
+              <NoticeLi item={item} onGotoDetail={gotoDetail} key={item.caseid}></NoticeLi>
             )
           })
         }
