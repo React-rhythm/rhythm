@@ -6,13 +6,18 @@ import { withRouter } from 'react-router-dom';
 @withRouter
 class ChatSearchUI extends Component {
     handleClickChat =  () => {
-        this.props.history.push("/chatmain",{title:this.props.name})
+        // if(Object.keys(this.props)[0] !== "history"){
+        //     var title = this.props.name || Object.keys(this.props)[0] 
+        // }
+        
+        this.props.history.push("/chatmain",{title:this.props.toName})
     }
+    
     render(){
         return (
             <Container>
                 {
-                    this.props.name && 
+                    this.props.toName && 
                     <div className="searchContent">
                     <p className="title">联系人</p>
                     <ul>
@@ -22,7 +27,7 @@ class ChatSearchUI extends Component {
                             </div>
                             <div className="chatMain">
                                 <div className="content">
-                                <p className="username">{this.props.name}</p>
+                                <p className="username">{this.props.toName}</p>
                                 </div>
                             </div>
                         </li>

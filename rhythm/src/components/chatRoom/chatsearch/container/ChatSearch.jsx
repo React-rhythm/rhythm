@@ -8,6 +8,7 @@ import http from "@u/https"
 class ChatSearch extends Component{
     state = {
         value: '',
+        toName:"",
         searchList:[]
       };
       componentDidMount() {
@@ -21,8 +22,9 @@ class ChatSearch extends Component{
       }
       handleSubmitClick = async(e) => {
             const searchResult =await http.get(`http://10.9.27.166:8080/userChat/search/${e}`)
-            // console.log(searchResult)
+            console.log(searchResult)
             this.setState({
+                toName:e,
                 searchList:searchResult
             })
 
@@ -37,7 +39,7 @@ class ChatSearch extends Component{
                     onClear={this.HandleClearClick}
                     onSubmit={this.handleSubmitClick}
                 />
-                <ChatSearchUI {...this.state.searchList}></ChatSearchUI>
+                <ChatSearchUI {...this.state}></ChatSearchUI>
             </>
         )
     }

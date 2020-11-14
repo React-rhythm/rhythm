@@ -11,12 +11,13 @@ const ChatMainUI = (props) => {
   
   const {username} = useStore().getState().getusername;
   //还要获取当前用户的roles
-  const store= useStore().getState().notice
+  const {roles}= useStore().getState().notice
+  // console.log(roles)
 
   const history = useHistory()
  
   const {title} = history.location.state
-
+  console.log(username)
   const [state, setState] = useState({
     username: "",
     msg: "",
@@ -26,25 +27,25 @@ const ChatMainUI = (props) => {
   });
 
   const loadMsgList = async() => {
-    const msgList = await http.get(`http://10.9.27.166:8080/userChat/pull/${state.toName}`);
+    const msgList = await http.get(`http://10.9.27.166:8080/userChat/pull/${title}`);
     console.log(msgList);
     props.onGetMsgList(msgList)
   }
 
   const send = async () => {
-    const result = await http.post("http://10.9.27.166:8080/userChat/sendMsg", JSON.stringify(state));
+    const result = await http.post("http://10.9.27.166:8080/userChat/sendMsg", JSON.stringify({...state,toName:title}));
     console.log(result);
     setState({
       msg: "",
     });
-    // loadMsgList();
+    loadMsgList();
   };
 
   return (
     <Container>
       <div className="message--list">
         {//根据用户角色渲染
-        //   <div className={`message-item ${ roles ? 'item-user' : 'item-visitor'}`}>
+        //   <div className={`message-item ${ roles=== 1 ? 'item-user' : 'item-visitor'}`}>
         //   <div className="message-item--avatar">
         //     <img src={`${ roles ? AvatarUser : AvatarVisitor}`} /> :
         //   </div>
