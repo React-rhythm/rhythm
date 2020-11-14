@@ -13,7 +13,7 @@ const Day = (props) => {
     return (
         <TypeWrap>
             <label htmlFor='type'>登报时间 :</label>
-            <input type="text" id='type' placeholder='请输入公告类型' onBlur={changeDay}/>
+            <input type="text" id='type' placeholder='请输入登报时间' onBlur={changeDay}/>
         </TypeWrap>
     )
 }
