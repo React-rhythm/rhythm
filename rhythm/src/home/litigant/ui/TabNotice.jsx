@@ -31,36 +31,32 @@ class TabNotice extends Component{
                     // onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }
                 >
                     <div className="tabContentList">
-                        {/* {
+                        {
                             list.length>0 && list.map(value=>{
                                 return (
                                     <NoticeItem notice={value} key={value.caseid}></NoticeItem>
                                 )
                             })
-                        } */}
+                        }
                       
                     </div>
                     <div className="tabContentList">
-                    {/* {
+                    {
                             listing.length>0 && listing.map(value=>{
                                 return (
                                     <NoticeItem notice={value} key={value.caseid}></NoticeItem>
                                 )
                             })
-                        } */}
+                        }
                     </div>
                     <div className="tabContentList">
-                    {/* {
-                            listing.length>0 && listing.map(value=>{
+                    {
+                            noticedList.length>0 && noticedList.map(value=>{
                                 return (
                                     <NoticeItem notice={value} key={value.caseid}></NoticeItem>
                                 )
                             })
-                        } */}
-                        <NoticeItem ></NoticeItem>
-                        <NoticeItem ></NoticeItem>
-                        <NoticeItem ></NoticeItem>
-                        <NoticeItem ></NoticeItem>
+                        }
                     </div>
                 </Tabs>
           </>
