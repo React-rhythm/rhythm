@@ -15,16 +15,17 @@ class ChatSearch extends Component{
       }
       onChange= (value) => {
         this.setState({ value });
-        setTimeout(async ()=>{
-            const searchResult =await  http.post("",JSON.stringify())
-            this.setState({
-                searchList:searchResult
-            })
-        },1000)
-        
       };
       HandleClearClick = () => {
           this.props.history.goBack()
+      }
+      handleSubmitClick = async(e) => {
+            const searchResult =await http.get(`http://10.9.27.166:8080/userChat/search/${e}`)
+            // console.log(searchResult)
+            this.setState({
+                searchList:searchResult
+            })
+
       }
 
     render(){
@@ -34,6 +35,7 @@ class ChatSearch extends Component{
                     onChange={this.onChange}
                     value={this.state.value}
                     onClear={this.HandleClearClick}
+                    onSubmit={this.handleSubmitClick}
                 />
                 <ChatSearchUI {...this.state.searchList}></ChatSearchUI>
             </>

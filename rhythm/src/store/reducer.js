@@ -12,6 +12,9 @@ import {reducer as pay} from '../home/pay/index'
 import {reducer as notice} from "@h/content"
 import {reducer as changephone} from "@h/changePhone"
 
+import {reducer as getusername} from "@c/chatRoom/chatmain"
+
+
 const reducer = combineReducers({
     MsgDetail,
     publish,
@@ -19,7 +22,8 @@ const reducer = combineReducers({
     pay,
     notice,
     login,
-    changephone
+    changephone,
+    getusername
 
 })
 

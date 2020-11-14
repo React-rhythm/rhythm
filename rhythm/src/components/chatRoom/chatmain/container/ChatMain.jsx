@@ -8,11 +8,16 @@ export default class ChatMain extends Component{
     state = {
         msgList : []
     }
+    handleGetMsgList(msgList){
+        this.setState({
+            msgList
+        })
+    }
     render(){
         return (
             <>
-                <Header></Header>
-                <ChatMainUI {...this.state.msgList}></ChatMainUI>
+                <Header quitStatus={true}></Header>
+                <ChatMainUI {...this.state.msgList} onGetMsgList={this.handleGetMsgList.bind(this)}></ChatMainUI>
             </>
         )
     }

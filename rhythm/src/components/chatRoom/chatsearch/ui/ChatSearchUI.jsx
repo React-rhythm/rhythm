@@ -6,12 +6,14 @@ import { withRouter } from 'react-router-dom';
 @withRouter
 class ChatSearchUI extends Component {
     handleClickChat =  () => {
-        this.props.history.push("/chatmain",{title:"jack"})
+        this.props.history.push("/chatmain",{title:this.props.name})
     }
     render(){
         return (
             <Container>
-                <div className="searchContent">
+                {
+                    this.props.name && 
+                    <div className="searchContent">
                     <p className="title">联系人</p>
                     <ul>
                         <li onClick={this.handleClickChat}>
@@ -20,22 +22,14 @@ class ChatSearchUI extends Component {
                             </div>
                             <div className="chatMain">
                                 <div className="content">
-                                    <p className="username">哈哈哈哈</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="avatar">
-                                <img src={AvatarVisitor} alt=""/>
-                            </div>
-                            <div className="chatMain">
-                                <div className="content">
-                                    <p className="username">哈哈哈哈</p>
+                                <p className="username">{this.props.name}</p>
                                 </div>
                             </div>
                         </li>
                     </ul>
                 </div>
+                }
+                
             </Container>
         )
     }

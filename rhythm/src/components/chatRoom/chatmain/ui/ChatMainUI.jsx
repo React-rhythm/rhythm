@@ -1,40 +1,65 @@
 import React, { useState } from "react";
 import { Container } from "./StyledChatMainUI";
 import { useStore } from "react-redux";
+import {useHistory} from "react-router-dom"
 import http from "@u/https";
 import AvatarUser from "@a/images/avatar-user.png"
 import AvatarVisitor from "@a/images/avatar-visitor.png"
 
 
 const ChatMainUI = (props) => {
-  const store = useStore().getState();
-  console.log(store);
+  
+  const {username} = useStore().getState().getusername;
+  //还要获取当前用户的roles
+  const store= useStore().getState().notice
+
+  const history = useHistory()
+ 
+  const {title} = history.location.state
 
   const [state, setState] = useState({
-    logined: false,
     username: "",
-    message: "",
+    msg: "",
     messages: [],
-    total: 0,
+    status: 1,
+    toName:title
   });
 
+  const loadMsgList = async() => {
+    const msgList = await http.get(`http://10.9.27.166:8080/userChat/pull/${state.toName}`);
+    console.log(msgList);
+    props.onGetMsgList(msgList)
+  }
+
   const send = async () => {
-    setState({
-      message: "",
-    });
-    const result = await http.post("", JSON.stringify());
+    const result = await http.post("http://10.9.27.166:8080/userChat/sendMsg", JSON.stringify(state));
     console.log(result);
+    setState({
+      msg: "",
+    });
+    loadMsgList();
   };
 
   return (
     <Container>
       <div className="message--list">
-        <div className={`message-item item-user`}>
+        {//根据用户角色渲染
+        //   <div className={`message-item ${ roles ? 'item-user' : 'item-visitor'}`}>
+        //   <div className="message-item--avatar">
+        //     <img src={`${ roles ? AvatarUser : AvatarVisitor}`} /> :
+        //   </div>
+        //   <div className="message-item--body">
+        //     <div className="message-item--name">{username}</div>
+        //     <div className="message-item--content">ffffff</div>
+        //   </div>
+        // </div>
+        }
+        <div className={`message-item  item-user`}>
           <div className="message-item--avatar">
             <img src={AvatarUser} /> :
           </div>
           <div className="message-item--body">
-            <div className="message-item--name">aaaa</div>
+            <div className="message-item--name">{username}</div>
             <div className="message-item--content">ffffff</div>
           </div>
         </div>
@@ -43,7 +68,7 @@ const ChatMainUI = (props) => {
             <img src={AvatarVisitor} /> :
           </div>
           <div className="message-item--body">
-            <div className="message-item--name">jack</div>
+            <div className="message-item--name">{title}</div>
             <div className="message-item--content">ffffff</div>
           </div>
         </div>
@@ -52,7 +77,7 @@ const ChatMainUI = (props) => {
             <img src={AvatarUser} /> :
           </div>
           <div className="message-item--body">
-            <div className="message-item--name">aaaa</div>
+            <div className="message-item--name">{username}</div>
             <div className="message-item--content">ffffff</div>
           </div>
         </div>
@@ -61,7 +86,7 @@ const ChatMainUI = (props) => {
             <img src={AvatarVisitor} /> :
           </div>
           <div className="message-item--body">
-            <div className="message-item--name">jack</div>
+            <div className="message-item--name">{title}</div>
             <div className="message-item--content">ffffff</div>
           </div>
         </div>
@@ -69,8 +94,8 @@ const ChatMainUI = (props) => {
       <div className="input--box">
         <input
           type="text"
-          value={state.message}
-          onChange={(ev) => setState({ message: ev.target.value })}
+          value={state.msg}
+          onChange={(ev) => setState({...state, msg: ev.target.value })}
         />
         <button className="btn--primary" onClick={send}>
           发送

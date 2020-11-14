@@ -19,6 +19,7 @@ const  MyProfile = (props) => {
     const history = useHistory();
     
     const username = history.location.state.username
+    
    
     const handleClick = () => {
         return () => {

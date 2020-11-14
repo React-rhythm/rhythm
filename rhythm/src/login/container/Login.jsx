@@ -6,12 +6,18 @@ import http from '../../utils/http'
 
 import {connect} from 'react-redux'
 import {actionCreator as ac} from "@h/content"
+import {actionCreator as acc} from "@c/chatRoom/chatmain"
+
 
 @connect(state=>({
     roles:state.notice.roles,
+    username:state.getusername.username
   }),dispatch=>({
     changeRole(roles){
       dispatch(ac.changeRoles(roles))
+    },
+    getUsername(username){
+        dispatch(acc.getusername(username))
     }
   }))
 class Login1 extends Component {
@@ -56,12 +62,13 @@ class Login1 extends Component {
                 status: this.state.status
             }
           
-            await http.post('http://123.57.109.224:8081/userInfo/userLogin',JSON.stringify(userLogin))
+            await http.post('http://10.9.27.166:8080/userInfo/userLogin',JSON.stringify(userLogin))
             .then(res=>{
                 let token=res.token
                 localStorage.setItem('token',token)
                 if(token){
                     this.props.changeRole(this.state.status)
+                    this.props.getUsername(this.state.username)
                 }
                 if(this.state.status===1){
                     this.props.history.push('/laywer',{roles: 1,username:this.state.username})
