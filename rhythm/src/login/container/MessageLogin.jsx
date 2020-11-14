@@ -85,7 +85,7 @@ class MessageLogin extends Component {
     let res = await http.get("http://10.9.27.166:8080/userInfo/register/phone/" + phoneid)
     console.log(res);
     this.setState({
-      flag: res.uuid,
+      flag: res.msg,
     })
 
   }

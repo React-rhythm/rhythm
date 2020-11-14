@@ -93,18 +93,18 @@ class Register2 extends Component {
     }
 
     //真实姓名是否存在
-    handleRealName = async (realname) => {
-        let res = await http.get('http://10.9.27.166:8080/userInfo/register/isRealname/' + realname)
-        if (res.flag === 0) {
-            this.setState({
-                flag3: 0
-            })
-        } else {
-            this.setState({
-                flag3: 1
-            })
-        }
-    }
+    // handleRealName = async (realname) => {
+    //     let res = await http.get('http://10.9.27.166:8080/userInfo/register/isRealname/' + realname)
+    //     if (res.flag === 0) {
+    //         this.setState({
+    //             flag3: 0
+    //         })
+    //     } else {
+    //         this.setState({
+    //             flag3: 1
+    //         })
+    //     }
+    // }
 
     componentDidMount() {
         let r = this.roles()
