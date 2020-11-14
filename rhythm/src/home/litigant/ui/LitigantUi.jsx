@@ -14,7 +14,8 @@ const LitigantUi = (props) => {
     
     useEffect(() => {
         async function fetchData() {
-            const result = await http.get("http://localhost:8080/msgList")
+            const result = await http.get("http://10.9.27.166:8080/searchInfo/show")
+            console.log(result)
             setList(result.info)
           }
           fetchData();

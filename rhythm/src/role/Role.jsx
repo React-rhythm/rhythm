@@ -42,9 +42,9 @@ class role extends Component {
 
     toHome = () => {
         let { history } = this.props
-        // history.push('/home',{roles : 2})
+        history.push('/home',{roles : 2})
         
-        history.push('/litigant',{roles : 2})
+        // history.push('/litigant',{roles : 2})
     }
 
     componentDidUpdate(){
