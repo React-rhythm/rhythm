@@ -29,8 +29,6 @@ const Content2 = (props) => {
     })
 
     const onSubmit = () => {
-        
-        
         props.form.validateFields({ force: true }, (error) => {
             if (!error) {
                
@@ -41,7 +39,7 @@ const Content2 = (props) => {
                     photoaddress:url
                 }
                 console.log(userLogin);
-                const res = http.post('http://123.57.109.224:8081/userInfo/register', JSON.stringify(userLogin)).then(res=>{
+                const res = http.post('http://10.9.27.166:8080/userInfo/register', JSON.stringify(userLogin)).then(res=>{
                     history.push('/success', { roles: props.state.status })
                 })
             } else {
@@ -80,10 +78,7 @@ const Content2 = (props) => {
         }
     }
     const validatePhone = (rule, value, callback) => {
-        console.log(props.state.flag);
-        if (props.state.flag === 0) {
-            callback(new Error('手机号存在'))
-        } else if (/^1[34578]\d{9}$/.test(value)) {
+        if (/^1[34578]\d{9}$/.test(value)) {
             callback();
         } else if (value.length === 0) {
             callback(new Error('请输入手机号'));
@@ -148,7 +143,6 @@ const Content2 = (props) => {
                                 fontSize: "0.14rem"
                             }}
                         >
-
                         </InputItem>
                         <InputItem
                             {...getFieldProps('username', {
@@ -218,9 +212,9 @@ const Content2 = (props) => {
                                 fontSize: "0.14rem"
                             }}
                         >
-                            {/* {
-                                props.state.flag===0?<div className="has">手机号已注册</div>:''
-                            } */}
+                            {
+                                props.state.flag4===0?<div className="has">手机号已注册</div>:''
+                            }
                         </InputItem>
                         <InputItem
                             {...getFieldProps('uuid', {
