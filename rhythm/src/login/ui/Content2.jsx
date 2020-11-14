@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { List, InputItem, Button, Toast } from 'antd-mobile';
+import React, { useState,useCallback } from 'react';
+import { List, InputItem, Button, Toast,ImagePicker } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { ContentWrap2 } from './StyledLogin'
-import { useHistory } from 'react-router-dom'
+import { useHistory, } from 'react-router-dom'
 
 import http from '../../utils/http'
 
@@ -10,21 +10,44 @@ import http from '../../utils/http'
 const Content2 = (props) => {
     const { getFieldProps, getFieldError } = props.form;
     const [Password, setPassword] = useState('');
-   
     const history = useHistory();
+    const data=[]
+    const [files,setFiles] = useState(data)
+
+    //图片选择
+    const onChange = useCallback((files) => {
+        setFiles(files);
+        console.log(files[0].file);
+        let imgForm = new FormData()
+        imgForm.append('imgFile',files[0].file)
+        console.log(imgForm);
+        // http.post('http://www.orange.cn:8081/uploadImgToOSS',imgForm)
+        // .then(res => {
+            
+        // })
+    })
+
+    const getUrl = useCallback((index,file) => {
+        
+    })
 
     
-    
     const onSubmit = () => {
-        history.push('/success', { roles: props.state.status })
+        
+        
         props.form.validateFields({ force: true }, (error) => {
             if (!error) {
+               
                 let register = props.form.getFieldsValue()
                 let userLogin = {
                     ...register,
                     status: props.state.status,
+                    files
                 }
-                const res = http.post('http://123.57.109.224:8081/userInfo/register', JSON.stringify(userLogin))
+                console.log(userLogin);
+                const res = http.post('http://123.57.109.224:8081/userInfo/register', JSON.stringify(userLogin)).then(res=>{
+                    history.push('/success', { roles: props.state.status })
+                })
             } else {
                 console.log('Validation failed');
             }
@@ -203,9 +226,9 @@ const Content2 = (props) => {
                             }}
                             id='idcard'
                         >
-                            {/* {
-                                props.state.flag===0?<div className="has">身份证号已存在</div>:''
-                            } */}
+                            {
+                                props.state.flag2===0?<div className="has">身份证号已存在</div>:''
+                            }
                         </InputItem>
                         <InputItem
                             {...getFieldProps('phoneid', {
@@ -294,10 +317,24 @@ const Content2 = (props) => {
                         >
 
                         </InputItem>
+                        <p>头像上传:</p>
+                        <ImagePicker
+                            style={{
+                                height:"1.2rem",
+                                width:"1.2rem"
+                            }}
+                            files={files}
+                            onChange={onChange}
+                            onImageClick={getUrl}
+                            selectable={files.length < 1}
+                            length={1}
+                            disableDelete={true}
+                        />
                         <List.Item>
                             <Button type='primary' onClick={onSubmit}>注册</Button>
                         </List.Item>
                     </List>
+                    
                 </form>
             </ContentWrap2>
 

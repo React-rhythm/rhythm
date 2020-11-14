@@ -26,6 +26,8 @@ import Litigant from "@/home/litigant/container/Litigant"
 import ChatRoom from "@c/chatRoom/ChatRoom"
 import Details from "./home/detail/container/Detail"
 
+import ChatSearch from "@c/chatRoom/chatsearch/container/ChatSearch"
+import ChatMain from "@c/chatRoom/chatmain/container/ChatMain"
 
 import Guide from '@g/Guide.jsx'
 import Role from '@r/Role.jsx'
@@ -48,7 +50,8 @@ class App extends Component{
                 <Route path="/lawyer" component={Lawyer}></Route>
                 <Route path="/litigant" component={Litigant}></Route>
                 <Route path="/chatroom" component={ChatRoom}></Route>
-
+                <Route path="/chatSearch" component={ChatSearch}></Route>
+                <Route path="/chatmain" component={ChatMain}></Route>
        
 
                 <Route path="/guide" component={Guide}></Route>

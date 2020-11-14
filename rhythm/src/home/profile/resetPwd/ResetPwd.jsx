@@ -45,7 +45,7 @@ class Reset extends Component{
     }
     handlePutCodeClick = async() => {
         const phoneid = this.state.phoneid
-        const findPhoneRes = await http.get(`http://123.57.109.224:8081/userInfo/register/phone/${phoneid}`)
+        const findPhoneRes = await http.get(`http://10.9.70.205:8080/userInfo/register/resetPwd/${phoneid}`)
         console.log(findPhoneRes)
     }
     handlePutPassword = () => {
@@ -57,22 +57,30 @@ class Reset extends Component{
     }
     handlePutNewPassword = () => {
         return (e) => {
+            
             this.setState({
                 newpassword:e
             })
         }
     }
     handlePutReplyNewPassword = () => {
+        
         return  (e) => {
-            console.log(e)
-            if(e !== this.state.newpassword){
-                alert("两次密码输入不一致")
-            }
+           
+            this.setState({
+                replynewpassword:e
+            })
+            // if(e !== this.state.newpassword){
+            //     alert("两次密码输入不一致")
+            // }
         }
     }
     handleResetPwd = async() => {
+        const  {phoneid,uuid,password,replynewpassword} = this.state
         const token =window.localStorage.getItem("token")
-        const result = await http.post('http://123.57.109.224:8081/userInfo/pwdReset',{...this.state,token})
+        const obj = {phoneid,uuid,password,replynewpassword,token}
+        console.log(obj)
+        const result = await http.post('http://10.9.70.205:8080/userInfo/pwdReset',JSON.stringify(obj))
         console.log(result)
     }
     render(){
@@ -84,7 +92,7 @@ class Reset extends Component{
                 <List>
                     <InputItem
                         {...getFieldProps('phone')}
-                        type="phone"
+                        type="text"
                         placeholder="请输入手机号"
                         value={this.state.phoneid}
                         onChange={this.handlePutPhoneKeyUp()}

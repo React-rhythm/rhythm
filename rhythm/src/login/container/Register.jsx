@@ -71,14 +71,31 @@ class Register2 extends Component {
 
     //身份证号是否存在
     handleIdCard=async(idcard)=>{
-        // await http.get('http://10.9.27.166:8080/userInfo/register/isIdCardEmpty/'+idcard)
+        let res=await http.get('http://10.9.27.166:8080/userInfo/register/isIdCardEmpty/'+idcard)
+        if(res.flag===0){
+            this.setState({
+                flag2:0
+            })
+        }else{
+            this.setState({
+                flag2:1
+            })
+        }
         
     }
 
     //真实姓名是否存在
     handleRealName=async(realname)=>{
-        await http.get('http://10.9.27.166:8080/userInfo/register/isRealname/'+realname)
-         
+        let res=await http.get('http://10.9.27.166:8080/userInfo/register/isRealname/'+realname)
+        if(res.flag===0){
+            this.setState({
+                flag3:0
+            })
+        }else{
+            this.setState({
+                flag3:1
+            })
+        }
     }
 
     componentDidMount(){

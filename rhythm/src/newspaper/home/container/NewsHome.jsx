@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import HomeUi from '../ui/HomeUi'
 import {connect} from 'react-redux'
 import {actionCreator as ac} from '@/newspaper/home'
-import http from '@u/http'
+import https from '@u/https'
 
 @connect(
   (state)=>{
@@ -25,8 +25,8 @@ class NewsHome extends Component {
     return this.props.changeNotice(type)
   }
   async componentDidMount(){
-    let result=await http.gett({url:'/api/name'})
-    // console.log(result)
+    let result=await https.get('http://10.9.27.166:8080/searchInfo/show')
+    console.log(result)
     this.setState({
       list:result.data
     })

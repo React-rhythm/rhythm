@@ -10,7 +10,7 @@ import {actionCreator as ac} from "@h/content"
 const alert=Modal.alert
 
 @connect(state=>({
-    roles:state.notice.roles
+    roles:state.notice.roles,
   }),dispatch=>({
     changeRole(roles){
       dispatch(ac.changeRoles(roles))
@@ -74,7 +74,6 @@ class Login1 extends Component {
            
              http.post('http://10.9.27.166:8080/userInfo/userLogin',JSON.stringify(userLogin))
             .then(res=>{
-                console.log(res);
                 let token=res.token
                 let flag=res.flag
                 localStorage.setItem('token',token)

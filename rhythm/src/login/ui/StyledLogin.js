@@ -61,6 +61,13 @@ const ContentWrap2= styled.div`
             
             }
         }
+        
+        .am-input-error-extra{
+            position: absolute;
+            right:13%;
+        
+        }
+        
        
         
     }
@@ -78,11 +85,16 @@ const ContentWrap2= styled.div`
                 width:60%;
             }
         }
+        /* .am-list-line{
+        position: relative;
+        .am-input-error-extra{
+            position:absolute;
+            right:43%;
     }
-    .am-input-error-extra{
-        position:absolute;
-        right:40%;
+    } */
+    
     }
+    
 `
 
 

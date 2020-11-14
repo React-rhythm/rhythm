@@ -14,7 +14,8 @@ const changeRoles = roles => {
     }
 }
 
+
 export default {
     changeNoticeStatus,
-    changeRoles
+    changeRoles,
 }
