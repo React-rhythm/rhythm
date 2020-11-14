@@ -15,10 +15,13 @@ class TabNotice extends Component{
           ]
     }
     render(){
-        console.log(this.props)
-        const list = _.filter(this.props.list,function(notice) {return notice.status==="已公告"})
-        
-        const listing = _.filter(this.props.list,function(notice) {return notice.status==="未公告"})
+        const litigantList = this.props.litigantList
+       
+        const list = _.filter(litigantList,function(notice) {return notice.state==="1"})
+      
+        const listing = _.filter(litigantList,function(notice) {return notice.state===null})
+       
+        const noticedList = _.filter(litigantList,function(notice) {return notice.noticeStatus==="1"})
        
         return (
             <>
@@ -28,14 +31,10 @@ class TabNotice extends Component{
                     // onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }
                 >
                     <div className="tabContentList">
-                        <NoticeItem ></NoticeItem>
-                        <NoticeItem ></NoticeItem>
-                        <NoticeItem ></NoticeItem>
-                        <NoticeItem ></NoticeItem>
                         {/* {
                             list.length>0 && list.map(value=>{
                                 return (
-                                    <NoticeItem notice={value} key={value._id}></NoticeItem>
+                                    <NoticeItem notice={value} key={value.caseid}></NoticeItem>
                                 )
                             })
                         } */}
@@ -45,21 +44,16 @@ class TabNotice extends Component{
                     {/* {
                             listing.length>0 && listing.map(value=>{
                                 return (
-                                    <NoticeItem notice={value} key={value._id}></NoticeItem>
+                                    <NoticeItem notice={value} key={value.caseid}></NoticeItem>
                                 )
                             })
                         } */}
-                        <NoticeItem ></NoticeItem>
-                        <NoticeItem ></NoticeItem>
-                        <NoticeItem ></NoticeItem>
-                        <NoticeItem ></NoticeItem>
-                       
                     </div>
                     <div className="tabContentList">
                     {/* {
                             listing.length>0 && listing.map(value=>{
                                 return (
-                                    <NoticeItem notice={value} key={value._id}></NoticeItem>
+                                    <NoticeItem notice={value} key={value.caseid}></NoticeItem>
                                 )
                             })
                         } */}

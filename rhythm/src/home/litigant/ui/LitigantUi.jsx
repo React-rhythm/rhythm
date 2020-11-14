@@ -15,8 +15,8 @@ const LitigantUi = (props) => {
     useEffect(() => {
         async function fetchData() {
             const result = await http.get("http://10.9.27.166:8080/searchInfo/show")
-            console.log(result)
-            setList(result.info)
+            console.log(result.SearchDto)
+            setList(result.SearchDto)
           }
           fetchData();
     },[])
@@ -33,7 +33,7 @@ const LitigantUi = (props) => {
             }
             
             <Swiper></Swiper>
-            <TabNotice {...props} {...litigantList}></TabNotice>
+            <TabNotice {...props} litigantList={litigantList}></TabNotice>
         </Container>
     )
     
