@@ -17,6 +17,7 @@ const loadMsgDataAsync = () => {
     }
   }
 
+
 export default {
     loadMsgDataSync,
     loadMsgDataAsync

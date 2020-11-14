@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 
 import {Container} from "./StyledLitigant"
 
@@ -7,7 +7,18 @@ import TabNotice from "./TabNotice"
 import Search from "@c/search/Search"
 import Bell from "@c/bell/Bell"
 
+import http from "@u/https"
 const LitigantUi = (props) => {
+
+    const [litigantList,setList] = useState(undefined)
+    
+    useEffect(() => {
+        async function fetchData() {
+            const result = await http.get("http://localhost:8080/msgList")
+            setList(result.info)
+          }
+          fetchData();
+    },[])
    
     return (
         <Container>
@@ -21,7 +32,7 @@ const LitigantUi = (props) => {
             }
             
             <Swiper></Swiper>
-            <TabNotice {...props}></TabNotice>
+            <TabNotice {...props} {...litigantList}></TabNotice>
         </Container>
     )
     
