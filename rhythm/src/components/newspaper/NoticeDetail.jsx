@@ -1,9 +1,11 @@
 import React from 'react'
 import { NoticeDetailWrap,SpanWrap } from './styledNoticeList'
+import {useHistory} from "react-router-dom"
 
 
-export default function NoticeDetail() {
-
+export default function NoticeDetail(props) {
+  const history = useHistory()
+    console.log(history.location.state)
   return (
     <NoticeDetailWrap>
       <div className='container'>

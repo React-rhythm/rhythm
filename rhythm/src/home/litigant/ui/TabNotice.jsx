@@ -20,15 +20,12 @@ class TabNotice extends Component{
         const list = _.filter(litigantList,function(notice) {return notice.state==="1"})
       
         const listing = _.filter(litigantList,function(notice) {return notice.state===null})
-       console.log(listing)
         const noticedList = _.filter(litigantList,function(notice) {return notice.noticeStatus==="1"})
        
         return (
             <>
                 <Tabs tabs={this.state.tabs}
                     initialPage={0}
-                    // onChange={(tab, index) => { console.log('onChange', index, tab); }}
-                    // onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }
                 >
                     <div className="tabContentList">
                         {

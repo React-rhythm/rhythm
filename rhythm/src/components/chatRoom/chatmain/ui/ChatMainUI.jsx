@@ -37,7 +37,7 @@ const ChatMainUI = (props) => {
     setState({
       msg: "",
     });
-    loadMsgList();
+    // loadMsgList();
   };
 
   return (

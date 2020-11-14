@@ -34,6 +34,10 @@ const LiWrap=styled.li`
       color:#2493ED;
     }
   }
+  >img{
+    width:0.8rem;
+    height:0.8rem;
+  }
 `
 
 export {
