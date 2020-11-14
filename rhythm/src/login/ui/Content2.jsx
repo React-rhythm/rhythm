@@ -13,6 +13,7 @@ const Content2 = (props) => {
     const history = useHistory();
     const data=[]
     const [files,setFiles] = useState(data)
+    const [url,setUrl] = useState('')
 
     //图片选择
     const onChange = useCallback((files) => {
@@ -20,18 +21,13 @@ const Content2 = (props) => {
         console.log(files[0].file);
         let imgForm = new FormData()
         imgForm.append('imgFile',files[0].file)
-        console.log(imgForm);
-        // http.post('http://www.orange.cn:8081/uploadImgToOSS',imgForm)
-        // .then(res => {
-            
-        // })
+        http.post('http://10.9.27.166:8080/uploadImgToOSS',imgForm)
+        .then(res => {
+            console.log(res);
+            setUrl(res)
+        })
     })
 
-    const getUrl = useCallback((index,file) => {
-        
-    })
-
-    
     const onSubmit = () => {
         
         
@@ -42,7 +38,7 @@ const Content2 = (props) => {
                 let userLogin = {
                     ...register,
                     status: props.state.status,
-                    files
+                    photoaddress:url
                 }
                 console.log(userLogin);
                 const res = http.post('http://123.57.109.224:8081/userInfo/register', JSON.stringify(userLogin)).then(res=>{
@@ -54,15 +50,7 @@ const Content2 = (props) => {
         });
     }
 
-    const validateAddress = (rule, value, callback) => {
-        if (value && value.length >= 4) {
-            callback();
-        } else if (value.length === 0) {
-            callback(new Error('请输入图片地址'));
-        } else {
-            callback(new Error('地址有误'));
-        }
-    }
+
     const validateuserName = (rule, value, callback) => {
         if (value && value.length >= 2) {
             callback();
@@ -141,25 +129,6 @@ const Content2 = (props) => {
                 <form className='count-setting'>
 
                     <List>
-                        <InputItem
-                            {...getFieldProps('photoaddress', {
-                                rules: [
-                                    { validator: validateAddress },
-                                ],
-                            })}
-                            error={!!getFieldError('photoaddress')}
-                            onErrorClick={() => {
-                                Toast.info(getFieldError('photoaddress'), 1);
-                            }}
-                            clear
-                            type="text"
-                            placeholder="请输入图片地址"
-                            style={{
-                                fontSize: "0.14rem"
-                            }}
-
-                        >
-                        </InputItem>
                         <InputItem
                             {...getFieldProps('realname', {
                                 rules: [
@@ -325,7 +294,6 @@ const Content2 = (props) => {
                             }}
                             files={files}
                             onChange={onChange}
-                            onImageClick={getUrl}
                             selectable={files.length < 1}
                             length={1}
                             disableDelete={true}
