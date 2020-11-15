@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 const Container  = styled.div`
     .message--list {
-        max-height: 470px;
+        max-height: 570px;
         overflow-y: scroll;
         scroll-behavior: smooth;
         transition: all cubic-bezier(0.4, 0, 1, 1) .15s;

@@ -11,17 +11,22 @@ const ChatMainUI = (props) => {
   
   const {username} = useStore().getState().getusername;
   //还要获取当前用户的roles
-  const {roles}= useStore().getState().notice
+  // const {roles}= useStore().getState().notice
   // console.log(roles)
 
   const history = useHistory()
  
   const {title} = history.location.state
-  console.log(username)
+  const {oppsiteStatus} =  history.location.state
+  
+
+  let selfList = props[username] 
+  let oppsiteList = props[title]
+
   const [state, setState] = useState({
     username: "",
     msg: "",
-    messages: [],
+    messages: "",
     status: 1,
     toName:title
   });
@@ -41,62 +46,65 @@ const ChatMainUI = (props) => {
     loadMsgList();
   };
 
+  //如果对方不在线，只要渲染自己发的消息 将消息存储在铃铛  显示红点
+  
   return (
     <Container>
-      <div className="message--list">
-        {//根据用户角色渲染
-        //   <div className={`message-item ${ roles=== 1 ? 'item-user' : 'item-visitor'}`}>
-        //   <div className="message-item--avatar">
-        //     <img src={`${ roles ? AvatarUser : AvatarVisitor}`} /> :
-        //   </div>
-        //   <div className="message-item--body">
-        //     <div className="message-item--name">{username}</div>
-        //     <div className="message-item--content">ffffff</div>
-        //   </div>
-        // </div>
-        }
-        <div className={`message-item  item-user`}>
-          <div className="message-item--avatar">
-            <img src={AvatarUser} /> :
-          </div>
-          <div className="message-item--body">
-            <div className="message-item--name">{username}</div>
-            <div className="message-item--content">ffffff</div>
-          </div>
-        </div>
-        <div className={`message-item item-visitor`}>
-          <div className="message-item--avatar">
-            <img src={AvatarVisitor} /> :
-          </div>
-          <div className="message-item--body">
-            <div className="message-item--name">{title}</div>
-            <div className="message-item--content">ffffff</div>
-          </div>
-        </div>
-        <div className={`message-item item-user`}>
-          <div className="message-item--avatar">
-            <img src={AvatarUser} /> :
-          </div>
-          <div className="message-item--body">
-            <div className="message-item--name">{username}</div>
-            <div className="message-item--content">ffffff</div>
-          </div>
-        </div>
-        <div className={`message-item item-visitor`}>
-          <div className="message-item--avatar">
-            <img src={AvatarVisitor} /> :
-          </div>
-          <div className="message-item--body">
-            <div className="message-item--name">{title}</div>
-            <div className="message-item--content">ffffff</div>
-          </div>
-        </div>
-      </div>
+       <div className="message--list">
+      { oppsiteStatus === 1 ? 
+        selfList && oppsiteList && selfList.map((value,index) => {
+          return (
+           <div key={index}>
+                  <div key={selfList && selfList[index]}>
+                        <div className={`message-item item-user}`}>
+                      <div className="message-item--avatar">
+                        <img src={AvatarUser} /> 
+                      </div>
+                      <div className="message-item--body">
+                        <div className="message-item--name">{username}</div>
+                        <div className="message-item--content">{selfList && selfList[index]}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div key={oppsiteList && oppsiteList[index]}>
+                       <div className={`message-item item-visitor`}>
+                          <div className="message-item--avatar">
+                          { oppsiteList[index] ? <img src={AvatarVisitor} /> :"" }
+                          </div>
+                          <div className="message-item--body">
+                            <div className="message-item--name">{oppsiteList[index] ? title : ""}</div>
+                            <div className="message-item--content">{oppsiteList && oppsiteList[index]}</div>
+                          </div>
+                        </div>
+                  </div>
+                </div>
+           
+            
+          )
+        })
+        :
+        selfList && selfList.map((value,index) => {
+          return (
+            <div key={selfList && selfList[index]}>
+                  <div className={`message-item item-user}`}>
+                <div className="message-item--avatar">
+                  <img src={AvatarUser} /> 
+                </div>
+                <div className="message-item--body">
+                  <div className="message-item--name">{username}</div>
+                  <div className="message-item--content">{selfList && selfList[index]}</div>
+                </div>
+              </div>
+            </div>
+          )
+        })
+      }
+       </div>
       <div className="input--box">
         <input
           type="text"
           value={state.msg}
-          onChange={(ev) => setState({...state, msg: ev.target.value })}
+          onChange={(ev) => setState({...state, msg: ev.target.value,messages:ev.target.value})}
         />
         <button className="btn--primary" onClick={send}>
           发送

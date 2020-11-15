@@ -6,11 +6,7 @@ import { withRouter } from 'react-router-dom';
 @withRouter
 class ChatSearchUI extends Component {
     handleClickChat =  () => {
-        // if(Object.keys(this.props)[0] !== "history"){
-        //     var title = this.props.name || Object.keys(this.props)[0] 
-        // }
-        
-        this.props.history.push("/chatmain",{title:this.props.toName})
+        this.props.history.push("/chatmain",{title:this.props.toName,oppsiteStatus:this.props.oppsiteStatus})
     }
     
     render(){

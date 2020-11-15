@@ -9,7 +9,8 @@ class ChatSearch extends Component{
     state = {
         value: '',
         toName:"",
-        searchList:[]
+        searchList:[],
+        oppsiteStatus:''
       };
       componentDidMount() {
         this.autoFocusInst.focus();
@@ -20,14 +21,16 @@ class ChatSearch extends Component{
       HandleClearClick = () => {
           this.props.history.goBack()
       }
+
+      //搜索聊天对象，判断是否在线
       handleSubmitClick = async(e) => {
             const searchResult =await http.get(`http://10.9.27.166:8080/userChat/search/${e}`)
             console.log(searchResult)
             this.setState({
                 toName:e,
+                oppsiteStatus:"",
                 searchList:searchResult
             })
-
       }
 
     render(){

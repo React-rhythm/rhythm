@@ -1,4 +1,4 @@
-import {LOADMSGDATA} from "./actionTypes"
+import {LOADMSGDATA,SAVETONAME,SAVEOPPSITESTATUS,SAVEOPPSITEMSGLIST} from "./actionTypes"
 import http from '@u/http.js'
 
 const loadMsgDataSync = (list) => {
@@ -17,8 +17,29 @@ const loadMsgDataAsync = () => {
     }
   }
 
+const saveToName = toName => {
+  return {
+      type:SAVETONAME,
+      toName
+  }
+}
+const saveOppsiteStatus = oppsiteStatus => {
+  return {
+      type:SAVEOPPSITESTATUS,
+      oppsiteStatus
+  }
+}
+const saveOppsiteMsgList = oppsiteMsgList => {
+  return {
+      type:SAVEOPPSITEMSGLIST,
+      oppsiteMsgList
+  }
+}
 
 export default {
     loadMsgDataSync,
-    loadMsgDataAsync
+    loadMsgDataAsync,
+    saveToName,
+    saveOppsiteStatus,
+    saveOppsiteMsgList
 }

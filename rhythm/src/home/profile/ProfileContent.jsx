@@ -8,6 +8,8 @@ import CallService from "@a/images/kefu@2x.png"
 import NewsPaper from "@a/images/baoshe@2x.png"
 import Setting from "@a/images/shezhi@2x.png"
 import { List } from 'antd-mobile';
+import http from "@u/https"
+
 
 const Item = List.Item;
 
@@ -35,7 +37,10 @@ class ProfileContent extends Component{
             <Item
               thumb={CallService}
               arrow="horizontal"
-              onClick={() => {this.props.history.push("/chatroom",{title:"聊天室",search:true})}}
+              onClick={async() => {
+                this.props.history.push("/chatroom",{title:"聊天室",search:true})
+                await http.get("http://10.9.27.166:8080/userChat/login")
+            }}
             >客服</Item>
             {
               role === -1 ? "" : <Item

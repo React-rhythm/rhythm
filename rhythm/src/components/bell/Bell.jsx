@@ -16,6 +16,8 @@ import {withRouter} from "react-router-dom"
 class Bell extends Component{
     handleBellClick = () =>{
         this.props.history.push("/notice",{title:"报社"})
+
+        // http.get(`http://10.9.27.166:8080/userChat/notice/${toName}`)
     }
     render(){
         // console.log(this.props)

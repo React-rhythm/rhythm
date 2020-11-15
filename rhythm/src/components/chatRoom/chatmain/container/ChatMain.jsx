@@ -11,14 +11,15 @@ export default class ChatMain extends Component{
         msgList : []
     }
     handleGetMsgList(msgList){
+        console.log(msgList)
         this.setState({
             msgList
         })
     }
 
     handleQuitChatRoom(){
-        //退出聊天，发送status:0
-        const res = http.get()
+        //退出聊天，请求即可
+        const res = http.get("http://10.9.27.166:8080/userChat/exit")
     }
     render(){
         return (
