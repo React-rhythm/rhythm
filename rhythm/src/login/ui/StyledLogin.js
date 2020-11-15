@@ -54,7 +54,7 @@ const ContentWrap2= styled.div`
             width:40%;
             font-size:0.14rem;
             position:absolute;
-            right:20%;
+            right:0%;
             .has{
                text-align:right;
                 color:red;
@@ -71,13 +71,21 @@ const ContentWrap2= styled.div`
        
         
     }
-    .am-input-item:nth-child(6){
+    .am-input-item:nth-child(5){
         position: relative;
+        .am-list-line{
+            position: relative;
+            .am-input-error-extra{
+                position: absolute;
+                right:43%;
+        
+            }
+        }
         .am-input-label-5{
            
             position:absolute;
             right:0;
-        }
+            
         .am-input-control{
             position: absolute;
             
@@ -85,13 +93,12 @@ const ContentWrap2= styled.div`
                 width:60%;
             }
         }
-        .am-list-line{
-            position: relative;
-            .am-input-error-extra{
-                position:absolute;
-                right:43%;
-            }
+        
+            
+        
         }
+        
+        
     
     }
     
