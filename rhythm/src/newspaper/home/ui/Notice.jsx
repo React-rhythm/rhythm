@@ -26,23 +26,11 @@ const Notice = (props) => {
       })
     }
   }
-  const noticedList=props.list && props.list.map(item=>{
-    return {
-        id:item.id,
-        date:item.date,
-        list:item.list.filter(item2=>{
-        return item2.isNoticed===1
-      })
-    }
+  const noticedList=props.list && props.list.filter(item=>{
+    return item.noticeStatus==='1'
   })
-  const noNoticedList=props.list && props.list.map(item=>{
-      return {
-        id:item.id,
-        date:item.date,
-        list:item.list.filter(item2=>{
-        return item2.isNoticed===0
-      })
-    }
+  const noNoticedList=props.list && props.list.filter(item=>{
+      return item.noticeStatus==='0'
   })
   return(
   <div>
@@ -52,6 +40,7 @@ const Notice = (props) => {
         dispatch(ac.changeNotice(index))
       }}
     >
+     
       <div style={{ height: '5.3rem'}}>
         <NoticeList list={noNoticedList} onGotoDetail={gotoDetail}></NoticeList>
       </div>
