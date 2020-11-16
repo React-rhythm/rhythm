@@ -11,15 +11,34 @@ class NoticeItem extends Component{
           this.props.history.push("/msgdetail",{title:"消息详情",headbg:"#fff",color:"#000",...notice})
         }
     }
+
+//     例：time:1534301216395
+
+// 调用：changeTime(time)：
+
+ changeTime(time){
+    var commonTime = "";
+    if(time){
+        var unixTimestamp = new Date(time*1) ;
+        commonTime = unixTimestamp.toLocaleString();
+    }
+     return commonTime;
+}
+
+// 结果：
+
+// ‎2018-8-15 10:46:56
     render(){
        
         let {notice} = this.props
       
-        var time = new Date(notice.time)
-        console.log(time.getFullYear())
-        console.log(time.getMonth())
-        console.log(time.getDate())
-        let createTime = time.getFullYear()+ "-"+ + time.getMonth() + 1 + "-"+ + time.getDate()
+        // var time = new Date(notice.time)
+        // console.log(time.getFullYear())
+        // console.log(time.getMonth())
+        // console.log(time.getDate())
+        // let createTime = time.getFullYear()+ "-"+ + time.getMonth() + 1 + "-"+ + time.getDate()
+
+        let createTime  = this.changeTime(notice.time)
 
         return (
             <NoticeItemWrap>
