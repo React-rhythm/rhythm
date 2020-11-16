@@ -1,19 +1,14 @@
 import {LOADMSGDATA,SAVETONAME,SAVEOPPSITESTATUS,SAVEOPPSITEMSGLIST} from "./actionTypes"
 
 const defaultState = {
-    list:[],
     toName:"",
-    oppsiteStatus,
-    oppsiteMsgList
+    oppsiteStatus:"",
+    oppsiteMsgList:[]
 }
 
 const reducer = (state = defaultState,action) => {
    
     switch(action.type){
-        case LOADMSGDATA: 
-            return {
-                list:action.list
-            }
         case SAVETONAME :
             return {
                 toName:action.toName

@@ -24,9 +24,6 @@ import { withRouter } from 'react-router-dom'
 }),dispatch=>({
   changeTab(tab){
     dispatch(ac.changeTab(tab))
-  },
-  loadMsgData() {
-    dispatch(acc.loadMsgDataAsync())
   }
 }))
 @withRouter
@@ -103,9 +100,7 @@ class Litigant extends Component{
           </div>
         );
       }
-        componentDidMount(){
-          this.props.loadMsgData()
-      }
+        
     }
 
 

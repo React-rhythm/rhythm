@@ -3,32 +3,39 @@ import React,{Component} from 'react'
 import {Container} from "./StyledNotice"
 import Header from "./Header"
 import TabBar from "./TabBar"
-
-
 import {connect} from "react-redux"
-import {actionCreator as ac} from "@h/"
+import http from "@u/https"
+
 
 @connect(
     state =>  ({
-      list:state.MsgDetail.list
+      oppsiteMsgList:state.MsgDetail.oppsiteMsgList,
+      username:state.getusername.username,
+      toName:state.MsgDetail.toName,
+      name:state.getusername.name,
     }),
-    dispatch => ({
-        loadMsgData() {
-          dispatch(ac.loadMsgDataAsync())
-        }
-      })
+
 )
 class Notice extends Component{
+    state = ({
+        oppsiteMsgList:[]
+    })
     render(){
+        console.log(this.props)
         return (
             <Container>
                 <Header></Header>
-                <TabBar {...this.props}></TabBar>
+                <TabBar {...this.props.oppsiteMsgList}></TabBar>
             </Container>
         )
     }
-    componentDidMount(){
-        this.props.loadMsgData()
-    }
+    // async componentDidMount (){
+    //     var toName = this.props.toName
+    //     console.log(toName)
+    //     const msgList = toName &&  await http.get(`http://10.9.63.252:8080/userChat/notice/${toName}`);
+    //     this.setState({
+    //         oppsiteMsgList:msgList[toName]
+    //     })
+    // }
 }
 export default Notice

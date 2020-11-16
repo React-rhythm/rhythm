@@ -7,20 +7,37 @@ import {Container} from "./StyledBell"
 import {connect} from "react-redux"
 
 import {withRouter} from "react-router-dom"
+import {actionCreator as ac} from "@h/"
+
+import http from "@u/https"
+
 @connect(
     state => ({
-        isShow:state.notice.isShow
-    })
+        isShow:state.notice.isShow,
+        toName:state.MsgDetail.toName,
+        username:state.getusername.username,
+        name:state.getusername.name,
+    }),
+    dispatch => ({
+        loadMsgData(oppsiteMsgList) {
+          dispatch(ac.saveOppsiteMsgList(oppsiteMsgList))
+        }
+      })
 )
 @withRouter
 class Bell extends Component{
-    handleBellClick = () =>{
+    handleBellClick = async() =>{
+        
+        const toName = this.props.name
+       
         this.props.history.push("/notice",{title:"报社"})
 
-        // http.get(`http://10.9.27.166:8080/userChat/notice/${toName}`)
+        const res =await http.get(`http://10.9.63.252:8080/userChat/notice/${toName}`)
+        
+        this.props.loadMsgData(res[toName])
     }
     render(){
-        // console.log(this.props)
+        
         return (
             <Container>
                 <Badge dot={this.props.isShow}>

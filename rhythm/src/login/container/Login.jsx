@@ -78,7 +78,7 @@ class Login1 extends Component {
                 status: this.state.status
             }
           
-             http.post('http://10.9.27.166:8080/userInfo/userLogin',JSON.stringify(userLogin))
+             http.post('http://10.9.63.252:8080/userInfo/userLogin',JSON.stringify(userLogin))
             .then(res=>{
                 let token=res.token
                 let flag=res.flag

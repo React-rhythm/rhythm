@@ -1,7 +1,8 @@
-import {GETUSERNAME} from "./actionTypes"
+import {GETUSERNAME,LOADMSGDATA} from "./actionTypes"
 
 const defaultState = {
-    username:""
+    username:"",
+    name:""
 }
 
 const reducer = (state = defaultState,action) => {
@@ -9,6 +10,10 @@ const reducer = (state = defaultState,action) => {
         case GETUSERNAME :
             return {
                 username:action.username
+            }
+        case LOADMSGDATA: 
+            return {
+                name:action.name
             }
         default:
             return state

@@ -45,7 +45,7 @@ class Reset extends Component{
     }
     handlePutCodeClick = async() => {
         const phoneid = this.state.phoneid
-        const findPhoneRes = await http.get(`http://10.9.70.205:8080/userInfo/register/resetPwd/${phoneid}`)
+        const findPhoneRes = await http.get(`http://10.9.63.252:8080/userInfo/register/resetPwd/${phoneid}`)
         console.log(findPhoneRes)
     }
     handlePutPassword = () => {

@@ -13,22 +13,23 @@ class TabBar extends Component{
           ]
     }
     render(){
-        const list = _.filter(this.props.list,function(notice) {return notice.status==="已公告"})
+        console.log(this.props)
+        const list = _.filter(this.props,function(notice) {return notice.flag===1})
         
-        const listing = _.filter(this.props.list,function(notice) {return notice.status==="未公告"})
+        
+        const listing = _.filter(this.props,function(notice) {return notice.flag===0})
+        console.log(listing)
 
         return (
             <TabBarWrap>
                 <Tabs tabs={this.state.tabs}
-                    initialPage={0}
-                    // onChange={(tab, index) => { console.log('onChange', index, tab); }}
-                    // onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
+                    initialPage={1}
                 >
                     <div className="tabContentList">
                         {
                             list.length>0 && list.map(value=>{
                                 return (
-                                    <NoticeItem notice={value} key={value._id}></NoticeItem>
+                                    <NoticeItem notice={value} key={value.time}></NoticeItem>
                                 )
                             })
                         }
@@ -37,7 +38,7 @@ class TabBar extends Component{
                     {
                             listing.length>0 && listing.map(value=>{
                                 return (
-                                    <NoticeItem notice={value} key={value._id}></NoticeItem>
+                                    <NoticeItem notice={value} key={value.time}></NoticeItem>
                                 )
                             })
                         }

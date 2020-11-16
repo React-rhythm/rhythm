@@ -33,7 +33,7 @@ class Change extends Component{
         }
     }
     handleGetCodeClick = async() => {
-        const findPhoneRes = await http.get(`http://10.9.70.205:8080/userInfo/register/resetPwd/${this.props.phoneid}`)
+        const findPhoneRes = await http.get(`http://10.9.63.252:8080/userInfo/register/resetPwd/${this.props.phoneid}`)
         console.log(findPhoneRes)
         // if(!findPhoneRes.flag){
         //     alert("请输入正确的手机号")
@@ -43,7 +43,7 @@ class Change extends Component{
         const {newPhoneid,uuid} = this.state
         const token =window.localStorage.getItem("token")
         const obj = {phoneid:this.props.phoneid,uuid,newPhoneid,token}
-        const result = await http.post('http://10.9.70.205:8080/userInfo/phoneUpdate',JSON.stringify(obj))
+        const result = await http.post('http://10.9.63.252:8080/userInfo/phoneUpdate',JSON.stringify(obj))
         console.log(result)
     }
 

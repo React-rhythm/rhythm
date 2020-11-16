@@ -1,4 +1,4 @@
-import {GETUSERNAME} from "./actionTypes"
+import {LOADMSGDATA,GETUSERNAME} from "./actionTypes"
 
 const getusername = username => {
     return {
@@ -6,7 +6,13 @@ const getusername = username => {
         username
     }
 }
-
+const loadMsgtName = (name) => {
+    return {
+        type:LOADMSGDATA,
+        name
+    }
+}
 export default {
-    getusername
+    getusername,
+    loadMsgtName
 }

@@ -14,16 +14,21 @@ class NoticeItem extends Component{
     render(){
        
         let {notice} = this.props
-        let createTime = notice.createTime.slice(0,10)
+      
+        var time = new Date(notice.time)
+        console.log(time.getFullYear())
+        console.log(time.getMonth())
+        console.log(time.getDate())
+        let createTime = time.getFullYear()+ "-"+ + time.getMonth() + 1 + "-"+ + time.getDate()
 
         return (
             <NoticeItemWrap>
                 <div className="title">
-                    <span>{notice.status}</span>
+                    <span>{notice.flag === 1? "已读" : "未读"}</span>
                     <span>{createTime}</span>
                 </div>
                 <div className="content">
-                    {notice.content}
+                    {notice.msg}
                 </div>
                 <p className="more" onClick={this.handleDetailClick(notice)}>了解更多</p>
             </NoticeItemWrap>

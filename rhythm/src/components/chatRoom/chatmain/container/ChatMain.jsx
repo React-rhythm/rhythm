@@ -19,7 +19,7 @@ export default class ChatMain extends Component{
 
     handleQuitChatRoom(){
         //退出聊天，请求即可
-        const res = http.get("http://10.9.27.166:8080/userChat/exit")
+        const res = http.get("http://10.9.63.252:8080/userChat/exit")
     }
     render(){
         return (

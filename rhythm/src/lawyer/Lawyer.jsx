@@ -28,9 +28,6 @@ import LitigantUi from "@/home/litigant/ui/LitigantUi"
 }),dispatch=>({
   changeTab(tab){
     dispatch(ac.changeTab(tab))
-  },
-  loadMsgData() {
-    dispatch(acc.loadMsgDataAsync())
   }
 }))
 @withRouter
@@ -117,9 +114,7 @@ class Lawyer extends Component{
           </div>
         );
       }
-      componentDidMount(){
-        this.props.loadMsgData()
-      }
+     
     }
 
 

@@ -1,7 +1,7 @@
 import {CHANGEPUSHNOTICE,CHANGEROLES} from "./actionTypes"
 
 const defaultState = {
-    isShow:true,
+    isShow:false,
     roles:"",
     phoneid:""
 }

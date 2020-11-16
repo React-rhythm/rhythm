@@ -1,27 +1,32 @@
 import React, { useState } from "react";
 import { Container } from "./StyledChatMainUI";
-import { useStore } from "react-redux";
+import { useStore,useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom"
 import http from "@u/https";
 import AvatarUser from "@a/images/avatar-user.png"
 import AvatarVisitor from "@a/images/avatar-visitor.png"
 
 
+import {actionCreator as ac} from "@h/"
+
+//当对方不在线时，改变铃铛状态为有红点，并将要发的消息存贮在
 const ChatMainUI = (props) => {
   
-  const {username} = useStore().getState().getusername;
-  //还要获取当前用户的roles
-  // const {roles}= useStore().getState().notice
-  // console.log(roles)
+  const store = useStore().getState()
+  console.log(store)
+  const opp = store.MsgDetail
+  const dispatch = useDispatch()
 
+  const {username} = store.getusername;
+  console.log(username)
   const history = useHistory()
  
   const {title} = history.location.state
-  const {oppsiteStatus} =  history.location.state
   
-
   let selfList = props[username] 
+  console.log(selfList)
   let oppsiteList = props[title]
+  console.log(oppsiteList)
 
   const [state, setState] = useState({
     username: "",
@@ -32,26 +37,25 @@ const ChatMainUI = (props) => {
   });
 
   const loadMsgList = async() => {
-    const msgList = await http.get(`http://10.9.27.166:8080/userChat/pull/${title}`);
-    console.log(msgList);
+    const msgList = await http.get(`http://10.9.63.252:8080/userChat/pull/${title}`);
+   
     props.onGetMsgList(msgList)
+    dispatch(ac.saveOppsiteMsgList(msgList))
   }
 
   const send = async () => {
-    const result = await http.post("http://10.9.27.166:8080/userChat/sendMsg", JSON.stringify({...state,toName:title}));
-    console.log(result);
+    const result = await http.post("http://10.9.63.252:8080/userChat/sendMsg", JSON.stringify({...state,toName:title}));
+   
     setState({
       msg: "",
     });
     loadMsgList();
   };
-
-  //如果对方不在线，只要渲染自己发的消息 将消息存储在铃铛  显示红点
   
   return (
     <Container>
        <div className="message--list">
-      { oppsiteStatus === 1 ? 
+      { opp.oppsiteStatus === "1" ? 
         selfList && oppsiteList && selfList.map((value,index) => {
           return (
            <div key={index}>
