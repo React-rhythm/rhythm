@@ -28,7 +28,7 @@ class ChatRoom extends Component{
     }
 
     async componentDidMount(){
-      const nameList = await http.get("http://tn4aim.natappfree.cc/userChat/login")
+      const nameList = await http.get("http://localhost:8080/userChat/login")
       console.log(nameList)
       this.setState({
         nameList:nameList.name

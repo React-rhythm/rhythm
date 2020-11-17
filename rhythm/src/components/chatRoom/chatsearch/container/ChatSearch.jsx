@@ -50,7 +50,7 @@ class ChatSearch extends Component{
 
       //搜索聊天对象，判断是否在线
       handleSubmitClick = async(e) => {
-            const searchResult =await http.get(`http://tn4aim.natappfree.cc/userChat/search/${e}`)
+            const searchResult =await http.get(`http://localhost:8080/userChat/search/${e}`)
             console.log(searchResult)
             this.setState({
                 toName:e,

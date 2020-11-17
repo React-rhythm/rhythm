@@ -39,14 +39,14 @@ const ChatMainUI = (props) => {
 
   
   const loadMsgList = async() => {
-    const msgList = await http.get(`http://tn4aim.natappfree.cc/userChat/pull/${title}`);
+    const msgList = await http.get(`http://localhost:8080/userChat/pull/${title}`);
    
     props.onGetMsgList(msgList)
     dispatch(ac.saveOppsiteMsgList(msgList))
   }
 
   const send = async () => {
-    const result = await http.post("http://tn4aim.natappfree.cc/userChat/sendMsg", JSON.stringify({...state,toName:title}));
+    const result = await http.post("http://localhost:8080/userChat/sendMsg", JSON.stringify({...state,toName:title}));
    
     setState({
       msg: "",

@@ -45,7 +45,7 @@ class Reset extends Component{
     }
     handlePutCodeClick = async() => {
         const phoneid = this.state.phoneid
-        const findPhoneRes = await http.get(`http://10.9.63.252:8080/userInfo/register/resetPwd/${phoneid}`)
+        const findPhoneRes = await http.get(`http://localhost:8080/userInfo/register/resetPwd/${phoneid}`)
         console.log(findPhoneRes)
     }
     handlePutPassword = () => {
@@ -80,7 +80,7 @@ class Reset extends Component{
         const token =window.localStorage.getItem("token")
         const obj = {phoneid,uuid,password,replynewpassword,token}
         console.log(obj)
-        const result = await http.post('http://10.9.70.205:8080/userInfo/pwdReset',JSON.stringify(obj))
+        const result = await http.post('http://localhost:8080/userInfo/pwdReset',JSON.stringify(obj))
         console.log(result)
     }
     render(){

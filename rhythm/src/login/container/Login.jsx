@@ -82,7 +82,7 @@ class Login1 extends Component {
                 status: this.state.status
             }
           
-             http.post('http://tn4aim.natappfree.cc/userInfo/userLogin',JSON.stringify(userLogin))
+             http.post('http://127.0.0.1:8080/userInfo/userLogin',JSON.stringify(userLogin))
             .then(res=>{
                 let token=res.token
                 let flag=res.flag

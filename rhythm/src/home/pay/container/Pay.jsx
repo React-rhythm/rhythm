@@ -63,7 +63,7 @@ const Pay = (props) => {
             payInfo.page = payForm.layout
             payInfo.price = payForm.count
             console.log(payInfo)
-            http.post('http://10.9.27.166:8080/alipay',JSON.stringify(payInfo)).
+            http.post('http://127.0.0.1:8080/alipay',JSON.stringify(payInfo)).
             then(res => {
               // console.log(res);
               document.write(res)

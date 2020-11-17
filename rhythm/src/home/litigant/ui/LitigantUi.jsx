@@ -14,7 +14,7 @@ const LitigantUi = (props) => {
     
     useEffect(() => {
         async function fetchData() {
-            const result = await http.get("http://tn4aim.natappfree.cc/searchInfo/show")
+            const result = await http.get("http://localhost:8080/searchInfo/show")
             // console.log(result.SearchDto)
             setList(result.SearchDto)
           }

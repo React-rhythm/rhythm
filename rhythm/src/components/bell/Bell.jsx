@@ -32,7 +32,7 @@ class Bell extends Component{
        
         this.props.history.push("/notice",{title:"报社"})
 
-        const res =await http.get(`http://tn4aim.natappfree.cc/userChat/notice/${toName}`)
+        const res =await http.get(`http://localhost:8080/userChat/notice/${toName}`)
         
         this.props.loadMsgData(res[toName])
     }

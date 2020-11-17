@@ -44,7 +44,7 @@ class Publish extends Component {
       return 
     }
     else {
-      http.post('http://10.9.27.166:8080/lawyer/noticeUpload',JSON.stringify(this.props.form))
+      http.post('http://127.0.0.1:8080/lawyer/noticeUpload',JSON.stringify(this.props.form))
       this.successToast()
       // setTimeout(() => {
       //   window.location.reload()
