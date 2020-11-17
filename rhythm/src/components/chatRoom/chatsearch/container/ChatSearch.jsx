@@ -10,7 +10,9 @@ import {actionCreator as accc} from "@c/chatRoom/chatmain"
 
 
 @connect(state=>({
-  isShow:state.notice.isShow
+  isShow:state.notice.isShow,
+  oppsiteStatus:state.MsgDetail.oppsiteStatus,
+  isOnline:state.getusername.isOnline
 }),dispatch=>({
   changeNotice(isShow){
     dispatch(ac.changeNoticeStatus(isShow))
@@ -23,6 +25,9 @@ import {actionCreator as accc} from "@c/chatRoom/chatmain"
   },
   loadMsgtName(name){
     dispatch(accc.loadMsgtName(name))
+  },
+  getIsOnLine(isOnline){
+    dispatch(accc.getIsOnLine(isOnline))
   }
 }))
 @withRouter
@@ -31,7 +36,7 @@ class ChatSearch extends Component{
         value: '',
         toName:"",
         searchList:[],
-        oppsiteStatus:''
+        isOnline:""
       };
       componentDidMount() {
         this.autoFocusInst.focus();
@@ -45,17 +50,18 @@ class ChatSearch extends Component{
 
       //搜索聊天对象，判断是否在线
       handleSubmitClick = async(e) => {
-            const searchResult =await http.get(`http://10.9.63.252:8080/userChat/search/${e}`)
-            
+            const searchResult =await http.get(`http://tn4aim.natappfree.cc/userChat/search/${e}`)
+            console.log(searchResult)
             this.setState({
                 toName:e,
-                searchList:searchResult
+                searchList:searchResult,
+                isOnline:searchResult.state
             })
-            this.props.saveOppsiteStatus(searchResult.state)
+           
             this.props.saveToName(e)
             this.props.loadMsgtName(e)
-            //判断是否在线，相应改变铃铛状态
-            // this.props.changeNotice(oppsiteStatus)
+            this.props.getIsOnLine(searchResult.state)
+          
       }
 
     render(){
@@ -67,7 +73,7 @@ class ChatSearch extends Component{
                     onClear={this.HandleClearClick}
                     onSubmit={this.handleSubmitClick}
                 />
-                <ChatSearchUI {...this.state}></ChatSearchUI>
+                <ChatSearchUI {...this.state} {...this.props}></ChatSearchUI>
             </>
         )
     }

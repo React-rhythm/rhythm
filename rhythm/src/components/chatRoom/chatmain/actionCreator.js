@@ -1,4 +1,4 @@
-import {LOADMSGDATA,GETUSERNAME} from "./actionTypes"
+import {LOADMSGDATA,GETUSERNAME,ISONLINE} from "./actionTypes"
 
 const getusername = username => {
     return {
@@ -12,7 +12,16 @@ const loadMsgtName = (name) => {
         name
     }
 }
+
+const getIsOnLine = (isOnline) => {
+    return {
+        type:ISONLINE,
+        isOnline
+    }
+}
+
 export default {
     getusername,
-    loadMsgtName
+    loadMsgtName,
+    getIsOnLine
 }

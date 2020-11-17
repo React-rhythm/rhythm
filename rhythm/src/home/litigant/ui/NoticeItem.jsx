@@ -2,7 +2,7 @@ import React from 'react'
 import {LiWrap} from "./StyledLitigant"
 import {useHistory} from "react-router-dom"
 const  NoticeItem  = (props) => {
-   console.log(props.notice)
+//    console.log(props.notice)
    const notice = props.notice
     const history = useHistory()
 

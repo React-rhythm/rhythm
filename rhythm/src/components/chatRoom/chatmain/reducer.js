@@ -1,8 +1,9 @@
-import {GETUSERNAME,LOADMSGDATA} from "./actionTypes"
+import {GETUSERNAME,LOADMSGDATA,ISONLINE} from "./actionTypes"
 
 const defaultState = {
     username:"",
-    name:""
+    name:"",
+    isOnline:""
 }
 
 const reducer = (state = defaultState,action) => {
@@ -14,6 +15,10 @@ const reducer = (state = defaultState,action) => {
         case LOADMSGDATA: 
             return {
                 name:action.name
+            }
+        case ISONLINE :
+            return {
+                isOnline:action.isOnline
             }
         default:
             return state

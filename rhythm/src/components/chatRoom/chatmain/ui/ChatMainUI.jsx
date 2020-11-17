@@ -9,42 +9,44 @@ import AvatarVisitor from "@a/images/avatar-visitor.png"
 
 import {actionCreator as ac} from "@h/"
 
-//当对方不在线时，改变铃铛状态为有红点，并将要发的消息存贮在
+
 const ChatMainUI = (props) => {
   
   const store = useStore().getState()
-  console.log(store)
-  const opp = store.MsgDetail
+  const opp = store.getusername
+  
   const dispatch = useDispatch()
 
-  const {username} = store.getusername;
-  console.log(username)
+  const selfName = store.notice.selfName;
+  
   const history = useHistory()
  
   const {title} = history.location.state
   
-  let selfList = props[username] 
-  console.log(selfList)
-  let oppsiteList = props[title]
-  console.log(oppsiteList)
 
+
+  let selfList = props[selfName] 
+ 
+  let oppsiteList = props[title]
+
+  
   const [state, setState] = useState({
-    username: "",
     msg: "",
     messages: "",
     status: 1,
     toName:title
   });
 
+  
   const loadMsgList = async() => {
-    const msgList = await http.get(`http://10.9.63.252:8080/userChat/pull/${title}`);
+    const msgList = await http.get(`http://tn4aim.natappfree.cc/userChat/pull/${title}`);
    
     props.onGetMsgList(msgList)
     dispatch(ac.saveOppsiteMsgList(msgList))
   }
 
   const send = async () => {
-    const result = await http.post("http://10.9.63.252:8080/userChat/sendMsg", JSON.stringify({...state,toName:title}));
+    const result = await http.post("http://tn4aim.natappfree.cc/userChat/sendMsg", JSON.stringify({...state,toName:title}));
    
     setState({
       msg: "",
@@ -55,7 +57,7 @@ const ChatMainUI = (props) => {
   return (
     <Container>
        <div className="message--list">
-      { opp.oppsiteStatus === "1" ? 
+      { opp.isOnline === "1" ? 
         selfList && oppsiteList && selfList.map((value,index) => {
           return (
            <div key={index}>
@@ -65,7 +67,7 @@ const ChatMainUI = (props) => {
                         <img src={AvatarUser} /> 
                       </div>
                       <div className="message-item--body">
-                        <div className="message-item--name">{username}</div>
+                        <div className="message-item--name">{selfName}</div>
                         <div className="message-item--content">{selfList && selfList[index]}</div>
                       </div>
                     </div>
@@ -95,7 +97,7 @@ const ChatMainUI = (props) => {
                   <img src={AvatarUser} /> 
                 </div>
                 <div className="message-item--body">
-                  <div className="message-item--name">{username}</div>
+                  <div className="message-item--name">{selfName}</div>
                   <div className="message-item--content">{selfList && selfList[index]}</div>
                 </div>
               </div>

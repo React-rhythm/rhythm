@@ -1,4 +1,4 @@
-import {CHANGEPUSHNOTICE,CHANGEROLES} from "./actionTypes"
+import {CHANGEPUSHNOTICE,CHANGEROLES,GETSELFNAME} from "./actionTypes"
 
 const changeNoticeStatus = isShow => {
     return {
@@ -13,9 +13,16 @@ const changeRoles = roles => {
         roles
     }
 }
+const getSelfName = (selfName) => {
+    return {
+        type:GETSELFNAME,
+        selfName
+    }
+}
 
 
 export default {
     changeNoticeStatus,
     changeRoles,
+    getSelfName
 }

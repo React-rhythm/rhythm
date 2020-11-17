@@ -1,9 +1,10 @@
-import {CHANGEPUSHNOTICE,CHANGEROLES} from "./actionTypes"
+import {CHANGEPUSHNOTICE,CHANGEROLES,GETSELFNAME} from "./actionTypes"
 
 const defaultState = {
     isShow:false,
     roles:"",
-    phoneid:""
+    phoneid:"",
+    selfName:""
 }
 
 const reducer = (state = defaultState,action) => {
@@ -15,6 +16,10 @@ const reducer = (state = defaultState,action) => {
         case CHANGEROLES :
             return {
                 roles:action.roles
+            }
+        case GETSELFNAME:
+            return {
+                selfName:action.selfName
             }
         default:
             return state

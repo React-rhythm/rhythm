@@ -12,7 +12,7 @@ class Detail extends Component {
 
     componentDidMount(){
         
-            http.get('http://10.9.27.166:8080/searchInfo/showDetail/368715').then(res=>{
+            http.get('http://tn4aim.natappfree.cc/searchInfo/showDetail/368715').then(res=>{
                 console.log(res);
                 this.setState({
                     list:res.SearchDetai

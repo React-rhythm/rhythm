@@ -13,10 +13,19 @@ const MsgDetail = (props) => {
         const {name} = store.getusername
         
         console.log(name)
+        
+        const changeTime = (time) => {
+            var commonTime = "";
+            if(time){
+                var unixTimestamp = new Date(time*1) ;
+                commonTime = unixTimestamp.toLocaleString();
+            }
+             return commonTime;
+        }
         let {state:{flag,time,msg}} = props.history.location
 
         const handleChangeNoticeFlag = async() => {
-            const res = await http.get(`http://10.9.63.252:8080/userChat/updateMagFlag/${time}/toName/${name}`)
+            const res = await http.get(`http://tn4aim.natappfree.cc/userChat/updateMagFlag/${time}/toName/${name}`)
             console.log(res)
         }
 
@@ -32,7 +41,7 @@ const MsgDetail = (props) => {
                     />
                     <Card.Header
                         title="消息时间"
-                        extra={<span>{time.slice(0,10)}</span>}
+                        extra={<span>{changeTime(time)}</span>}
                     />
                      <Card.Header
                             title="消息内容"

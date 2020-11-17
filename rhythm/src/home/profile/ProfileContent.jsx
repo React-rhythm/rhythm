@@ -39,7 +39,7 @@ class ProfileContent extends Component{
               arrow="horizontal"
               onClick={async() => {
                 this.props.history.push("/chatroom",{title:"聊天室",search:true})
-                await http.get("http://10.9.63.252:8080/userChat/login")
+                await http.get("http://87fuyc.natappfree.cc/userChat/login")
             }}
             >客服</Item>
             {

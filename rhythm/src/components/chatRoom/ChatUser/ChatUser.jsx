@@ -9,7 +9,7 @@ import { withRouter } from 'react-router-dom'
  class ChatUser extends Component{
 
     handleClickChat =  () => {
-        this.props.history.push("/chatmain",{title:"jack"})
+        this.props.history.push("/chatmain",{title:this.props.name})
     }
 
     render(){
@@ -20,12 +20,12 @@ import { withRouter } from 'react-router-dom'
                 </div>
                 <div className="chatMain">
                     <div className="content">
-                        <p className="username">哈哈哈哈哈</p>
-                        <p className="chatContent">今天天气真好</p>
+                        <p className="username">{this.props.name}</p>
+                        {/* <p className="chatContent">今天天气真好</p> */}
                     </div>
-                    <div className="date">
+                    {/* <div className="date">
                         <span>14:37</span>
-                    </div>
+                    </div> */}
                 </div>
             </ChatWrap>
         )

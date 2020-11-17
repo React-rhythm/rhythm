@@ -29,13 +29,16 @@ class Notice extends Component{
             </Container>
         )
     }
-    // async componentDidMount (){
-    //     var toName = this.props.toName
-    //     console.log(toName)
-    //     const msgList = toName &&  await http.get(`http://10.9.63.252:8080/userChat/notice/${toName}`);
-    //     this.setState({
-    //         oppsiteMsgList:msgList[toName]
-    //     })
-    // }
+    componentDidMount (){
+        var toName = this.props.toName
+        console.log(toName)
+        ;(async () => {
+            const msgList = await http.get(`http://tn4aim.natappfree.cc/userChat/notice/${toName}`);
+            console.log(msgList)
+            this.setState({
+                oppsiteMsgList:msgList[toName]
+            })
+        })()
+    }
 }
 export default Notice

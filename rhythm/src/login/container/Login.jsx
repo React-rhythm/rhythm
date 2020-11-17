@@ -13,13 +13,17 @@ const alert=Modal.alert
 
 @connect(state=>({
     roles:state.notice.roles,
-    username:state.getusername.username
+    username:state.getusername.username,
+    selfName:state.notice.selfName
   }),dispatch=>({
     changeRole(roles){
       dispatch(ac.changeRoles(roles))
     },
     getUsername(username){
         dispatch(acc.getusername(username))
+    },
+    getSelfName(selfName){
+        dispatch(ac.getSelfName(selfName))
     }
   }))
 class Login1 extends Component {
@@ -78,7 +82,7 @@ class Login1 extends Component {
                 status: this.state.status
             }
           
-             http.post('http://10.9.63.252:8080/userInfo/userLogin',JSON.stringify(userLogin))
+             http.post('http://tn4aim.natappfree.cc/userInfo/userLogin',JSON.stringify(userLogin))
             .then(res=>{
                 let token=res.token
                 let flag=res.flag
@@ -86,6 +90,7 @@ class Login1 extends Component {
                 if(token){
                     this.props.changeRole(this.state.status)
                     this.props.getUsername(this.state.username)
+                    this.props.getSelfName(this.state.username)
                 }
                 if(this.state.status===1&&flag===1){
                     this.props.history.push('/laywer',{roles: 1,username:this.state.username})
