@@ -56,7 +56,7 @@ class role extends Component {
     render() {
         return (
             <Wrap>
-                <div
+                {/* <div
                 onClick={this.toHome}
                 style={{
                     position:'absolute',
@@ -66,7 +66,7 @@ class role extends Component {
                     fontFamily:'PingFang',
                     fontWeight:'500'
                 }}
-                >游客进入</div>
+                >游客进入</div> */}
                 <ChangeRole role={1} onClick={this.toReg(1)} isShow={this.state.isShow}>我是法官</ChangeRole>
                 <ChangeRole role={0} onClick={this.toReg(0)} isShow={this.state.isShow}>我是当事人</ChangeRole>
                 <ChangeRole role={-1} onClick={this.toReg(-1)} isShow={this.state.isShow}>我是报社</ChangeRole>

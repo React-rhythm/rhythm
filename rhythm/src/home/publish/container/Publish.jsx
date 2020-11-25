@@ -31,7 +31,7 @@ class Publish extends Component {
   }
 
   failToast= () => {
-    Toast.fail('该案号已经存在 ', 1);
+    Toast.fail('发布失败 ', 1);
   }
 
   successToast = () => {
@@ -39,7 +39,7 @@ class Publish extends Component {
   }
 
   toPublish = () => {
-    if(this.state.whether === 0) {
+    if(this.state.whether === 0 || !this.props.form.picture || !this.props.form.caseid) {
       this.failToast()
       return 
     }
@@ -47,13 +47,15 @@ class Publish extends Component {
       http.post('http://114.67.247.63:8010/lawyer/noticeUpload',JSON.stringify(this.props.form))
       this.successToast()
       setTimeout(() => {
-        window.location.reload()
+        window.location.reload([true])
+        // this.forceUpdate();
       },2000)
     }
   }
 
   cancel = () => {
     console.log("欢迎来到扎针国度！！");
+    console.log(this.props.form)
     // this.props.history.push('/pay')
   }
 
