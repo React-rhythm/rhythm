@@ -1,9 +1,9 @@
 import React, { useState,useCallback } from 'react';
-import { List, InputItem, Button, Toast,ImagePicker } from 'antd-mobile';
+import { List, InputItem, Button, Toast,ImagePicker, Flex } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { ContentWrap2 } from './StyledLogin'
 import { useHistory, } from 'react-router-dom'
-
+import modal from './modal'
 import http from '../../utils/http'
 
 
@@ -29,9 +29,10 @@ const Content2 = (props) => {
     })
 
     const onSubmit = () => {
+        
         props.form.validateFields({ force: true }, (error) => {
+            
             if (!error) {
-               
                 let register = props.form.getFieldsValue()
                 let userLogin = {
                     ...register,
@@ -43,7 +44,7 @@ const Content2 = (props) => {
                     history.push('/success', { roles: props.state.status })
                 })
             } else {
-                console.log('Validation failed');
+                modal.showAlert()
             }
         });
     }
@@ -280,18 +281,26 @@ const Content2 = (props) => {
                         >
 
                         </InputItem>
-                        <p>头像上传:</p>
-                        <ImagePicker
-                            style={{
-                                height:"1.2rem",
-                                width:"1.2rem"
-                            }}
-                            files={files}
-                            onChange={onChange}
-                            selectable={files.length < 1}
-                            length={1}
-                            disableDelete={true}
-                        />
+                        <div style={{
+                            display:"flex",
+                        }}>
+                            <p style={{
+                                margin:"0.1rem",
+                                fontSize:"0.14rem"
+                            }}>头像上传:</p>
+                            <ImagePicker
+                                style={{
+                                    height:"1.2rem",
+                                    width:"1.2rem"
+                                }}
+                                files={files}
+                                onChange={onChange}
+                                selectable={files.length < 1}
+                                length={1}
+                                disableDelete={true}
+                            />
+                        </div>
+                        
                         <List.Item>
                             <Button type='primary' onClick={onSubmit}>注册</Button>
                         </List.Item>

@@ -50,6 +50,17 @@ class Login1 extends Component {
           alertInstance.close();
         }, 500000);
       };
+      showAlert2 = () => {
+        const alertInstance = alert('律动', '该账户身份不对，请选择其他方式登录', [
+         
+          { text: '确认', onPress: () => console.log('确认') },
+        ]);
+        setTimeout(() => {
+          // 可以调用close方法以在外部close
+          console.log('auto close');
+          alertInstance.close();
+        }, 500000);
+      };
     
     roles = () => {
         switch (this.props.location.state.roles) {
@@ -84,6 +95,9 @@ class Login1 extends Component {
           
              http.post('http://114.67.247.63:8010/userInfo/userLogin',JSON.stringify(userLogin))
             .then(res=>{
+                if(res.jstatus===-1){
+                    this.showAlert2()
+                }
                 let token=res.token
                 let flag=res.flag
                 localStorage.setItem('token',token)
