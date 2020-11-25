@@ -33,7 +33,7 @@ class Notice extends Component{
         var toName = this.props.toName
         console.log(toName)
         ;(async () => {
-            const msgList = await http.get(`http://localhost:8080/userChat/notice/${toName}`);
+            const msgList = await http.get(`http://114.67.247.63:8010/userChat/notice/${toName}`);
             console.log(msgList)
             this.setState({
                 oppsiteMsgList:msgList[toName]

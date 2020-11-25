@@ -34,7 +34,7 @@ class Update extends Component{
     handleSaveClick = () => {
         return async(e) => {
             const username = this.state.username
-            const result = await http.get(`http://localhost:8080/userInfo/nameUpdate/${username}`)
+            const result = await http.get(`http://114.67.247.63:8010/userInfo/nameUpdate/${username}`)
            
             this.setState({
                 username:""

@@ -41,12 +41,12 @@ class Register2 extends Component {
         }, 1000);
         let phoneid = document.getElementById('phoneid').value
 
-        let uuid = http.get(' http://127.0.0.1:8080/userInfo/register/phone/' + phoneid)
+        let uuid = http.get('http://114.67.247.63:8010/userInfo/register/phone/' + phoneid)
     }
 
     //手机号是否已注册
     handlePhoneId = async (phone) => {
-        let res=await http.get('http://127.0.0.1:8080/userInfo/register/phone/' + phone)
+        let res=await http.get('http://114.67.247.63:8010/userInfo/register/phone/' + phone)
         if (res.flag === 0) {
             this.setState({
                 flag4: 0
@@ -63,7 +63,7 @@ class Register2 extends Component {
     handleUserName = async (username) => {
 
         console.log(username);
-        let res = await http.get('http://127.0.0.1:8080/userInfo/register/isUsername/' + username)
+        let res = await http.get('http://114.67.247.63:8010/userInfo/register/isUsername/' + username)
         if (res.flag === 0) {
             this.setState({
                 flag: 0
@@ -79,7 +79,7 @@ class Register2 extends Component {
 
     //身份证号是否存在
     // handleIdCard = async (idcard) => {
-    //     let res = await http.get('http://127.0.0.1:8080/userInfo/register/isIdCardEmpty/' + idcard)
+    //     let res = await http.get('http://114.67.247.63:8010/userInfo/register/isIdCardEmpty/' + idcard)
     //     if (res.flag === 0) {
     //         this.setState({
     //             flag2: 0
@@ -94,7 +94,7 @@ class Register2 extends Component {
 
     //真实姓名是否存在
     // handleRealName = async (realname) => {
-    //     let res = await http.get('http://10.9.27.166:8080/userInfo/register/isRealname/' + realname)
+    //     let res = await http.get('http://10.9.27.166:80108010/userInfo/register/isRealname/' + realname)
     //     if (res.flag === 0) {
     //         this.setState({
     //             flag3: 0

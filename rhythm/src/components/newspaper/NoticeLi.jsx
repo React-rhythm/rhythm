@@ -2,8 +2,9 @@ import React from 'react'
 import { LiWrap } from './styledNoticeList'
 
 export default function NoticeLi(props) {
+  console.log(props);
   let {item}=props
-  console.log(item)
+  item=item[0]
   return (
     <LiWrap 
     onClick={props.onGotoDetail(item.caseid)}

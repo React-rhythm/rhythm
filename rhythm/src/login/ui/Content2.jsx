@@ -21,7 +21,7 @@ const Content2 = (props) => {
         console.log(files[0].file);
         let imgForm = new FormData()
         imgForm.append('imgFile',files[0].file)
-        http.post('http://127.0.0.1:8080/uploadImgToOSS',imgForm)
+        http.post('http://114.67.247.63:8010/uploadImgToOSS',imgForm)
         .then(res => {
             console.log(res);
             setUrl(res)
@@ -39,7 +39,7 @@ const Content2 = (props) => {
                     photoaddress:url
                 }
                 console.log(userLogin);
-                const res = http.post('http://127.0.0.1:8080/userInfo/register', JSON.stringify(userLogin)).then(res=>{
+                const res = http.post('http://114.67.247.63:8010/userInfo/register', JSON.stringify(userLogin)).then(res=>{
                     history.push('/success', { roles: props.state.status })
                 })
             } else {

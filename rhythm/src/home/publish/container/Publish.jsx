@@ -44,17 +44,17 @@ class Publish extends Component {
       return 
     }
     else {
-      http.post('http://127.0.0.1:8080/lawyer/noticeUpload',JSON.stringify(this.props.form))
+      http.post('http://114.67.247.63:8010/lawyer/noticeUpload',JSON.stringify(this.props.form))
       this.successToast()
-      // setTimeout(() => {
-      //   window.location.reload()
-      // },2000)
+      setTimeout(() => {
+        window.location.reload()
+      },2000)
     }
   }
 
   cancel = () => {
-    // console.log(1);
-    this.props.history.push('/pay')
+    console.log("欢迎来到扎针国度！！");
+    // this.props.history.push('/pay')
   }
 
   isPublish = (flag) => {

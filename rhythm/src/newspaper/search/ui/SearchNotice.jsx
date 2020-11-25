@@ -21,8 +21,9 @@ export default function SearchNotice(props) {
         <span>已经刊登的最新公告</span>
         {
           props.list && props.list.map(item=>{
+            console.log(item);
             return(
-              <NoticeLi item={item} onGotoDetail={gotoDetail} key={item.caseid}></NoticeLi>
+              <NoticeLi item={item} onGotoDetail={gotoDetail} key={item[0].caseid}></NoticeLi>
             )
           })
         }

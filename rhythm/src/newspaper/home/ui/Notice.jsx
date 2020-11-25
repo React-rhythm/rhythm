@@ -22,7 +22,7 @@ const Notice = (props) => {
     return ()=>{
       push({
         pathname:'/noticedetail',
-        state:{id}
+        state:{caseid:id}
       })
     }
   }

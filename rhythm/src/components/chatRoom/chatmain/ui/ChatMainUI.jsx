@@ -39,14 +39,14 @@ const ChatMainUI = (props) => {
 
   
   const loadMsgList = async() => {
-    const msgList = await http.get(`http://localhost:8080/userChat/pull/${title}`);
+    const msgList = await http.get(`http://114.67.247.63:8010/userChat/pull/${title}`);
    
     props.onGetMsgList(msgList)
     dispatch(ac.saveOppsiteMsgList(msgList))
   }
 
   const send = async () => {
-    const result = await http.post("http://localhost:8080/userChat/sendMsg", JSON.stringify({...state,toName:title}));
+    const result = await http.post("http://114.67.247.63:8010/userChat/sendMsg", JSON.stringify({...state,toName:title}));
    
     setState({
       msg: "",

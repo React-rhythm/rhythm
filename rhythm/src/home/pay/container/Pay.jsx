@@ -1,10 +1,7 @@
-import React, { useCallback,useRef,useEffect,useState } from "react";
+import React, { useCallback,useState } from "react";
 import { useHistory } from 'react-router-dom'
-import { useDispatch,useSelector } from 'react-redux'
 import { NavBar, Icon } from "antd-mobile";
-import Court from '../ui/Court'
-import Region from '../ui/Region'
-import Party from '../ui/Party'
+
 import State from '../ui/State'
 import News from '../ui/News'
 import Layout from '../ui/Layout'
@@ -19,6 +16,8 @@ import { ButtonPay } from '../ui/pay'
 
 const Pay = (props) => {
   // const QR=useRef()
+  const history = useHistory()
+  console.log(history.location.state.caseid)
   const [html,setHtml] = useState()
 //  useEffect(()=>{
 //   QR.current.innerHTML
@@ -63,7 +62,7 @@ const Pay = (props) => {
             payInfo.page = payForm.layout
             payInfo.price = payForm.count
             console.log(payInfo)
-            http.post('http://127.0.0.1:8080/alipay',JSON.stringify(payInfo)).
+            http.post('http://114.67.247.63:8010/alipay',JSON.stringify(payInfo)).
             then(res => {
               // console.log(res);
               document.write(res)
@@ -94,10 +93,10 @@ const Pay = (props) => {
             padding: "0.15rem",
           }}
         >
-          <div onBlur={changeState('court')}><Court></Court></div>
-          <div onBlur={changeState('region')}><Region></Region></div>
-          <div onBlur={changeState('party')}><Party></Party></div>
-          <div onBlur={changeState('caseId')}><State></State></div>
+          {/* <div onBlur={changeState('court')}><Court></Court></div> */}
+          {/* <div onBlur={changeState('region')}><Region></Region></div> */}
+          {/* <div onBlur={changeState('party')}><Party></Party></div> */}
+          <div onBlur={changeState('caseId')} ><State values={history.location.state.caseid}></State></div>
           <div onBlur={changeState('news')}><News></News></div>
           <div onBlur={changeState('layout')}><Layout></Layout></div>
           <div onBlur={changeState('count')}><Count></Count></div>

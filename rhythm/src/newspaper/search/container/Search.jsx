@@ -14,7 +14,7 @@ const [isInit, setInit] = useState(true)
           async function loadData(){
             console.log(value)
             let result=await http.gett(
-              `http://localhost/searchInfo/byCaseIdAndName/${value}`
+              `http://114.67.247.63:8010/searchInfo/byCaseIdAndName/${value}`
             )
             console.log(result);
             if(result.data.flag===0){

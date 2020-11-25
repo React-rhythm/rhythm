@@ -50,7 +50,7 @@ class ChatSearch extends Component{
 
       //搜索聊天对象，判断是否在线
       handleSubmitClick = async(e) => {
-            const searchResult =await http.get(`http://localhost:8080/userChat/search/${e}`)
+            const searchResult =await http.get(`http://114.67.247.63:8010/userChat/search/${e}`)
             console.log(searchResult)
             this.setState({
                 toName:e,

@@ -25,7 +25,7 @@ class NewsHome extends Component {
     return this.props.changeNotice(type)
   }
   async componentDidMount(){
-    let result=await https.get('http://localhost:8080/searchInfo/show')
+    let result=await https.get('http://114.67.247.63:8010/searchInfo/show')
     console.log(result)
     this.setState({
       list:result.SearchDto

@@ -28,8 +28,8 @@ class ChatRoom extends Component{
     }
 
     async componentDidMount(){
-      const nameList = await http.get("http://localhost:8080/userChat/login")
-      console.log(nameList)
+      const nameList = await http.get("http://114.67.247.63:8010/userChat/login")
+      // console.log(nameList)
       this.setState({
         nameList:nameList.name
       })

@@ -25,7 +25,7 @@ const MsgDetail = (props) => {
         let {state:{flag,time,msg}} = props.history.location
 
         const handleChangeNoticeFlag = async() => {
-            const res = await http.get(`http://localhost:8080/userChat/updateMagFlag/${time}/toName/${name}`)
+            const res = await http.get(`http://114.67.247.63:8010/userChat/updateMagFlag/${time}/toName/${name}`)
             console.log(res)
         }
 
