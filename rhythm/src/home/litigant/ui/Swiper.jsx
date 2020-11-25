@@ -11,7 +11,7 @@ import banner3 from "@a/images/banner3@2x.png"
 
 class Swiper extends Component {
   state = {
-    data: ["1", "2", "3"],
+    data:[banner1, banner2, banner3],
   }
  
   render() {
@@ -35,11 +35,11 @@ class Swiper extends Component {
     );
   }
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        data: [banner1, banner2, banner3],
-      });
-    }, 100);
+    // setTimeout(() => {
+    //   this.setState({
+    //     data: [banner1, banner2, banner3],
+    //   });
+    // }, 100);
   }
 }
 
