@@ -11,6 +11,7 @@ import Phoneid from '../ui/Phoneid'
 import Party from '../ui/Party'
 import CaseId from '../ui/CaseId'
 import CaseImg from '../ui/CaseImg'
+import NoticeName from '../ui/Noticename'
 import http from '../../../utils/https'
 
 import {ButtonWrap} from '../ui/publish'
@@ -39,17 +40,18 @@ class Publish extends Component {
   }
 
   toPublish = () => {
-    if(this.state.whether === 0 || !this.props.form.picture || !this.props.form.caseid) {
+    console.log(this.props.form);
+    if(this.state.whether === 0 || !this.props.form.caseid) {
       this.failToast()
       return 
     }
     else {
       http.post('http://114.67.247.63:8010/lawyer/noticeUpload',JSON.stringify(this.props.form))
       this.successToast()
-      setTimeout(() => {
-        window.location.reload([true])
-        // this.forceUpdate();
-      },2000)
+      // setTimeout(() => {
+      //   window.location.reload([true])
+      //   // this.forceUpdate();
+      // },2000)
     }
   }
 
@@ -77,6 +79,7 @@ class Publish extends Component {
       <>
         <NavBar mode="dark">发布公告</NavBar>
         <div style={{backgroundColor:'#fff',height:'5rem',margin:'0.14rem',padding:'0.15rem'}}>
+          <NoticeName></NoticeName>
           <Type></Type>
           <Court></Court>
           <Region></Region>

@@ -71,11 +71,11 @@ class MessageLogin extends Component {
         liked:false,
         seconds:this.state.seconds - 1,  
       },() => {
-        if(this.state.seconds == 0){
+        if(this.state.seconds ==0){
           clearInterval(siv);
           this.setState({
             liked:true,
-            secounds:60
+            seconds:60
           })
         }
       });  

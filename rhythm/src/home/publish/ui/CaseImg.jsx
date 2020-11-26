@@ -9,16 +9,18 @@ import {
     Add,
 } from './publish'
 import { post } from '../../../utils/http';
-const data = [];
+const data=[];
 
 const CaseImg = (props) => {
     let [files,setFiles] = useState(data)
     const { handlePictureChange } = useChangeForm()
 
-    const onChange = useCallback((files) => {
-        setFiles(files);
+    const onChange = useCallback((img) => {
+        setFiles(img);
+        console.log(img[0].file);
         let imgForm = new FormData()
-        imgForm.append('imgFile',files[0].file)
+        imgForm.append('imgFile',img[0].file)
+        imgForm.set('imgFile',img[0].file)
         console.log(imgForm);
         
         // http.post('http://10.9.70.205:8081/uploadImgToOSS',imgForm)

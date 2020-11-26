@@ -30,10 +30,10 @@ class ChatMain extends Component{
     }
 
     componentDidMount(){
-        const msgList = http.get("")
-        this.setState({
-            msgList
-        })
+        // const msgList = http.get("")
+        // this.setState({
+        //     msgList
+        // })
     }
 }
 

@@ -45,6 +45,9 @@ const useChangeForm = () => {
     const handleDayChange = useCallback((dayInfo) => {
             dispatch(ac.changeFormDay(dayInfo))
       }, [dispatch])
+    const handleNoticeNameChange = useCallback((NNInfo) => {
+            dispatch(ac.changeFormNoticeName(NNInfo))
+      }, [dispatch])
 
     return {
         casetype,
@@ -61,7 +64,8 @@ const useChangeForm = () => {
         handlePartyChange,
         handlePictureChange,
         handleCaseidChange,
-        handleDayChange
+        handleDayChange,
+        handleNoticeNameChange
     }
 }
 

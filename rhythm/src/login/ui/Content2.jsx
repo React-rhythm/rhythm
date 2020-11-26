@@ -70,7 +70,7 @@ const Content2 = (props) => {
         }
     }
     const validateID = (rule, value, callback) => {
-        if ( /^([0-9]{15}|[0-9]{18})$/.test(value)) {
+        if ( /^([0-9]{18})$/.test(value)) {
             callback();
         } else if (value.length === 0) {
             callback(new Error('请输入身份证号'));

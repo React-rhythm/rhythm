@@ -8,7 +8,8 @@ const defaultState = {
         party : '',
         picture : '',
         caseid : '',
-        day : ''
+        day : '',
+        noticename : '',
     }
   }
 
@@ -57,6 +58,7 @@ const defaultState = {
                 }
             }
         case 'changeFormPicture':
+            console.log(action.formPicture)
             return {
                 form:{
                     ...state.form,
@@ -75,6 +77,13 @@ const defaultState = {
                 form:{
                     ...state.form,
                     day:action.formDay
+                }
+            }
+        case 'changeFormNoticeName':
+            return {
+                form:{
+                    ...state.form,
+                    noticename:action.formNoticeName
                 }
             }
         default:

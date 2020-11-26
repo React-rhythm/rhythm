@@ -15,8 +15,7 @@ class TabNotice extends Component{
           ]
     }
     render(){
-        const litigantList = this.props.litigantList
-       
+            const litigantList = this.props.litigantList
         const list = _.filter(litigantList,function(notice) {return notice.state==="1"})
       
         const listing = _.filter(litigantList,function(notice) {return notice.state===null})

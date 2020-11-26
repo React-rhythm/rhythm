@@ -35,7 +35,7 @@ const changeFormParty = formParty => {
     }
 }
 const changeFormPicture = formPicture => {
-  console.log(1);
+  console.log(formPicture);
     return {
       type: 'changeFormPicture',
       formPicture
@@ -53,6 +53,12 @@ const changeFormDay = formDay => {
       formDay
     }
 }
+const changeFormNoticeName = formNoticeName => {
+    return {
+      type: 'changeFormNoticeName',
+      formNoticeName
+    }
+}
 
   export default {
     changeFormType,
@@ -63,5 +69,6 @@ const changeFormDay = formDay => {
     changeFormParty,
     changeFormPicture,
     changeFormCaseid,
-    changeFormDay
+    changeFormDay,
+    changeFormNoticeName
 }

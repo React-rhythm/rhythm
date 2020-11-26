@@ -24,7 +24,7 @@ class Register2 extends Component {
     }
 
     //获取验证码
-    handleCode = () => {
+    handleCode = async() => {
         let siv = setInterval(() => {
             this.setState({
                 liked: false,
@@ -34,19 +34,14 @@ class Register2 extends Component {
                     clearInterval(siv);
                     this.setState({
                         liked: true,
-                        secounds: 60
+                        seconds: 60
                     })
                 }
             });
         }, 1000);
         let phoneid = document.getElementById('phoneid').value
 
-        let uuid = http.get('http://114.67.247.63:8010/userInfo/register/phone/' + phoneid)
-    }
-
-    //手机号是否已注册
-    handlePhoneId = async (phone) => {
-        let res=await http.get('http://114.67.247.63:8010/userInfo/register/phone/' + phone)
+        let res = await http.get('http://114.67.247.63:8010/userInfo/register/phone/' + phoneid)
         if (res.flag === 0) {
             this.setState({
                 flag4: 0
@@ -56,8 +51,22 @@ class Register2 extends Component {
                 flag4: 1
             })
         }
-
     }
+
+    //手机号是否已注册
+    // handlePhoneId = async (phone) => {
+    //     let res=await http.get('http://114.67.247.63:8010/userInfo/register/phone/' + phone)
+    //     if (res.flag === 0) {
+    //         this.setState({
+    //             flag4: 0
+    //         })
+    //     } else {
+    //         this.setState({
+    //             flag4: 1
+    //         })
+    //     }
+
+    // }
 
     //用户名是否存在
     handleUserName = async (username) => {
