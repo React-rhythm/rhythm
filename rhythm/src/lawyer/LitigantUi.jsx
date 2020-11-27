@@ -3,7 +3,7 @@ import React,{useState,useEffect} from 'react'
 import {Container} from "./StyledLitigant"
 
 import Swiper from "./Swiper"
-import TabNotice from "./TabNotice"
+import LawTabNotice from "./LawTabNotice"
 import Search from "@c/search/Search"
 import Bell from "@c/bell/Bell"
 
@@ -33,7 +33,7 @@ const LitigantUi = (props) => {
             }
             
             <Swiper></Swiper>
-            <TabNotice litigantList={litigantList}></TabNotice>
+            <LawTabNotice litigantList={litigantList}></LawTabNotice>
         </Container>
     )
     

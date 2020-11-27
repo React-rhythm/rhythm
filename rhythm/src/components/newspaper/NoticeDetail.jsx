@@ -21,7 +21,8 @@ export default function NoticeDetail(props) {
         `http://114.67.247.63:8010/searchInfo/byCaseIdAndName/${state.caseid}`
       )
       console.log(result);
-      setNotice(result.data.SearchDto[0])
+      console.log(state)
+      result.data.SearchDto && setNotice(result.data.SearchDto[0])
     }
       loadData()
   },[])

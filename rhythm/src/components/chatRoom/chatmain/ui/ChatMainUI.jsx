@@ -39,6 +39,7 @@ const ChatMainUI = (props) => {
 
   
   const loadMsgList = async() => {
+    console.log(title)
     const msgList = await http.get(`http://114.67.247.63:8010/userChat/pull/${title}`);
    
     props.onGetMsgList(msgList)

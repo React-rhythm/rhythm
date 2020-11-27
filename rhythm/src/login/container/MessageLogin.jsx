@@ -82,7 +82,11 @@ class MessageLogin extends Component {
     },1000);  
     let phoneid = document.querySelector('#phone').value
     
-    let res = await http.get("http://114.67.247.63:8010/login/phone/" + phoneid)
+
+   
+
+    let res = await http.get("http://10.9.27.166:8080/userInfo/login/phone/" + phoneid)
+
     console.log(res);
     this.setState({
       flag: res.msg,

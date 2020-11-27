@@ -79,7 +79,7 @@ const Content2 = (props) => {
         }
     }
     const validatePhone = (rule, value, callback) => {
-        if (/^1[34578]\d{9}$/.test(value)) {
+        if (/^1[345678]\d{9}$/.test(value)) {
             callback();
         } else if (value.length === 0) {
             callback(new Error('请输入手机号'));

@@ -14,7 +14,7 @@ const  NoticeItem  = (props) => {
              onClick={() => handleGotoDetail()}
             >
             <div>
-            <h2>公告名称:公司法人变更</h2>
+                <h2>公告名称:{notice.noticename}</h2>
                 <p>公告类别:{notice.type}</p>
                 <p>当事人:<span>{notice.party} </span></p>
                 <p>案号:{notice.caseid} </p>

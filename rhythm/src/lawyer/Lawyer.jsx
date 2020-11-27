@@ -18,9 +18,10 @@ import UploadActive from "@a/images/发布_点击@2x.png"
 import MyProfile from "@/home/profile/Profile"
 import Publish from '@p/container/Publish'
 import { SearchComp } from '../newspaper/search'
-import LitigantUi from "@/home/litigant/ui/LitigantUi"
 
+// import LitigantUi from "@/home/litigant/ui/LitigantUi"
 
+import LitigantUi from "./LitigantUi"
 
 @connect(state=>({
   selectedTab:state.newspaper.tabType,

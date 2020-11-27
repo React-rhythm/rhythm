@@ -130,9 +130,9 @@ class Login1 extends Component {
            this.setState({
             loginshow:'用户名不能为空'
            })
-        }else if(user.length<4){
+        }else if(user.length<2){
             this.setState({
-                loginshow:'用户名不少于4位'
+                loginshow:'用户名不少于2位'
                })   
         }else{
             this.setState({

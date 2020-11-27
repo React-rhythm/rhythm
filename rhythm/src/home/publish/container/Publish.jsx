@@ -48,10 +48,10 @@ class Publish extends Component {
     else {
       http.post('http://114.67.247.63:8010/lawyer/noticeUpload',JSON.stringify(this.props.form))
       this.successToast()
-      // setTimeout(() => {
-      //   window.location.reload([true])
-      //   // this.forceUpdate();
-      // },2000)
+      setTimeout(() => {
+        window.location.reload()
+        // this.forceUpdate();
+      },2000)
     }
   }
 

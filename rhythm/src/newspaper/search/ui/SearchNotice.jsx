@@ -11,7 +11,7 @@ export default function SearchNotice(props) {
     return ()=>{
       push({
         pathname:'/noticedetail',
-        state:{id}
+        state:{caseid:id}
       })
     }
   }
