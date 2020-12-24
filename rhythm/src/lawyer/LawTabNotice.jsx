@@ -11,7 +11,7 @@ class TabNotice extends Component{
         tabs :[
             { title: <Badge>待付费</Badge> },
             { title: <Badge>付费待公告</Badge> },
-            { title: <Badge>已公告</Badge> }
+            { title: <Badge>已公告de</Badge> }
           ]
     }
     render(){
